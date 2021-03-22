@@ -11,10 +11,20 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
           isBreak: false,
         ));
 
+  Timer? _timer;
+
   int _defaultPomodoroDuration = 25;
   int _defaultShortBreakDuration = 5;
 
-  Timer? _timer;
+  double get percent {
+    if (!state.isRunning) return 0;
+
+    if (state.isBreak) {
+      return state.secondsLeft / (_defaultShortBreakDuration * 60);
+    }
+
+    return state.secondsLeft / (_defaultPomodoroDuration * 60);
+  }
 
   void start() {
     if (state.secondsLeft == 0 && state.isBreak) {
