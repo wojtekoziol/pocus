@@ -6,7 +6,7 @@ import 'package:pocus/providers.dart';
 class PlayPauseButton extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final playPauseAnimationController =
+    final animationController =
         useAnimationController(duration: Duration(milliseconds: 200));
 
     return Consumer(
@@ -16,9 +16,9 @@ class PlayPauseButton extends HookWidget {
             context.read(pomodoroTimerNotifierProvider);
 
         if (pomodoroTimerState.isRunning) {
-          playPauseAnimationController.forward();
+          animationController.forward();
         } else {
-          playPauseAnimationController.reverse();
+          animationController.reverse();
         }
 
         return GestureDetector(
@@ -35,7 +35,7 @@ class PlayPauseButton extends HookWidget {
           child: AnimatedIcon(
             icon: AnimatedIcons.play_pause,
             size: 48,
-            progress: playPauseAnimationController,
+            progress: animationController,
           ),
         );
       },
