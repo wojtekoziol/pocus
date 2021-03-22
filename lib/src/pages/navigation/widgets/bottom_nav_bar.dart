@@ -29,7 +29,11 @@ class BottomNavBar extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    context.read(currentIndexNotifierProvider).value = 0;
+                    context.read(pageControllerProvider).animateToPage(
+                          0,
+                          duration: Duration(milliseconds: 200),
+                          curve: Curves.decelerate,
+                        );
                   },
                   child: Container(
                     color: Colors.transparent,
@@ -44,7 +48,11 @@ class BottomNavBar extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    context.read(currentIndexNotifierProvider).value = 1;
+                    context.read(pageControllerProvider).animateToPage(
+                          1,
+                          duration: Duration(milliseconds: 200),
+                          curve: Curves.decelerate,
+                        );
                   },
                   child: Container(
                     color: Colors.transparent,

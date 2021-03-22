@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:pocus/providers.dart';
 import 'package:pocus/src/pages/navigation/widgets/bottom_nav_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/src/pages/pomodoro_timer/pomodoro_timer_page.dart';
 import 'package:pocus/src/pages/stats/stats_page.dart';
 
-class NavigationPage extends StatelessWidget {
+class NavigationPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    final pageController = usePageController();
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Pocus'),
@@ -30,15 +33,19 @@ class NavigationPage extends StatelessWidget {
           ),
         ],
       ),
-      body: ValueListenableBuilder(
-        valueListenable: context.read(currentIndexNotifierProvider),
-        builder: (context, index, child) {
-          if (index == 1) return StatsPage();
-
-          return PomodoroTimerPage();
-        },
+      body: PageView(
+        controller: pageController,
+        children: [
+          PomodoroTimerPage(),
+          StatsPage(),
+        ],
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: ProviderScope(
+        overrides: [
+          pageControllerProvider.overrideWithValue(pageController),
+        ],
+        child: BottomNavBar(),
+      ),
     );
   }
 }
