@@ -29,7 +29,7 @@ class BottomNavBar extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    context.read(currentIndexNotifier).value = 0;
+                    context.read(currentIndexNotifierProvider).value = 0;
                   },
                   child: Container(
                     color: Colors.transparent,
@@ -44,7 +44,7 @@ class BottomNavBar extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    context.read(currentIndexNotifier).value = 1;
+                    context.read(currentIndexNotifierProvider).value = 1;
                   },
                   child: Container(
                     color: Colors.transparent,

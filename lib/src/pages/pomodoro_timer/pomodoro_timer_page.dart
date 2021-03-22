@@ -9,7 +9,8 @@ class PomodoroTimerPage extends StatelessWidget {
       child: Center(
         child: Consumer(
           builder: (_, watch, __) {
-            final pomodoroTimerState = watch(pomodoroTimerNotifier.state);
+            final pomodoroTimerState =
+                watch(pomodoroTimerNotifierProvider.state);
 
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,

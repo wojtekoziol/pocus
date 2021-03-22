@@ -31,7 +31,7 @@ class NavigationPage extends StatelessWidget {
         ],
       ),
       body: ValueListenableBuilder(
-        valueListenable: context.read(currentIndexNotifier),
+        valueListenable: context.read(currentIndexNotifierProvider),
         builder: (_, index, __) {
           if (index == 1) return StatsPage();
 
