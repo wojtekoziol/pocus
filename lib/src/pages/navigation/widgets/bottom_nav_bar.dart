@@ -14,7 +14,7 @@ class BottomNavBar extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.only(top: 3),
+        padding: EdgeInsets.only(top: 1),
         child: Container(
           decoration: BoxDecoration(
             color: Theme.of(context).scaffoldBackgroundColor,

@@ -20,6 +20,16 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           elevation: 0,
           backgroundColor: Colors.transparent,
+          textTheme: GoogleFonts.montserratTextTheme().copyWith(
+            headline6: Theme.of(context).textTheme.headline6!.copyWith(
+                  color: Color(0xFFEA5858),
+                  fontWeight: FontWeight.bold,
+                  fontFamily: GoogleFonts.montserrat().fontFamily,
+                ),
+          ),
+          iconTheme: IconThemeData(
+            color: Color(0xFFEA5858),
+          ),
         ),
         iconTheme: IconThemeData(
           color: Color(0xFFEA5858),
