@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pocus/providers.dart';
+import 'package:pocus/src/pages/pomodoro_timer/widgets/percent_indicator.dart';
 
 class PomodoroTimerPage extends HookWidget {
   @override
@@ -12,33 +13,24 @@ class PomodoroTimerPage extends HookWidget {
 
     return Container(
       child: Center(
-        child: Consumer(
-          builder: (context, watch, __) {
-            final pomodoroTimerState =
-                watch(pomodoroTimerNotifierProvider.state);
-            final pomodoroTimerNotifier =
-                context.read(pomodoroTimerNotifierProvider);
-            if (pomodoroTimerState.isRunning) {
-              playPauseAnimationController.forward();
-            } else {
-              playPauseAnimationController.reverse();
-            }
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            PercentIndicator(),
+            Consumer(
+              builder: (context, watch, _) {
+                final pomodoroTimerState =
+                    watch(pomodoroTimerNotifierProvider.state);
+                final pomodoroTimerNotifier =
+                    context.read(pomodoroTimerNotifierProvider);
 
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircularPercentIndicator(
-                  radius: MediaQuery.of(context).size.width * 0.75,
-                  lineWidth: 15,
-                  reverse: true,
-                  animation: true,
-                  animateFromLastPercent: true,
-                  circularStrokeCap: CircularStrokeCap.round,
-                  progressColor: Theme.of(context).primaryColor,
-                  backgroundColor: Theme.of(context).accentColor,
-                  percent: pomodoroTimerNotifier.percent,
-                ),
-                GestureDetector(
+                if (pomodoroTimerState.isRunning) {
+                  playPauseAnimationController.forward();
+                } else {
+                  playPauseAnimationController.reverse();
+                }
+
+                return GestureDetector(
                   onTap: () {
                     if (pomodoroTimerState.isRunning) {
                       pomodoroTimerNotifier.pause();
@@ -54,10 +46,10 @@ class PomodoroTimerPage extends HookWidget {
                     size: 48,
                     progress: playPauseAnimationController,
                   ),
-                ),
-              ],
-            );
-          },
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
