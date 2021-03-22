@@ -9,12 +9,12 @@ class BottomNavBar extends StatelessWidget {
       decoration: BoxDecoration(
         color: Theme.of(context).dividerColor,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+          topLeft: Radius.circular(24),
+          topRight: Radius.circular(24),
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.only(top: 1),
+        padding: EdgeInsets.only(top: 2),
         child: Container(
           decoration: BoxDecoration(
             color: Theme.of(context).scaffoldBackgroundColor,
