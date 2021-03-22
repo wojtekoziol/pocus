@@ -10,6 +10,7 @@ class PomodoroTimerState with _$PomodoroTimerState {
   factory PomodoroTimerState({
     required int secondsLeft,
     required bool isRunning,
+    required bool isBreak,
   }) = _PomodoroTimerState;
 
   factory PomodoroTimerState.fromJson(Map<String, dynamic> json) =>

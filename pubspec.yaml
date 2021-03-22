@@ -13,6 +13,7 @@ dependencies:
   google_fonts: ^2.0.0
   freezed_annotation: ^0.14.1
   json_annotation: ^4.0.1
+  flutter_riverpod: ^0.13.1+1
 
 dev_dependencies:
   flutter_test:

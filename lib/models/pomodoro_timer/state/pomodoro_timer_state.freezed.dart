@@ -21,10 +21,13 @@ class _$PomodoroTimerStateTearOff {
   const _$PomodoroTimerStateTearOff();
 
   _PomodoroTimerState call(
-      {required int secondsLeft, required bool isRunning}) {
+      {required int secondsLeft,
+      required bool isRunning,
+      required bool isBreak}) {
     return _PomodoroTimerState(
       secondsLeft: secondsLeft,
       isRunning: isRunning,
+      isBreak: isBreak,
     );
   }
 
@@ -40,6 +43,7 @@ const $PomodoroTimerState = _$PomodoroTimerStateTearOff();
 mixin _$PomodoroTimerState {
   int get secondsLeft => throw _privateConstructorUsedError;
   bool get isRunning => throw _privateConstructorUsedError;
+  bool get isBreak => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +56,7 @@ abstract class $PomodoroTimerStateCopyWith<$Res> {
   factory $PomodoroTimerStateCopyWith(
           PomodoroTimerState value, $Res Function(PomodoroTimerState) then) =
       _$PomodoroTimerStateCopyWithImpl<$Res>;
-  $Res call({int secondsLeft, bool isRunning});
+  $Res call({int secondsLeft, bool isRunning, bool isBreak});
 }
 
 /// @nodoc
@@ -68,6 +72,7 @@ class _$PomodoroTimerStateCopyWithImpl<$Res>
   $Res call({
     Object? secondsLeft = freezed,
     Object? isRunning = freezed,
+    Object? isBreak = freezed,
   }) {
     return _then(_value.copyWith(
       secondsLeft: secondsLeft == freezed
@@ -77,6 +82,10 @@ class _$PomodoroTimerStateCopyWithImpl<$Res>
       isRunning: isRunning == freezed
           ? _value.isRunning
           : isRunning // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isBreak: isBreak == freezed
+          ? _value.isBreak
+          : isBreak // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -89,7 +98,7 @@ abstract class _$PomodoroTimerStateCopyWith<$Res>
           _PomodoroTimerState value, $Res Function(_PomodoroTimerState) then) =
       __$PomodoroTimerStateCopyWithImpl<$Res>;
   @override
-  $Res call({int secondsLeft, bool isRunning});
+  $Res call({int secondsLeft, bool isRunning, bool isBreak});
 }
 
 /// @nodoc
@@ -107,6 +116,7 @@ class __$PomodoroTimerStateCopyWithImpl<$Res>
   $Res call({
     Object? secondsLeft = freezed,
     Object? isRunning = freezed,
+    Object? isBreak = freezed,
   }) {
     return _then(_PomodoroTimerState(
       secondsLeft: secondsLeft == freezed
@@ -116,6 +126,10 @@ class __$PomodoroTimerStateCopyWithImpl<$Res>
       isRunning: isRunning == freezed
           ? _value.isRunning
           : isRunning // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isBreak: isBreak == freezed
+          ? _value.isBreak
+          : isBreak // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -127,7 +141,10 @@ class __$PomodoroTimerStateCopyWithImpl<$Res>
 class _$_PomodoroTimerState
     with DiagnosticableTreeMixin
     implements _PomodoroTimerState {
-  _$_PomodoroTimerState({required this.secondsLeft, required this.isRunning});
+  _$_PomodoroTimerState(
+      {required this.secondsLeft,
+      required this.isRunning,
+      required this.isBreak});
 
   factory _$_PomodoroTimerState.fromJson(Map<String, dynamic> json) =>
       _$_$_PomodoroTimerStateFromJson(json);
@@ -136,10 +153,12 @@ class _$_PomodoroTimerState
   final int secondsLeft;
   @override
   final bool isRunning;
+  @override
+  final bool isBreak;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PomodoroTimerState(secondsLeft: $secondsLeft, isRunning: $isRunning)';
+    return 'PomodoroTimerState(secondsLeft: $secondsLeft, isRunning: $isRunning, isBreak: $isBreak)';
   }
 
   @override
@@ -148,7 +167,8 @@ class _$_PomodoroTimerState
     properties
       ..add(DiagnosticsProperty('type', 'PomodoroTimerState'))
       ..add(DiagnosticsProperty('secondsLeft', secondsLeft))
-      ..add(DiagnosticsProperty('isRunning', isRunning));
+      ..add(DiagnosticsProperty('isRunning', isRunning))
+      ..add(DiagnosticsProperty('isBreak', isBreak));
   }
 
   @override
@@ -160,14 +180,17 @@ class _$_PomodoroTimerState
                     .equals(other.secondsLeft, secondsLeft)) &&
             (identical(other.isRunning, isRunning) ||
                 const DeepCollectionEquality()
-                    .equals(other.isRunning, isRunning)));
+                    .equals(other.isRunning, isRunning)) &&
+            (identical(other.isBreak, isBreak) ||
+                const DeepCollectionEquality().equals(other.isBreak, isBreak)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(secondsLeft) ^
-      const DeepCollectionEquality().hash(isRunning);
+      const DeepCollectionEquality().hash(isRunning) ^
+      const DeepCollectionEquality().hash(isBreak);
 
   @JsonKey(ignore: true)
   @override
@@ -183,7 +206,8 @@ class _$_PomodoroTimerState
 abstract class _PomodoroTimerState implements PomodoroTimerState {
   factory _PomodoroTimerState(
       {required int secondsLeft,
-      required bool isRunning}) = _$_PomodoroTimerState;
+      required bool isRunning,
+      required bool isBreak}) = _$_PomodoroTimerState;
 
   factory _PomodoroTimerState.fromJson(Map<String, dynamic> json) =
       _$_PomodoroTimerState.fromJson;
@@ -192,6 +216,8 @@ abstract class _PomodoroTimerState implements PomodoroTimerState {
   int get secondsLeft => throw _privateConstructorUsedError;
   @override
   bool get isRunning => throw _privateConstructorUsedError;
+  @override
+  bool get isBreak => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PomodoroTimerStateCopyWith<_PomodoroTimerState> get copyWith =>
