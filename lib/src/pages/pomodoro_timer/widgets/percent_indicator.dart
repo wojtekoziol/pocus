@@ -10,7 +10,7 @@ class PercentIndicator extends StatelessWidget {
 
     return Consumer(
       builder: (context, watch, child) {
-        watch(pomodoroTimerNotifierProvider.state);
+        final pomodoroTimerState = watch(pomodoroTimerNotifierProvider.state);
 
         return CircularPercentIndicator(
           radius: MediaQuery.of(context).size.width * 0.75,
@@ -22,6 +22,19 @@ class PercentIndicator extends StatelessWidget {
           progressColor: theme.primaryColor,
           backgroundColor: theme.accentColor,
           percent: context.read(pomodoroTimerNotifierProvider).percent,
+          center: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '${(pomodoroTimerState.secondsLeft / 60).round()}',
+                style: theme.textTheme.headline1,
+              ),
+              Text(
+                'minutes',
+                style: theme.textTheme.bodyText1,
+              ),
+            ],
+          ),
         );
       },
     );

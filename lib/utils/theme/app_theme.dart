@@ -17,7 +17,7 @@ class AppTheme with _$AppTheme {
       textTheme: GoogleFonts.montserratTextTheme().copyWith(
         headline6: GoogleFonts.montserratTextTheme().headline6!.copyWith(
               color: Color(0xFFEA5858),
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.bold,
               fontSize: 20,
               letterSpacing: 0.15,
             ),
@@ -33,6 +33,11 @@ class AppTheme with _$AppTheme {
     accentColor: Color(0xFFFFA2A2),
     dividerColor: Color(0xFFE3E3E3),
     fontFamily: GoogleFonts.montserrat().fontFamily,
-    textTheme: GoogleFonts.montserratTextTheme(),
+    textTheme: GoogleFonts.montserratTextTheme().copyWith(
+      headline1: GoogleFonts.montserratTextTheme().headline1!.copyWith(
+            fontSize: 72,
+            color: Colors.black,
+          ),
+    ),
   );
 }
