@@ -10,7 +10,7 @@ class PlayPauseButton extends HookWidget {
         useAnimationController(duration: Duration(milliseconds: 200));
 
     return Consumer(
-      builder: (context, watch, _) {
+      builder: (context, watch, child) {
         final pomodoroTimerState = watch(pomodoroTimerNotifierProvider.state);
         final pomodoroTimerNotifier =
             context.read(pomodoroTimerNotifierProvider);

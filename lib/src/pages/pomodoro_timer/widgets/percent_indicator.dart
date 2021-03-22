@@ -9,7 +9,7 @@ class PercentIndicator extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Consumer(
-      builder: (context, watch, _) {
+      builder: (context, watch, child) {
         watch(pomodoroTimerNotifierProvider.state);
 
         return CircularPercentIndicator(

@@ -32,7 +32,7 @@ class NavigationPage extends StatelessWidget {
       ),
       body: ValueListenableBuilder(
         valueListenable: context.read(currentIndexNotifierProvider),
-        builder: (_, index, __) {
+        builder: (context, index, child) {
           if (index == 1) return StatsPage();
 
           return PomodoroTimerPage();
