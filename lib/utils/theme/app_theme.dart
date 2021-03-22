@@ -17,7 +17,9 @@ class AppTheme with _$AppTheme {
       textTheme: GoogleFonts.montserratTextTheme().copyWith(
         headline6: GoogleFonts.montserratTextTheme().headline6!.copyWith(
               color: Color(0xFFEA5858),
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w500,
+              fontSize: 20,
+              letterSpacing: 0.15,
             ),
       ),
       iconTheme: IconThemeData(
