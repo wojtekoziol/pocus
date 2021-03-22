@@ -31,11 +31,14 @@ class BottomNavBar extends StatelessWidget {
                   onTap: () {
                     context.read(currentIndexNotifier).value = 0;
                   },
-                  child: Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Icon(
-                      Icons.timer,
-                      size: 28,
+                  child: Container(
+                    color: Colors.transparent,
+                    child: Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Icon(
+                        Icons.timer,
+                        size: 28,
+                      ),
                     ),
                   ),
                 ),
@@ -43,11 +46,14 @@ class BottomNavBar extends StatelessWidget {
                   onTap: () {
                     context.read(currentIndexNotifier).value = 1;
                   },
-                  child: Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Icon(
-                      Icons.equalizer_rounded,
-                      size: 28,
+                  child: Container(
+                    color: Colors.transparent,
+                    child: Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Icon(
+                        Icons.equalizer_rounded,
+                        size: 28,
+                      ),
                     ),
                   ),
                 ),

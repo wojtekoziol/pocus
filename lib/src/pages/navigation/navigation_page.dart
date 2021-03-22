@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pocus/providers.dart';
 import 'package:pocus/src/pages/navigation/widgets/bottom_nav_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pocus/src/pages/pomodoro_timer/pomodoro_timer_page.dart';
+import 'package:pocus/src/pages/stats/stats_page.dart';
 
 class NavigationPage extends StatelessWidget {
   @override
@@ -16,18 +18,25 @@ class NavigationPage extends StatelessWidget {
         actions: [
           GestureDetector(
             onTap: () {},
-            child: Padding(
-              padding: EdgeInsets.all(16),
-              child: Icon(
-                Icons.settings,
+            child: Container(
+              color: Colors.transparent,
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Icon(
+                  Icons.settings,
+                ),
               ),
             ),
           ),
         ],
       ),
-      body: IndexedStack(
-        index: context.read(currentIndexNotifier).value,
-        children: [],
+      body: ValueListenableBuilder(
+        valueListenable: context.read(currentIndexNotifier),
+        builder: (_, index, __) {
+          if (index == 1) return StatsPage();
+
+          return PomodoroTimerPage();
+        },
       ),
       bottomNavigationBar: BottomNavBar(),
     );
