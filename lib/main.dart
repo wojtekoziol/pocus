@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pocus/src/pages/navigation/navigation_page.dart';
+import 'package:pocus/utils/theme/app_theme.dart';
 
 void main() {
   runApp(ProviderScope(
@@ -15,31 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pocus',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          brightness: Brightness.light,
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          textTheme: GoogleFonts.montserratTextTheme().copyWith(
-            headline6: Theme.of(context).textTheme.headline6!.copyWith(
-                  color: Color(0xFFEA5858),
-                  fontWeight: FontWeight.bold,
-                  fontFamily: GoogleFonts.montserrat().fontFamily,
-                ),
-          ),
-          iconTheme: IconThemeData(
-            color: Color(0xFFEA5858),
-          ),
-        ),
-        iconTheme: IconThemeData(
-          color: Color(0xFFEA5858),
-        ),
-        primaryColor: Color(0xFFEA5858),
-        accentColor: Color(0xFFFFA2A2),
-        dividerColor: Color(0xFFE3E3E3),
-        fontFamily: GoogleFonts.montserrat().fontFamily,
-        textTheme: GoogleFonts.montserratTextTheme(),
-      ),
+      theme: AppTheme.light,
       home: NavigationPage(),
     );
   }
