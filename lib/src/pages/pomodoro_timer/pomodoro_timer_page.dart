@@ -8,7 +8,7 @@ class PomodoroTimerPage extends StatelessWidget {
     return Container(
       child: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             PercentIndicator(),
             PlayPauseButton(),
