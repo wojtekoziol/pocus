@@ -32,7 +32,7 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
         isRunning: true,
       );
     }
-    _timer = Timer.periodic(Duration(seconds: state.secondsLeft), (timer) {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       if (state.secondsLeft - 1 < 0) {
         timer.cancel();
         state = PomodoroTimerState(
