@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pocus/src/pages/navigation/navigation_page.dart';
 
 void main() {
   runApp(ProviderScope(
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.montserrat().fontFamily,
         textTheme: GoogleFonts.montserratTextTheme(),
       ),
+      home: NavigationPage(),
     );
   }
 }
