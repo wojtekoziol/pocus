@@ -13,49 +13,40 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
 
   Timer? _timer;
 
-  int _defaultPomodoroDuration = 25;
-  int _defaultShortBreakDuration = 5;
+  int _pomodoroDuration = 25;
+  int _shortBreakDuration = 5;
 
   double get percent {
     if (!state.isRunning) return 0;
 
-    if (state.isBreak) {
-      return state.secondsLeft / (_defaultShortBreakDuration * 60);
-    }
+    if (state.isBreak) return state.secondsLeft / (_shortBreakDuration * 60);
 
-    return state.secondsLeft / (_defaultPomodoroDuration * 60);
+    return state.secondsLeft / (_pomodoroDuration * 60);
   }
 
   void start() {
-    if (state.secondsLeft == 0 && state.isBreak) {
-      state = state.copyWith(
-        secondsLeft: _defaultShortBreakDuration * 60,
-        isRunning: true,
-      );
-    } else if (state.secondsLeft == 0 && !state.isBreak) {
-      state = state.copyWith(
-        secondsLeft: _defaultPomodoroDuration * 60,
-        isRunning: true,
-      );
-    } else {
-      state = state.copyWith(
-        isRunning: true,
-      );
-    }
+    state = state.copyWith(
+      isRunning: true,
+    );
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      if (state.secondsLeft - 1 < 0) {
-        timer.cancel();
-        state = PomodoroTimerState(
-          secondsLeft: 0,
-          isRunning: false,
-          isBreak: !state.isBreak,
-        );
+      if (state.secondsLeft == 0) {
+        skip();
         return;
       }
       state = state.copyWith(
         secondsLeft: state.secondsLeft - 1,
       );
     });
+  }
+
+  void skip() {
+    _timer?.cancel();
+    state = PomodoroTimerState(
+      secondsLeft:
+          (!state.isBreak ? _shortBreakDuration : _pomodoroDuration) * 60,
+      isRunning: false,
+      isBreak: !state.isBreak,
+    );
   }
 
   void pause() {
@@ -68,24 +59,25 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
   void reset() {
     _timer?.cancel();
     state = PomodoroTimerState(
-      secondsLeft: _defaultPomodoroDuration * 60,
+      secondsLeft: _pomodoroDuration * 60,
       isRunning: false,
       isBreak: false,
     );
   }
 
   void updateFields({
-    required int defaultPomodoroDuration,
-    required int defaultShortBreakDuration,
+    required int pomodoroDuration,
+    required int shortBreakDuration,
   }) {
-    _defaultPomodoroDuration = defaultPomodoroDuration;
-    _defaultShortBreakDuration = defaultShortBreakDuration;
-    if (!state.isRunning) {
-      state = PomodoroTimerState(
-        secondsLeft: _defaultPomodoroDuration * 60,
-        isRunning: false,
-        isBreak: false,
+    final isInInitialState = state.secondsLeft ==
+        (state.isBreak ? _shortBreakDuration : _pomodoroDuration) * 60;
+    if (isInInitialState && !state.isRunning) {
+      state = state.copyWith(
+        secondsLeft:
+            (state.isBreak ? shortBreakDuration : pomodoroDuration) * 60,
       );
     }
+    _pomodoroDuration = pomodoroDuration;
+    _shortBreakDuration = shortBreakDuration;
   }
 }
