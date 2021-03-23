@@ -15,19 +15,15 @@ class PlayPauseButton extends HookWidget {
         final pomodoroTimerNotifier =
             context.read(pomodoroTimerNotifierProvider);
 
-        if (pomodoroTimerState.isRunning) {
-          animationController.forward();
-        } else {
-          animationController.reverse();
-        }
+        pomodoroTimerState.isRunning
+            ? animationController.forward()
+            : animationController.reverse();
 
         return GestureDetector(
           onTap: () {
-            if (pomodoroTimerState.isRunning) {
-              pomodoroTimerNotifier.pause();
-            } else {
-              pomodoroTimerNotifier.start();
-            }
+            pomodoroTimerState.isRunning
+                ? pomodoroTimerNotifier.pause()
+                : pomodoroTimerNotifier.start();
           },
           onLongPress: () {
             pomodoroTimerNotifier.reset();

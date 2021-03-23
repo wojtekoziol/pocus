@@ -15,11 +15,9 @@ class PercentIndicator extends HookWidget {
       builder: (context, watch, child) {
         final pomodoroTimerState = watch(pomodoroTimerNotifierProvider.state);
 
-        if (pomodoroTimerState.isRunning) {
-          animationController.forward();
-        } else {
-          animationController.reverse();
-        }
+        pomodoroTimerState.isRunning
+            ? animationController.forward()
+            : animationController.reverse();
 
         return ScaleTransition(
           scale: CurvedAnimation(

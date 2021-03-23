@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
 
@@ -29,11 +30,12 @@ class BottomNavBar extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    context.read(pageControllerProvider).animateToPage(
-                          0,
-                          duration: Duration(milliseconds: 200),
-                          curve: Curves.decelerate,
-                        );
+                    final pageController = context.read(pageControllerProvider);
+                    pageController.animateToPage(
+                      0,
+                      duration: Duration(milliseconds: 200),
+                      curve: Curves.decelerate,
+                    );
                   },
                   child: Container(
                     color: Colors.transparent,
@@ -48,11 +50,12 @@ class BottomNavBar extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    context.read(pageControllerProvider).animateToPage(
-                          1,
-                          duration: Duration(milliseconds: 200),
-                          curve: Curves.decelerate,
-                        );
+                    final pageController = context.read(pageControllerProvider);
+                    pageController.animateToPage(
+                      1,
+                      duration: Duration(milliseconds: 200),
+                      curve: Curves.decelerate,
+                    );
                   },
                   child: Container(
                     color: Colors.transparent,
