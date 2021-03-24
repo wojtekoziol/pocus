@@ -7,3 +7,5 @@ final pomodoroTimerNotifierProvider =
 
 final pageControllerProvider =
     ScopedProvider<PageController>((ref) => throw UnimplementedError());
+
+final currentIndexProvider = ChangeNotifierProvider((ref) => ValueNotifier(0));
