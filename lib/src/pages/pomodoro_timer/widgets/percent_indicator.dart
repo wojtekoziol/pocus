@@ -34,7 +34,10 @@ class PercentIndicator extends HookWidget {
             circularStrokeCap: CircularStrokeCap.round,
             progressColor: theme.primaryColor,
             backgroundColor: theme.accentColor,
-            percent: context.read(pomodoroTimerNotifierProvider).percent,
+            percent: pomodoroTimerState.isRunning
+                ? pomodoroTimerState.secondsLeft /
+                    pomodoroTimerState.secondsInitial
+                : 0,
             center: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

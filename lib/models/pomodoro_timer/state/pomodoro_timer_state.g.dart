@@ -6,19 +6,51 @@ part of 'pomodoro_timer_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PomodoroTimerState _$_$_PomodoroTimerStateFromJson(
-    Map<String, dynamic> json) {
-  return _$_PomodoroTimerState(
+_$Pomodoro _$_$PomodoroFromJson(Map<String, dynamic> json) {
+  return _$Pomodoro(
     secondsLeft: json['secondsLeft'] as int,
+    secondsInitial: json['secondsInitial'] as int,
+    currentInterval: json['currentInterval'] as int,
     isRunning: json['isRunning'] as bool,
-    isBreak: json['isBreak'] as bool,
   );
 }
 
-Map<String, dynamic> _$_$_PomodoroTimerStateToJson(
-        _$_PomodoroTimerState instance) =>
+Map<String, dynamic> _$_$PomodoroToJson(_$Pomodoro instance) =>
     <String, dynamic>{
       'secondsLeft': instance.secondsLeft,
+      'secondsInitial': instance.secondsInitial,
+      'currentInterval': instance.currentInterval,
       'isRunning': instance.isRunning,
-      'isBreak': instance.isBreak,
+    };
+
+_$ShortBreak _$_$ShortBreakFromJson(Map<String, dynamic> json) {
+  return _$ShortBreak(
+    secondsLeft: json['secondsLeft'] as int,
+    secondsInitial: json['secondsInitial'] as int,
+    isRunning: json['isRunning'] as bool,
+    nextInterval: json['nextInterval'] as int,
+  );
+}
+
+Map<String, dynamic> _$_$ShortBreakToJson(_$ShortBreak instance) =>
+    <String, dynamic>{
+      'secondsLeft': instance.secondsLeft,
+      'secondsInitial': instance.secondsInitial,
+      'isRunning': instance.isRunning,
+      'nextInterval': instance.nextInterval,
+    };
+
+_$LongBreak _$_$LongBreakFromJson(Map<String, dynamic> json) {
+  return _$LongBreak(
+    secondsLeft: json['secondsLeft'] as int,
+    secondsInitial: json['secondsInitial'] as int,
+    isRunning: json['isRunning'] as bool,
+  );
+}
+
+Map<String, dynamic> _$_$LongBreakToJson(_$LongBreak instance) =>
+    <String, dynamic>{
+      'secondsLeft': instance.secondsLeft,
+      'secondsInitial': instance.secondsInitial,
+      'isRunning': instance.isRunning,
     };
