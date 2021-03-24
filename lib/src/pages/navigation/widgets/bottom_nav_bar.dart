@@ -34,7 +34,7 @@ class BottomNavBar extends StatelessWidget {
             children: [
               SafeArea(
                 child: SizedBox(
-                  width: screenSize.width * 0.6,
+                  width: screenSize.width * 0.6 + 32,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -50,7 +50,7 @@ class BottomNavBar extends StatelessWidget {
                         child: Container(
                           color: Colors.transparent,
                           child: Padding(
-                            padding: EdgeInsets.only(top: 24),
+                            padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
                             child: Icon(
                               Icons.timer,
                               size: 28,
@@ -70,7 +70,7 @@ class BottomNavBar extends StatelessWidget {
                         child: Container(
                           color: Colors.transparent,
                           child: Padding(
-                            padding: EdgeInsets.only(top: 16),
+                            padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
                             child: Icon(
                               Icons.equalizer_rounded,
                               size: 28,
