@@ -98,7 +98,7 @@ class BottomNavBar extends StatelessWidget {
                     );
                   },
                   child: Container(
-                    height: 8,
+                    height: 7,
                     width: 50,
                     decoration: BoxDecoration(
                       color: theme.primaryColor,
