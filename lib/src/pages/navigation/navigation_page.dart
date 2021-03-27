@@ -5,6 +5,7 @@ import 'package:pocus/src/pages/navigation/widgets/bottom_nav_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/src/pages/pomodoro_timer/pomodoro_timer_page.dart';
 import 'package:pocus/src/pages/stats/stats_page.dart';
+import 'package:unicons/unicons.dart';
 
 class NavigationPage extends HookWidget {
   @override
@@ -25,9 +26,7 @@ class NavigationPage extends HookWidget {
               color: Colors.transparent,
               child: Padding(
                 padding: EdgeInsets.all(16),
-                child: Icon(
-                  Icons.settings,
-                ),
+                child: Icon(UniconsLine.setting),
               ),
             ),
           ),
