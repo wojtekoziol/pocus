@@ -18,11 +18,9 @@ class AppTheme with _$AppTheme {
       ),
       textTheme: TextTheme(
         headline6: TextStyle(
-          fontFamily: 'Montserrat',
           fontWeight: FontWeight.bold,
-          fontSize: 20,
-          letterSpacing: 0.15,
           color: Color(0xFFEA5858),
+          fontSize: 20,
         ),
       ),
     ),
@@ -31,10 +29,11 @@ class AppTheme with _$AppTheme {
     ),
     textTheme: TextTheme(
       headline1: TextStyle(
-        fontFamily: 'Montserrat',
         fontSize: 72,
-        letterSpacing: -1.5,
         color: Colors.black,
+      ),
+      headline5: TextStyle(
+        color: Colors.red,
       ),
     ),
     primaryColor: Color(0xFFEA5858),

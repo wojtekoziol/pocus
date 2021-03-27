@@ -10,6 +10,10 @@ class PomodoroTimerPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            Text(
+              'Get back to work!',
+              style: Theme.of(context).textTheme.headline5,
+            ),
             PercentIndicator(),
             PlayPauseButton(),
           ],
