@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocus/src/pages/pomodoro_timer/widgets/motivational_quote.dart';
 import 'package:pocus/src/pages/pomodoro_timer/widgets/percent_indicator.dart';
 import 'package:pocus/src/pages/pomodoro_timer/widgets/play_pause_button.dart';
 
@@ -10,10 +11,7 @@ class PomodoroTimerPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              'Get back to work!',
-              style: Theme.of(context).textTheme.headline5,
-            ),
+            MotivationalQuote(),
             PercentIndicator(),
             PlayPauseButton(),
           ],
