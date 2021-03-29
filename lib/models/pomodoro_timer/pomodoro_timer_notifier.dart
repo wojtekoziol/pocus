@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/models/pomodoro_timer/state/pomodoro_timer_state.dart';
+import 'package:pocus/models/prefs/state/prefs_state.dart';
 
 class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
   PomodoroTimerNotifier()
@@ -88,36 +90,33 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
     );
   }
 
-  void updateFields({
-    required int pomodoroDuration,
-    required int shortBreakDuration,
-    required int longBreakDuration,
-    required int intervalsNumber,
-  }) {
-    _pomodoroDuration = pomodoroDuration;
-    _shortBreakDuration = shortBreakDuration;
-    _longBreakDuration = longBreakDuration;
-    _intervalsNumber = intervalsNumber;
+  void updateFields({required PrefsState prefs}) {
+    _pomodoroDuration = prefs.pomodoroDuration;
+    _shortBreakDuration = prefs.shortBreakDuration;
+    _longBreakDuration = prefs.longBreakDuration;
+    _intervalsNumber = prefs.intervalsNumber;
 
     if (!state.isRunning && state.secondsLeft == state.secondsInitial) {
-      state.when(
-        pomodoro: (secondsLeft, secondsInitial, currentInterval, isRunning) {
-          state.copyWith(
-            secondsLeft: _pomodoroDuration * 60,
-            secondsInitial: _pomodoroDuration * 60,
-          );
-        },
-        shortBreak: (secondsLeft, secondsInitial, isRunning, nextInterval) {
-          state.copyWith(
-            secondsLeft: _shortBreakDuration * 60,
-            secondsInitial: _shortBreakDuration * 60,
-          );
-        },
-        longBreak: (secondsLeft, secondsInitial, isRunning) {
-          state.copyWith(
-            secondsLeft: _longBreakDuration * 60,
-            secondsInitial: _longBreakDuration * 60,
-          );
+      WidgetsBinding.instance!.addPostFrameCallback(
+        (timeStamp) {
+          state.when(pomodoro:
+              (secondsLeft, secondsInitial, currentInterval, isRunning) {
+            state = state.copyWith(
+              secondsLeft: _pomodoroDuration * 60,
+              secondsInitial: _pomodoroDuration * 60,
+            );
+          }, shortBreak:
+              (secondsLeft, secondsInitial, isRunning, nextInterval) {
+            state = state.copyWith(
+              secondsLeft: _shortBreakDuration * 60,
+              secondsInitial: _shortBreakDuration * 60,
+            );
+          }, longBreak: (secondsLeft, secondsInitial, isRunning) {
+            state = state.copyWith(
+              secondsLeft: _longBreakDuration * 60,
+              secondsInitial: _longBreakDuration * 60,
+            );
+          });
         },
       );
     }
