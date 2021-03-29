@@ -28,6 +28,9 @@ class PlayPauseButton extends HookWidget {
           onLongPress: () {
             pomodoroTimerNotifier.reset();
           },
+          onDoubleTap: () {
+            pomodoroTimerNotifier.skip();
+          },
           child: AnimatedIcon(
             icon: AnimatedIcons.play_pause,
             size: 48,
