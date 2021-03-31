@@ -7,9 +7,9 @@ class RadioSlider extends HookWidget {
     required this.label,
     required this.children,
     required this.initialIndex,
-  }) : assert(children.length == 3 &&
-            initialIndex >= 0 &&
-            initialIndex < children.length);
+  })   : assert(children.length == 3),
+        assert(initialIndex >= 0),
+        assert(initialIndex < children.length);
 
   final String label;
   final List<RadioSliderOption> children;

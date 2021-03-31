@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pocus/src/pages/settings/widgets/intervals_number_setting.dart';
+import 'package:pocus/src/pages/settings/widgets/long_break_duration_setting.dart';
 import 'package:pocus/src/pages/settings/widgets/pomodoro_timer_duration_setting.dart';
+import 'package:pocus/src/pages/settings/widgets/short_break_duration_setting.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -21,10 +24,16 @@ class SettingsPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
+        padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 24),
         child: Column(
           children: [
             PomodoroTimerDurationSetting(),
+            SizedBox(height: 50),
+            ShortBreakDurationSetting(),
+            SizedBox(height: 50),
+            LongBreakDurationSetting(),
+            SizedBox(height: 50),
+            IntervalsNumberSetting(),
           ],
         ),
       ),

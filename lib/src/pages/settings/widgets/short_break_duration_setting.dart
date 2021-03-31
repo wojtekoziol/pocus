@@ -5,16 +5,16 @@ import 'package:pocus/providers.dart';
 import 'package:pocus/src/pages/settings/models/radio_slider_option/radio_slider_option.dart';
 import 'package:pocus/src/pages/settings/widgets/radio_slider.dart';
 
-class PomodoroTimerDurationSetting extends HookWidget {
-  final _options = [25, 30, 45];
+class ShortBreakDurationSetting extends HookWidget {
+  final _options = [2, 5, 10];
 
   @override
   Widget build(BuildContext context) {
     final prefsState = context.read(prefsNotifierProvider.state);
 
     return RadioSlider(
-      label: 'Pomodoro timer duration',
-      initialIndex: _options.indexOf(prefsState.pomodoroDuration),
+      label: 'Short break duration',
+      initialIndex: _options.indexOf(prefsState.shortBreakDuration),
       children: [
         ..._options.map((option) {
           return RadioSliderOption(
@@ -22,7 +22,7 @@ class PomodoroTimerDurationSetting extends HookWidget {
             onPressed: () {
               final prefsNotifier = context.read(prefsNotifierProvider);
               prefsNotifier.updatePrefs(prefsState.copyWith(
-                pomodoroDuration: option,
+                shortBreakDuration: option,
               ));
             },
           );
