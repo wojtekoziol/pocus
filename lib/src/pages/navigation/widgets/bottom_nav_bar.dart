@@ -87,11 +87,11 @@ class BottomNavBar extends StatelessWidget {
                 width: screenSize.width * 0.6 + 25,
                 child: ValueListenableBuilder(
                   valueListenable: currentIndexNotifier,
-                  builder: (context, currentIndex, child) {
+                  builder: (context, index, child) {
                     return AnimatedAlign(
                       duration: Duration(milliseconds: 200),
                       alignment: Alignment(
-                        currentIndex == 0 ? -1 : 1,
+                        index == 0 ? -1 : 1,
                         0,
                       ),
                       child: child,
