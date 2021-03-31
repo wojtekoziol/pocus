@@ -58,46 +58,54 @@ class RadioSlider extends HookWidget {
                         color: theme.primaryColor,
                         borderRadius: BorderRadius.circular(32),
                       ),
+                      child: Center(
+                        child: Text(
+                          children[index].value,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 },
               ),
             ),
-            SizedBox(
+            Container(
               height: 50,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    for (int i = 0; i < children.length; i++)
-                      GestureDetector(
-                        onTap: () {
-                          children[i].onPressed();
-                          currentIndexNotifier.value = i;
-                        },
-                        child: Container(
-                          height: 50,
-                          color: Colors.transparent,
-                          child: Center(
-                            child: ValueListenableBuilder(
-                              valueListenable: currentIndexNotifier,
-                              builder: (context, index, child) {
-                                return Text(
-                                  children[i].value,
-                                  style: TextStyle(
-                                    color: index == i
-                                        ? Colors.white
-                                        : Colors.black,
-                                  ),
-                                );
-                              },
-                            ),
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  for (int i = 0; i < children.length; i++)
+                    GestureDetector(
+                      onTap: () {
+                        children[i].onPressed();
+                        currentIndexNotifier.value = i;
+                      },
+                      child: Container(
+                        height: 50,
+                        color: Colors.transparent,
+                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        child: Center(
+                          child: ValueListenableBuilder(
+                            valueListenable: currentIndexNotifier,
+                            builder: (context, index, child) {
+                              return Text(
+                                children[i].value,
+                                style: TextStyle(
+                                  color: index == i
+                                      ? Colors.transparent
+                                      : Colors.black,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),
-                  ],
-                ),
+                    ),
+                ],
               ),
             ),
           ],

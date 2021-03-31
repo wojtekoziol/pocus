@@ -13,7 +13,7 @@ class IntervalsNumberSetting extends HookWidget {
     final prefsState = context.read(prefsNotifierProvider.state);
 
     return RadioSlider(
-      label: 'Long break duration',
+      label: 'Pomodoro intervals number',
       initialIndex: _options.indexOf(prefsState.intervalsNumber),
       children: [
         ..._options.map((option) {
