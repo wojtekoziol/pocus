@@ -52,11 +52,12 @@ class StatsBarChart extends StatelessWidget {
                   tooltipBgColor: tooltipColor,
                   getTooltipItem: (group, groupIndex, rod, rodIndex) {
                     return BarTooltipItem(
-                        '${stats[groupIndex]}',
-                        theme.textTheme.subtitle2!.copyWith(
-                          color: backgroundColor,
-                          fontWeight: FontWeight.bold,
-                        ));
+                      '${stats[groupIndex]}',
+                      theme.textTheme.subtitle2!.copyWith(
+                        color: backgroundColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    );
                   },
                 )),
                 barGroups: [
@@ -71,7 +72,7 @@ class StatsBarChart extends StatelessWidget {
                           backDrawRodData: BackgroundBarChartRodData(
                             colors: [backgroundLineColor],
                             show: true,
-                            y: stats.reduce(max).toDouble(),
+                            y: max(stats.reduce(max).toDouble(), 1),
                           ),
                         ),
                       ],

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pocus/providers.dart';
 import 'package:pocus/src/pages/stats/widgets/stats_bar_chart.dart';
 
 class StatsPage extends StatelessWidget {
@@ -12,7 +14,22 @@ class StatsPage extends StatelessWidget {
         children: [
           Expanded(
             flex: 2,
-            child: Container(),
+            child: Consumer(
+              builder: (context, watch, child) {
+                final stats =
+                    watch(minutesFocusedStatsNotifierProvider.state).stats;
+
+                return StatsBarChart(
+                  stats: stats,
+                  backgroundColor: theme.primaryColor,
+                  lineColor: theme.accentColor,
+                  backgroundLineColor: Colors.white,
+                  textColor: Colors.white,
+                  tooltipColor: theme.dividerColor,
+                  title: 'Minutes focused',
+                );
+              },
+            ),
           ),
           SizedBox(height: 16),
           Expanded(flex: 2, child: Container()),

@@ -8,13 +8,7 @@ part 'stats_state.g.dart';
 @freezed
 class StatsState with _$StatsState {
   factory StatsState({
-    required int monday,
-    required int tuesday,
-    required int wednesday,
-    required int thursday,
-    required int friday,
-    required int saturday,
-    required int sunday,
+    required List<int> stats,
     required DateTime lastUpdated,
   }) = _StatsState;
 

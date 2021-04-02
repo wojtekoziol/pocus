@@ -21,6 +21,16 @@ class MyApp extends HookWidget {
       pomodoroTimerNotifier.updateFields(settings: settingsState);
     }, [useProvider(settingsNotifierProvider.state)]);
 
+    useEffect(() {
+      final pomodoroTimerState =
+          context.read(pomodoroTimerNotifierProvider.state);
+      if (pomodoroTimerState.secondsLeft % 60 == 0 &&
+          pomodoroTimerState.isRunning &&
+          pomodoroTimerState.secondsLeft != pomodoroTimerState.secondsLeft) {
+        context.read(minutesFocusedStatsNotifierProvider).insert();
+      }
+    }, [useProvider(pomodoroTimerNotifierProvider.state)]);
+
     return MaterialApp(
       title: 'Pocus',
       debugShowCheckedModeBanner: false,

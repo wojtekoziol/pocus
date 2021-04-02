@@ -43,7 +43,7 @@ class BottomNavBar extends StatelessWidget {
                           pageController.animateToPage(
                             0,
                             duration: Duration(milliseconds: 200),
-                            curve: Curves.decelerate,
+                            curve: Curves.easeIn,
                           );
                           currentIndexNotifier.value = 0;
                         },
@@ -63,7 +63,7 @@ class BottomNavBar extends StatelessWidget {
                           pageController.animateToPage(
                             1,
                             duration: Duration(milliseconds: 200),
-                            curve: Curves.decelerate,
+                            curve: Curves.easeIn,
                           );
                           currentIndexNotifier.value = 1;
                         },
