@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'prefs_state.dart';
+part of 'settings_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,15 +13,15 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$PrefsStateTearOff {
-  const _$PrefsStateTearOff();
+class _$SettingsStateTearOff {
+  const _$SettingsStateTearOff();
 
-  _PrefsState call(
+  _SettingsState call(
       {required int pomodoroDuration,
       required int shortBreakDuration,
       required int longBreakDuration,
       required int intervalsNumber}) {
-    return _PrefsState(
+    return _SettingsState(
       pomodoroDuration: pomodoroDuration,
       shortBreakDuration: shortBreakDuration,
       longBreakDuration: longBreakDuration,
@@ -31,25 +31,25 @@ class _$PrefsStateTearOff {
 }
 
 /// @nodoc
-const $PrefsState = _$PrefsStateTearOff();
+const $SettingsState = _$SettingsStateTearOff();
 
 /// @nodoc
-mixin _$PrefsState {
+mixin _$SettingsState {
   int get pomodoroDuration => throw _privateConstructorUsedError;
   int get shortBreakDuration => throw _privateConstructorUsedError;
   int get longBreakDuration => throw _privateConstructorUsedError;
   int get intervalsNumber => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PrefsStateCopyWith<PrefsState> get copyWith =>
+  $SettingsStateCopyWith<SettingsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PrefsStateCopyWith<$Res> {
-  factory $PrefsStateCopyWith(
-          PrefsState value, $Res Function(PrefsState) then) =
-      _$PrefsStateCopyWithImpl<$Res>;
+abstract class $SettingsStateCopyWith<$Res> {
+  factory $SettingsStateCopyWith(
+          SettingsState value, $Res Function(SettingsState) then) =
+      _$SettingsStateCopyWithImpl<$Res>;
   $Res call(
       {int pomodoroDuration,
       int shortBreakDuration,
@@ -58,12 +58,13 @@ abstract class $PrefsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PrefsStateCopyWithImpl<$Res> implements $PrefsStateCopyWith<$Res> {
-  _$PrefsStateCopyWithImpl(this._value, this._then);
+class _$SettingsStateCopyWithImpl<$Res>
+    implements $SettingsStateCopyWith<$Res> {
+  _$SettingsStateCopyWithImpl(this._value, this._then);
 
-  final PrefsState _value;
+  final SettingsState _value;
   // ignore: unused_field
-  final $Res Function(PrefsState) _then;
+  final $Res Function(SettingsState) _then;
 
   @override
   $Res call({
@@ -94,10 +95,11 @@ class _$PrefsStateCopyWithImpl<$Res> implements $PrefsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$PrefsStateCopyWith<$Res> implements $PrefsStateCopyWith<$Res> {
-  factory _$PrefsStateCopyWith(
-          _PrefsState value, $Res Function(_PrefsState) then) =
-      __$PrefsStateCopyWithImpl<$Res>;
+abstract class _$SettingsStateCopyWith<$Res>
+    implements $SettingsStateCopyWith<$Res> {
+  factory _$SettingsStateCopyWith(
+          _SettingsState value, $Res Function(_SettingsState) then) =
+      __$SettingsStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {int pomodoroDuration,
@@ -107,14 +109,15 @@ abstract class _$PrefsStateCopyWith<$Res> implements $PrefsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$PrefsStateCopyWithImpl<$Res> extends _$PrefsStateCopyWithImpl<$Res>
-    implements _$PrefsStateCopyWith<$Res> {
-  __$PrefsStateCopyWithImpl(
-      _PrefsState _value, $Res Function(_PrefsState) _then)
-      : super(_value, (v) => _then(v as _PrefsState));
+class __$SettingsStateCopyWithImpl<$Res>
+    extends _$SettingsStateCopyWithImpl<$Res>
+    implements _$SettingsStateCopyWith<$Res> {
+  __$SettingsStateCopyWithImpl(
+      _SettingsState _value, $Res Function(_SettingsState) _then)
+      : super(_value, (v) => _then(v as _SettingsState));
 
   @override
-  _PrefsState get _value => super._value as _PrefsState;
+  _SettingsState get _value => super._value as _SettingsState;
 
   @override
   $Res call({
@@ -123,7 +126,7 @@ class __$PrefsStateCopyWithImpl<$Res> extends _$PrefsStateCopyWithImpl<$Res>
     Object? longBreakDuration = freezed,
     Object? intervalsNumber = freezed,
   }) {
-    return _then(_PrefsState(
+    return _then(_SettingsState(
       pomodoroDuration: pomodoroDuration == freezed
           ? _value.pomodoroDuration
           : pomodoroDuration // ignore: cast_nullable_to_non_nullable
@@ -145,8 +148,8 @@ class __$PrefsStateCopyWithImpl<$Res> extends _$PrefsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_PrefsState with DiagnosticableTreeMixin implements _PrefsState {
-  _$_PrefsState(
+class _$_SettingsState with DiagnosticableTreeMixin implements _SettingsState {
+  _$_SettingsState(
       {required this.pomodoroDuration,
       required this.shortBreakDuration,
       required this.longBreakDuration,
@@ -163,14 +166,14 @@ class _$_PrefsState with DiagnosticableTreeMixin implements _PrefsState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PrefsState(pomodoroDuration: $pomodoroDuration, shortBreakDuration: $shortBreakDuration, longBreakDuration: $longBreakDuration, intervalsNumber: $intervalsNumber)';
+    return 'SettingsState(pomodoroDuration: $pomodoroDuration, shortBreakDuration: $shortBreakDuration, longBreakDuration: $longBreakDuration, intervalsNumber: $intervalsNumber)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'PrefsState'))
+      ..add(DiagnosticsProperty('type', 'SettingsState'))
       ..add(DiagnosticsProperty('pomodoroDuration', pomodoroDuration))
       ..add(DiagnosticsProperty('shortBreakDuration', shortBreakDuration))
       ..add(DiagnosticsProperty('longBreakDuration', longBreakDuration))
@@ -180,7 +183,7 @@ class _$_PrefsState with DiagnosticableTreeMixin implements _PrefsState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PrefsState &&
+        (other is _SettingsState &&
             (identical(other.pomodoroDuration, pomodoroDuration) ||
                 const DeepCollectionEquality()
                     .equals(other.pomodoroDuration, pomodoroDuration)) &&
@@ -205,16 +208,16 @@ class _$_PrefsState with DiagnosticableTreeMixin implements _PrefsState {
 
   @JsonKey(ignore: true)
   @override
-  _$PrefsStateCopyWith<_PrefsState> get copyWith =>
-      __$PrefsStateCopyWithImpl<_PrefsState>(this, _$identity);
+  _$SettingsStateCopyWith<_SettingsState> get copyWith =>
+      __$SettingsStateCopyWithImpl<_SettingsState>(this, _$identity);
 }
 
-abstract class _PrefsState implements PrefsState {
-  factory _PrefsState(
+abstract class _SettingsState implements SettingsState {
+  factory _SettingsState(
       {required int pomodoroDuration,
       required int shortBreakDuration,
       required int longBreakDuration,
-      required int intervalsNumber}) = _$_PrefsState;
+      required int intervalsNumber}) = _$_SettingsState;
 
   @override
   int get pomodoroDuration => throw _privateConstructorUsedError;
@@ -226,6 +229,6 @@ abstract class _PrefsState implements PrefsState {
   int get intervalsNumber => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PrefsStateCopyWith<_PrefsState> get copyWith =>
+  _$SettingsStateCopyWith<_SettingsState> get copyWith =>
       throw _privateConstructorUsedError;
 }

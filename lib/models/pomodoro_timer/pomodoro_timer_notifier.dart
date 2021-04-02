@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/models/pomodoro_timer/state/pomodoro_timer_state.dart';
-import 'package:pocus/models/prefs/state/prefs_state.dart';
+import 'package:pocus/models/settings/state/settings_state.dart';
 
 class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
   PomodoroTimerNotifier()
@@ -90,11 +90,11 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
     );
   }
 
-  void updateFields({required PrefsState prefs}) {
-    _pomodoroDuration = prefs.pomodoroDuration;
-    _shortBreakDuration = prefs.shortBreakDuration;
-    _longBreakDuration = prefs.longBreakDuration;
-    _intervalsNumber = prefs.intervalsNumber;
+  void updateFields({required SettingsState settings}) {
+    _pomodoroDuration = settings.pomodoroDuration;
+    _shortBreakDuration = settings.shortBreakDuration;
+    _longBreakDuration = settings.longBreakDuration;
+    _intervalsNumber = settings.intervalsNumber;
 
     if (!state.isRunning && state.secondsLeft == state.secondsInitial) {
       WidgetsBinding.instance!.addPostFrameCallback(

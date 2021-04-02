@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pocus/models/prefs/state/prefs_state.dart';
+import 'package:pocus/models/settings/state/settings_state.dart';
 import 'package:pocus/providers.dart';
 
 class DefaultSettingsButton extends HookWidget {
@@ -10,7 +10,7 @@ class DefaultSettingsButton extends HookWidget {
     final theme = Theme.of(context);
     final scaleAnimationController =
         useAnimationController(duration: Duration(milliseconds: 50));
-    final prefsNotifier = context.read(prefsNotifierProvider);
+    final settingsNotifier = context.read(settingsNotifierProvider);
 
     return ScaleTransition(
       scale: Tween<double>(
@@ -22,7 +22,7 @@ class DefaultSettingsButton extends HookWidget {
           scaleAnimationController.forward();
         },
         onTapUp: (details) {
-          prefsNotifier.updatePrefs(PrefsState(
+          settingsNotifier.saveSettings(SettingsState(
             pomodoroDuration: 25,
             shortBreakDuration: 5,
             longBreakDuration: 15,

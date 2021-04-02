@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/models/pomodoro_timer/pomodoro_timer_notifier.dart';
-import 'package:pocus/models/prefs/prefs_notifier.dart';
+import 'package:pocus/models/settings/settings_notifier.dart';
 
-final prefsNotifierProvider =
-    StateNotifierProvider((ref) => PrefsNotifier()..getPrefs());
+final settingsNotifierProvider =
+    StateNotifierProvider((ref) => SettingsNotifier()..getSettings());
 
 final pomodoroTimerNotifierProvider =
     StateNotifierProvider((ref) => PomodoroTimerNotifier());

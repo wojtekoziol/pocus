@@ -15,8 +15,8 @@ class SettingsPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final prefsNotifier = context.read(prefsNotifierProvider);
-    final prefsState = context.read(prefsNotifierProvider.state);
+    final settingsNotifier = context.read(settingsNotifierProvider);
+    final settingsState = context.read(settingsNotifierProvider.state);
 
     return Scaffold(
       appBar: AppBar(
@@ -39,13 +39,13 @@ class SettingsPage extends HookWidget {
             RadioSlider(
               label: 'Pomodoro timer duration',
               initialIndex:
-                  _pomodoroTimerOptions.indexOf(prefsState.pomodoroDuration),
+                  _pomodoroTimerOptions.indexOf(settingsState.pomodoroDuration),
               children: [
                 ..._pomodoroTimerOptions.map((option) {
                   return RadioSliderOption(
                     value: '$option min',
                     onPressed: () {
-                      prefsNotifier.updatePrefs(prefsState.copyWith(
+                      settingsNotifier.saveSettings(settingsState.copyWith(
                         pomodoroDuration: option,
                       ));
                     },
@@ -57,13 +57,13 @@ class SettingsPage extends HookWidget {
             RadioSlider(
               label: 'Short break duration',
               initialIndex:
-                  _shortBreakOptions.indexOf(prefsState.shortBreakDuration),
+                  _shortBreakOptions.indexOf(settingsState.shortBreakDuration),
               children: [
                 ..._shortBreakOptions.map((option) {
                   return RadioSliderOption(
                     value: '$option min',
                     onPressed: () {
-                      prefsNotifier.updatePrefs(prefsState.copyWith(
+                      settingsNotifier.saveSettings(settingsState.copyWith(
                         shortBreakDuration: option,
                       ));
                     },
@@ -75,13 +75,13 @@ class SettingsPage extends HookWidget {
             RadioSlider(
               label: 'Long break duration',
               initialIndex:
-                  _longBreakOptions.indexOf(prefsState.longBreakDuration),
+                  _longBreakOptions.indexOf(settingsState.longBreakDuration),
               children: [
                 ..._longBreakOptions.map((option) {
                   return RadioSliderOption(
                     value: '$option min',
                     onPressed: () {
-                      prefsNotifier.updatePrefs(prefsState.copyWith(
+                      settingsNotifier.saveSettings(settingsState.copyWith(
                         longBreakDuration: option,
                       ));
                     },
@@ -92,14 +92,14 @@ class SettingsPage extends HookWidget {
             SizedBox(height: 50),
             RadioSlider(
               label: 'Pomodoro intervals number',
-              initialIndex:
-                  _intervalsNumberOptions.indexOf(prefsState.intervalsNumber),
+              initialIndex: _intervalsNumberOptions
+                  .indexOf(settingsState.intervalsNumber),
               children: [
                 ..._intervalsNumberOptions.map((option) {
                   return RadioSliderOption(
                     value: '$option',
                     onPressed: () {
-                      prefsNotifier.updatePrefs(prefsState.copyWith(
+                      settingsNotifier.saveSettings(settingsState.copyWith(
                         intervalsNumber: option,
                       ));
                     },

@@ -1,14 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
-part 'prefs_state.freezed.dart';
+part 'settings_state.freezed.dart';
 
 @freezed
-class PrefsState with _$PrefsState {
-  factory PrefsState({
+class SettingsState with _$SettingsState {
+  factory SettingsState({
     required int pomodoroDuration,
     required int shortBreakDuration,
     required int longBreakDuration,
     required int intervalsNumber,
-  }) = _PrefsState;
+  }) = _SettingsState;
 }

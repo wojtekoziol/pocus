@@ -17,9 +17,9 @@ class MyApp extends HookWidget {
   Widget build(BuildContext context) {
     useEffect(() {
       final pomodoroTimerNotifier = context.read(pomodoroTimerNotifierProvider);
-      final prefsState = context.read(prefsNotifierProvider.state);
-      pomodoroTimerNotifier.updateFields(prefs: prefsState);
-    }, [useProvider(prefsNotifierProvider.state)]);
+      final settingsState = context.read(settingsNotifierProvider.state);
+      pomodoroTimerNotifier.updateFields(settings: settingsState);
+    }, [useProvider(settingsNotifierProvider.state)]);
 
     return MaterialApp(
       title: 'Pocus',
