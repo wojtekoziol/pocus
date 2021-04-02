@@ -41,6 +41,7 @@ class NavigationPage extends HookWidget {
       ),
       body: PageView(
         controller: pageController,
+        physics: NeverScrollableScrollPhysics(),
         children: [
           PomodoroTimerPage(),
           StatsPage(),
