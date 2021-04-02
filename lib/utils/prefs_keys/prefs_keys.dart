@@ -11,4 +11,5 @@ class PrefsKeys with _$PrefsKeys {
   static String shortBreakDuration = 'shortbreakduration';
   static String longBreakDuration = 'longbreakduration';
   static String intervalsNumber = 'intervalsnumber';
+  static String minutesFocusedStatsState = 'minutesfocusedstatsstate';
 }
