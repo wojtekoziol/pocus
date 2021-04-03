@@ -104,7 +104,40 @@ class StatsBarChart extends HookWidget {
                     ],
                     alignment: BarChartAlignment.center,
                     borderData: FlBorderData(show: false),
-                    titlesData: FlTitlesData(show: false),
+                    titlesData: FlTitlesData(
+                      leftTitles: SideTitles(showTitles: false),
+                      bottomTitles: SideTitles(
+                        showTitles: true,
+                        getTitles: (index) {
+                          if (index == 0) {
+                            return 'M';
+                          }
+                          if (index == 1) {
+                            return 'T';
+                          }
+                          if (index == 2) {
+                            return 'W';
+                          }
+                          if (index == 3) {
+                            return 'T';
+                          }
+                          if (index == 4) {
+                            return 'F';
+                          }
+                          if (index == 5) {
+                            return 'S';
+                          }
+                          if (index == 6) {
+                            return 'S';
+                          }
+                          return 'hi';
+                        },
+                        getTextStyles: (value) =>
+                            theme.textTheme.caption!.copyWith(color: textColor),
+                        margin: 8,
+                        reservedSize: 16,
+                      ),
+                    ),
                   ),
                 );
               },
