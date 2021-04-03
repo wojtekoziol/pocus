@@ -134,8 +134,18 @@ class StatsBarChart extends HookWidget {
                           }
                           return 'hi';
                         },
-                        getTextStyles: (value) =>
-                            theme.textTheme.caption!.copyWith(color: textColor),
+                        getTextStyles: (index) {
+                          if (index == DateTime.now().weekday - 1) {
+                            return theme.textTheme.caption!.copyWith(
+                              color: textColor,
+                              fontWeight: FontWeight.bold,
+                            );
+                          }
+
+                          return theme.textTheme.caption!.copyWith(
+                            color: textColor,
+                          );
+                        },
                         margin: 8,
                         reservedSize: 16,
                       ),
