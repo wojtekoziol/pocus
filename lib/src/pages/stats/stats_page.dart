@@ -57,7 +57,7 @@ class StatsPage extends StatelessWidget {
                 Expanded(
                   child: StatsNumberIndicator(
                     title: 'Title',
-                    number: 2,
+                    value: '2',
                     backgroundColor: theme.primaryColor,
                     textColor: Colors.white,
                   ),

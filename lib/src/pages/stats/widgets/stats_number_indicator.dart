@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class StatsNumberIndicator extends StatelessWidget {
   StatsNumberIndicator({
     required this.title,
-    required this.number,
+    required this.value,
     required this.backgroundColor,
     required this.textColor,
   });
 
   final String title;
-  final int number;
+  final String value;
   final Color backgroundColor;
   final Color textColor;
 
@@ -32,7 +32,7 @@ class StatsNumberIndicator extends StatelessWidget {
             ),
           ),
           Text(
-            '$number',
+            value,
             style: theme.textTheme.headline3!.copyWith(
               color: textColor,
             ),
