@@ -81,10 +81,12 @@ class StatsBarChart extends HookWidget {
                           x: i,
                           barRods: [
                             BarChartRodData(
-                              y: touchedIndex == i
-                                  ? max(
-                                      stats.reduce(max) * 0.75, stats[i] * 1.2)
-                                  : stats[i].toDouble(),
+                              y: touchedIndex == -1
+                                  ? stats[i].toDouble()
+                                  : touchedIndex == i
+                                      ? max(stats.reduce(max) * 0.75,
+                                          stats[i] * 1.2)
+                                      : 0,
                               width: 20,
                               colors: [
                                 touchedIndex == -1
