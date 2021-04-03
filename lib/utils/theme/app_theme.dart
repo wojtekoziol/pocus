@@ -6,7 +6,7 @@ part 'app_theme.freezed.dart';
 
 @freezed
 class AppTheme with _$AppTheme {
-  factory AppTheme() = _AppTheme;
+  factory AppTheme._() = _AppTheme;
 
   static final light = ThemeData(
     appBarTheme: AppBarTheme(

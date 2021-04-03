@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AppThemeTearOff {
   const _$AppThemeTearOff();
 
-  _AppTheme call() {
+  _AppTheme _() {
     return _AppTheme();
   }
 }
@@ -64,13 +64,13 @@ class _$_AppTheme with DiagnosticableTreeMixin implements _AppTheme {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppTheme()';
+    return 'AppTheme._()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'AppTheme'));
+    properties..add(DiagnosticsProperty('type', 'AppTheme._'));
   }
 
   @override
