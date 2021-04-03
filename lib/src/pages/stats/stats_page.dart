@@ -16,8 +16,7 @@ class StatsPage extends StatelessWidget {
             flex: 2,
             child: Consumer(
               builder: (context, watch, child) {
-                final stats =
-                    watch(minutesFocusedStatsNotifierProvider.state).stats;
+                final stats = watch(statsMinutesNotifierProvider.state).stats;
 
                 return StatsBarChart(
                   stats: stats,

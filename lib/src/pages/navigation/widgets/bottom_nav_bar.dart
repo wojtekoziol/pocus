@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
 
-class BottomNavBar extends StatelessWidget {
+class BottomNavBar extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final screenSize = MediaQuery.of(context).size;
+    final widthFactor = MediaQuery.of(context).size.width * 0.6;
     final pageController = context.read(pageControllerProvider);
-    final currentIndexNotifier = context.read(currentIndexProvider);
+    final indexNotifier = useValueNotifier(0);
 
     return Container(
       decoration: BoxDecoration(
@@ -34,7 +35,7 @@ class BottomNavBar extends StatelessWidget {
             children: [
               SafeArea(
                 child: SizedBox(
-                  width: screenSize.width * 0.6 + 32,
+                  width: widthFactor + 32,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -45,7 +46,7 @@ class BottomNavBar extends StatelessWidget {
                             duration: Duration(milliseconds: 200),
                             curve: Curves.easeIn,
                           );
-                          currentIndexNotifier.value = 0;
+                          indexNotifier.value = 0;
                         },
                         child: Container(
                           color: Colors.transparent,
@@ -65,7 +66,7 @@ class BottomNavBar extends StatelessWidget {
                             duration: Duration(milliseconds: 200),
                             curve: Curves.easeIn,
                           );
-                          currentIndexNotifier.value = 1;
+                          indexNotifier.value = 1;
                         },
                         child: Container(
                           color: Colors.transparent,
@@ -84,9 +85,9 @@ class BottomNavBar extends StatelessWidget {
               ),
               Positioned(
                 top: 0,
-                width: screenSize.width * 0.6 + 25,
+                width: widthFactor + 25,
                 child: ValueListenableBuilder(
-                  valueListenable: currentIndexNotifier,
+                  valueListenable: indexNotifier,
                   builder: (context, index, child) {
                     return AnimatedAlign(
                       duration: Duration(milliseconds: 200),

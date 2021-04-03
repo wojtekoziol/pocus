@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/models/pomodoro_timer/pomodoro_timer_notifier.dart';
 import 'package:pocus/models/settings/settings_notifier.dart';
-import 'package:pocus/models/stats/minutes_focused_stats_notifier.dart';
-
-final settingsNotifierProvider =
-    StateNotifierProvider((ref) => SettingsNotifier()..getSettings());
+import 'package:pocus/models/stats/stats_minutes_notifier.dart';
 
 final pomodoroTimerNotifierProvider =
     StateNotifierProvider((ref) => PomodoroTimerNotifier());
 
+final settingsNotifierProvider =
+    StateNotifierProvider((ref) => SettingsNotifier()..getSettings());
+
+final statsMinutesNotifierProvider =
+    StateNotifierProvider((ref) => StatsMinutesNotifier()..getStats());
+
 final pageControllerProvider =
     ScopedProvider<PageController>((ref) => throw UnimplementedError());
-
-final currentIndexProvider = ChangeNotifierProvider((ref) => ValueNotifier(0));
-
-final minutesFocusedStatsNotifierProvider =
-    StateNotifierProvider((ref) => MinutesFocusedStatsNotifier()..getStats());

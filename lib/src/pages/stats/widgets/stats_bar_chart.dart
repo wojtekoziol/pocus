@@ -15,8 +15,8 @@ class StatsBarChart extends StatelessWidget {
   }) : assert(stats.length == 7);
 
   final List<int> stats;
-  final Color backgroundColor;
   final Color lineColor;
+  final Color backgroundColor;
   final Color backgroundLineColor;
   final Color textColor;
   final Color tooltipColor;

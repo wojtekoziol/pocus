@@ -26,8 +26,8 @@ class MyApp extends HookWidget {
           context.read(pomodoroTimerNotifierProvider.state);
       if (pomodoroTimerState.secondsLeft % 60 == 0 &&
           pomodoroTimerState.isRunning &&
-          pomodoroTimerState.secondsLeft != pomodoroTimerState.secondsLeft) {
-        context.read(minutesFocusedStatsNotifierProvider).insert();
+          pomodoroTimerState.secondsLeft != pomodoroTimerState.secondsInitial) {
+        context.read(statsMinutesNotifierProvider).insert();
       }
     }, [useProvider(pomodoroTimerNotifierProvider.state)]);
 

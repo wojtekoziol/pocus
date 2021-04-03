@@ -8,9 +8,9 @@ class DefaultSettingsButton extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final settingsNotifier = context.read(settingsNotifierProvider);
     final scaleAnimationController =
         useAnimationController(duration: Duration(milliseconds: 50));
-    final settingsNotifier = context.read(settingsNotifierProvider);
 
     return ScaleTransition(
       scale: Tween<double>(
