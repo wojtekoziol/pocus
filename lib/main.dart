@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
 import 'package:pocus/src/pages/navigation/navigation_page.dart';
+import 'package:pocus/utils/hooks/lifecycle_observer.dart';
 import 'package:pocus/utils/theme/app_theme.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -15,6 +16,13 @@ void main() {
 class MyApp extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    useLifecycleObserver(
+      onInactive: () {},
+      onResumed: () {
+        context.read(statsOpensNotifierProvider).insert();
+      },
+    );
+
     useEffect(() {
       final pomodoroTimerNotifier = context.read(pomodoroTimerNotifierProvider);
       final settingsState = context.read(settingsNotifierProvider.state);

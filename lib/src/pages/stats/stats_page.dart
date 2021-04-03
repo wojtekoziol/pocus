@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
 import 'package:pocus/src/pages/stats/widgets/stats_bar_chart.dart';
-import 'package:pocus/src/pages/stats/widgets/stats_number_indicator.dart';
 
 class StatsPage extends StatelessWidget {
   @override
@@ -55,12 +54,7 @@ class StatsPage extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child: StatsNumberIndicator(
-                    title: 'Title',
-                    value: '2',
-                    backgroundColor: theme.primaryColor,
-                    textColor: Colors.white,
-                  ),
+                  child: Container(),
                 ),
                 SizedBox(width: 16),
                 Expanded(
