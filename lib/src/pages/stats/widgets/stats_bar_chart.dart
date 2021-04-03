@@ -93,7 +93,7 @@ class StatsBarChart extends HookWidget {
                                     ? lineColor
                                     : touchedIndex == i
                                         ? lineColor
-                                        : Colors.white,
+                                        : backgroundLineColor,
                               ],
                               backDrawRodData: BackgroundBarChartRodData(
                                 colors: [backgroundLineColor],

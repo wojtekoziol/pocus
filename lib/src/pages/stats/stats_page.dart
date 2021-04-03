@@ -22,7 +22,7 @@ class StatsPage extends StatelessWidget {
                   stats: stats,
                   backgroundColor: theme.primaryColor,
                   lineColor: theme.accentColor,
-                  backgroundLineColor: Colors.white,
+                  backgroundLineColor: theme.scaffoldBackgroundColor,
                   textColor: Colors.white,
                   tooltipColor: theme.dividerColor,
                   title: 'Minutes focused',
@@ -31,7 +31,24 @@ class StatsPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 16),
-          Expanded(flex: 2, child: Container()),
+          Expanded(
+            flex: 2,
+            child: Consumer(
+              builder: (context, watch, child) {
+                final stats = watch(statsOpensNotifierProvider.state).stats;
+
+                return StatsBarChart(
+                  stats: stats,
+                  backgroundColor: theme.dividerColor,
+                  lineColor: theme.primaryColor,
+                  backgroundLineColor: theme.scaffoldBackgroundColor,
+                  textColor: theme.primaryColor,
+                  tooltipColor: theme.primaryColor,
+                  title: 'App opens',
+                );
+              },
+            ),
+          ),
           SizedBox(height: 4),
           Expanded(
             child: Row(

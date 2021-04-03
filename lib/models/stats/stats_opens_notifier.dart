@@ -16,16 +16,14 @@ class StatsOpensNotifier extends StateNotifier<StatsState> {
   Future<void> getStats() async {
     await SharedPreferences.getInstance().then((prefs) {
       final jsonString = prefs.getString(PrefsKeys.statsOpensState);
-      if (jsonString != null) {
-        final stats = StatsState.fromJson(jsonDecode(jsonString));
-        if (stats.lastUpdated.weekday > DateTime.now().weekday ||
-            DateTime.now().difference(stats.lastUpdated) > Duration(days: 7)) {
-          prefs.setString(
-              PrefsKeys.statsOpensState, jsonEncode(state.toJson()));
-          return;
-        }
-        state = stats;
+      if (jsonString == null) return;
+      final stats = StatsState.fromJson(jsonDecode(jsonString));
+      if (stats.lastUpdated.weekday > DateTime.now().weekday ||
+          DateTime.now().difference(stats.lastUpdated) > Duration(days: 7)) {
+        prefs.setString(PrefsKeys.statsOpensState, jsonEncode(state.toJson()));
+        return;
       }
+      state = stats;
     });
   }
 
