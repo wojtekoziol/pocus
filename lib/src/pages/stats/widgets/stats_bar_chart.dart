@@ -98,7 +98,7 @@ class StatsBarChart extends HookWidget {
                               backDrawRodData: BackgroundBarChartRodData(
                                 colors: [backgroundLineColor],
                                 show: true,
-                                y: stats.reduce(max) * 1.2,
+                                y: max(stats.reduce(max) * 1.2, 1),
                               ),
                             ),
                           ],
