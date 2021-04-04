@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pocus/models/prefs/stats/stats_state_for_prefs.dart';
 import 'package:pocus/models/stats/state/stats_state.dart';
 import 'package:pocus/utils/prefs_keys/prefs_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,18 +12,29 @@ class StatsOpensNotifier extends StateNotifier<StatsState> {
 
   Future<void> getStats() async {
     await SharedPreferences.getInstance().then((prefs) {
-      final jsonString = prefs.getString(PrefsKeys.statsOpensState);
-      final dateTimeString =
-          prefs.getString(PrefsKeys.lastSavedStatsOpensState);
-      if (jsonString == null || dateTimeString == null) return;
-      final stats = StatsState.fromJson(jsonDecode(jsonString));
-      final lastSaved = DateTime.parse(dateTimeString);
-      if (lastSaved.weekday > DateTime.now().weekday ||
-          DateTime.now().difference(lastSaved) > Duration(days: 7)) {
-        prefs.setString(PrefsKeys.statsOpensState, jsonEncode(state.toJson()));
+      final statsOpensForPrefsString =
+          prefs.getString(PrefsKeys.statsOpensState);
+
+      if (statsOpensForPrefsString == null) return;
+
+      final statsOpensForPrefs =
+          StatsStateForPrefs.fromJson(jsonDecode(statsOpensForPrefsString));
+
+      final now = DateTime.now();
+      if (statsOpensForPrefs.savedDate.weekday > now.weekday ||
+          now.difference(statsOpensForPrefs.savedDate) > Duration(days: 7)) {
+        prefs.setString(
+          PrefsKeys.statsOpensState,
+          jsonEncode(StatsStateForPrefs(
+            stateJsonString: jsonEncode(state.toJson()),
+            savedDate: DateTime.now(),
+          ).toJson()),
+        );
         return;
       }
-      state = stats;
+
+      state =
+          StatsState.fromJson(jsonDecode(statsOpensForPrefs.stateJsonString));
     });
   }
 
@@ -35,9 +47,13 @@ class StatsOpensNotifier extends StateNotifier<StatsState> {
     });
 
     await SharedPreferences.getInstance().then((prefs) {
-      prefs.setString(PrefsKeys.statsOpensState, jsonEncode(state.toJson()));
       prefs.setString(
-          PrefsKeys.lastSavedStatsOpensState, DateTime.now().toString());
+        PrefsKeys.statsOpensState,
+        jsonEncode(StatsStateForPrefs(
+          stateJsonString: jsonEncode(state.toJson()),
+          savedDate: DateTime.now(),
+        ).toJson()),
+      );
     });
   }
 }

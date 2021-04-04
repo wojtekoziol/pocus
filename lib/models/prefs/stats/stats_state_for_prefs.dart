@@ -6,12 +6,12 @@ part 'stats_state_for_prefs.freezed.dart';
 part 'stats_state_for_prefs.g.dart';
 
 @freezed
-class StatsState with _$StatsState {
-  factory StatsState({
-    required StatsState state,
+class StatsStateForPrefs with _$StatsStateForPrefs {
+  factory StatsStateForPrefs({
+    required String stateJsonString,
     required DateTime savedDate,
-  }) = _StatsState;
+  }) = _StatsStateForPrefs;
 
-  factory StatsState.fromJson(Map<String, dynamic> json) =>
-      _$StatsStateFromJson(json);
+  factory StatsStateForPrefs.fromJson(Map<String, dynamic> json) =>
+      _$StatsStateForPrefsFromJson(json);
 }

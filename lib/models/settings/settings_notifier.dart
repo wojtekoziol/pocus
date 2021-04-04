@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/models/settings/state/settings_state.dart';
 import 'package:pocus/utils/prefs_keys/prefs_keys.dart';
@@ -15,27 +17,17 @@ class SettingsNotifier extends StateNotifier<SettingsState> {
 
   Future<void> getSettings() async {
     await SharedPreferences.getInstance().then((prefs) {
-      state = SettingsState(
-        pomodoroDuration:
-            prefs.getInt(PrefsKeys.pomodoroDuration) ?? state.pomodoroDuration,
-        shortBreakDuration: prefs.getInt(PrefsKeys.shortBreakDuration) ??
-            state.shortBreakDuration,
-        longBreakDuration: prefs.getInt(PrefsKeys.longBreakDuration) ??
-            state.longBreakDuration,
-        intervalsNumber:
-            prefs.getInt(PrefsKeys.intervalsNumber) ?? state.intervalsNumber,
-      );
+      final settingsStateString = prefs.getString(PrefsKeys.settingsState);
+
+      if (settingsStateString == null) return;
+
+      state = SettingsState.fromJson(jsonDecode(settingsStateString));
     });
   }
 
   Future<void> saveSettings(SettingsState settingsState) async {
     await SharedPreferences.getInstance().then((prefs) {
-      prefs.setInt(PrefsKeys.pomodoroDuration, settingsState.pomodoroDuration);
-      prefs.setInt(
-          PrefsKeys.shortBreakDuration, settingsState.shortBreakDuration);
-      prefs.setInt(
-          PrefsKeys.longBreakDuration, settingsState.longBreakDuration);
-      prefs.setInt(PrefsKeys.intervalsNumber, settingsState.intervalsNumber);
+      prefs.setString(PrefsKeys.settingsState, jsonEncode(state.toJson()));
     });
     state = settingsState;
   }

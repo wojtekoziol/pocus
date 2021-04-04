@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SettingsState _$SettingsStateFromJson(Map<String, dynamic> json) {
+  return _SettingsState.fromJson(json);
+}
+
 /// @nodoc
 class _$SettingsStateTearOff {
   const _$SettingsStateTearOff();
@@ -28,6 +32,10 @@ class _$SettingsStateTearOff {
       intervalsNumber: intervalsNumber,
     );
   }
+
+  SettingsState fromJson(Map<String, Object> json) {
+    return SettingsState.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -40,6 +48,7 @@ mixin _$SettingsState {
   int get longBreakDuration => throw _privateConstructorUsedError;
   int get intervalsNumber => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SettingsStateCopyWith<SettingsState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -147,6 +156,8 @@ class __$SettingsStateCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_SettingsState with DiagnosticableTreeMixin implements _SettingsState {
   _$_SettingsState(
@@ -154,6 +165,9 @@ class _$_SettingsState with DiagnosticableTreeMixin implements _SettingsState {
       required this.shortBreakDuration,
       required this.longBreakDuration,
       required this.intervalsNumber});
+
+  factory _$_SettingsState.fromJson(Map<String, dynamic> json) =>
+      _$_$_SettingsStateFromJson(json);
 
   @override
   final int pomodoroDuration;
@@ -210,6 +224,11 @@ class _$_SettingsState with DiagnosticableTreeMixin implements _SettingsState {
   @override
   _$SettingsStateCopyWith<_SettingsState> get copyWith =>
       __$SettingsStateCopyWithImpl<_SettingsState>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_SettingsStateToJson(this);
+  }
 }
 
 abstract class _SettingsState implements SettingsState {
@@ -218,6 +237,9 @@ abstract class _SettingsState implements SettingsState {
       required int shortBreakDuration,
       required int longBreakDuration,
       required int intervalsNumber}) = _$_SettingsState;
+
+  factory _SettingsState.fromJson(Map<String, dynamic> json) =
+      _$_SettingsState.fromJson;
 
   @override
   int get pomodoroDuration => throw _privateConstructorUsedError;

@@ -22,9 +22,9 @@ class _$PomodoroTimerStateForPrefsTearOff {
   const _$PomodoroTimerStateForPrefsTearOff();
 
   _PomodoroTimerStateForPrefs call(
-      {required PomodoroTimerState state, required DateTime savedDate}) {
+      {required String stateJsonString, required DateTime savedDate}) {
     return _PomodoroTimerStateForPrefs(
-      state: state,
+      stateJsonString: stateJsonString,
       savedDate: savedDate,
     );
   }
@@ -39,7 +39,7 @@ const $PomodoroTimerStateForPrefs = _$PomodoroTimerStateForPrefsTearOff();
 
 /// @nodoc
 mixin _$PomodoroTimerStateForPrefs {
-  PomodoroTimerState get state => throw _privateConstructorUsedError;
+  String get stateJsonString => throw _privateConstructorUsedError;
   DateTime get savedDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,9 +53,7 @@ abstract class $PomodoroTimerStateForPrefsCopyWith<$Res> {
   factory $PomodoroTimerStateForPrefsCopyWith(PomodoroTimerStateForPrefs value,
           $Res Function(PomodoroTimerStateForPrefs) then) =
       _$PomodoroTimerStateForPrefsCopyWithImpl<$Res>;
-  $Res call({PomodoroTimerState state, DateTime savedDate});
-
-  $PomodoroTimerStateCopyWith<$Res> get state;
+  $Res call({String stateJsonString, DateTime savedDate});
 }
 
 /// @nodoc
@@ -69,26 +67,19 @@ class _$PomodoroTimerStateForPrefsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? state = freezed,
+    Object? stateJsonString = freezed,
     Object? savedDate = freezed,
   }) {
     return _then(_value.copyWith(
-      state: state == freezed
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as PomodoroTimerState,
+      stateJsonString: stateJsonString == freezed
+          ? _value.stateJsonString
+          : stateJsonString // ignore: cast_nullable_to_non_nullable
+              as String,
       savedDate: savedDate == freezed
           ? _value.savedDate
           : savedDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
-  }
-
-  @override
-  $PomodoroTimerStateCopyWith<$Res> get state {
-    return $PomodoroTimerStateCopyWith<$Res>(_value.state, (value) {
-      return _then(_value.copyWith(state: value));
-    });
   }
 }
 
@@ -100,10 +91,7 @@ abstract class _$PomodoroTimerStateForPrefsCopyWith<$Res>
           $Res Function(_PomodoroTimerStateForPrefs) then) =
       __$PomodoroTimerStateForPrefsCopyWithImpl<$Res>;
   @override
-  $Res call({PomodoroTimerState state, DateTime savedDate});
-
-  @override
-  $PomodoroTimerStateCopyWith<$Res> get state;
+  $Res call({String stateJsonString, DateTime savedDate});
 }
 
 /// @nodoc
@@ -120,14 +108,14 @@ class __$PomodoroTimerStateForPrefsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? state = freezed,
+    Object? stateJsonString = freezed,
     Object? savedDate = freezed,
   }) {
     return _then(_PomodoroTimerStateForPrefs(
-      state: state == freezed
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as PomodoroTimerState,
+      stateJsonString: stateJsonString == freezed
+          ? _value.stateJsonString
+          : stateJsonString // ignore: cast_nullable_to_non_nullable
+              as String,
       savedDate: savedDate == freezed
           ? _value.savedDate
           : savedDate // ignore: cast_nullable_to_non_nullable
@@ -142,19 +130,20 @@ class __$PomodoroTimerStateForPrefsCopyWithImpl<$Res>
 class _$_PomodoroTimerStateForPrefs
     with DiagnosticableTreeMixin
     implements _PomodoroTimerStateForPrefs {
-  _$_PomodoroTimerStateForPrefs({required this.state, required this.savedDate});
+  _$_PomodoroTimerStateForPrefs(
+      {required this.stateJsonString, required this.savedDate});
 
   factory _$_PomodoroTimerStateForPrefs.fromJson(Map<String, dynamic> json) =>
       _$_$_PomodoroTimerStateForPrefsFromJson(json);
 
   @override
-  final PomodoroTimerState state;
+  final String stateJsonString;
   @override
   final DateTime savedDate;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PomodoroTimerStateForPrefs(state: $state, savedDate: $savedDate)';
+    return 'PomodoroTimerStateForPrefs(stateJsonString: $stateJsonString, savedDate: $savedDate)';
   }
 
   @override
@@ -162,7 +151,7 @@ class _$_PomodoroTimerStateForPrefs
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'PomodoroTimerStateForPrefs'))
-      ..add(DiagnosticsProperty('state', state))
+      ..add(DiagnosticsProperty('stateJsonString', stateJsonString))
       ..add(DiagnosticsProperty('savedDate', savedDate));
   }
 
@@ -170,8 +159,9 @@ class _$_PomodoroTimerStateForPrefs
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PomodoroTimerStateForPrefs &&
-            (identical(other.state, state) ||
-                const DeepCollectionEquality().equals(other.state, state)) &&
+            (identical(other.stateJsonString, stateJsonString) ||
+                const DeepCollectionEquality()
+                    .equals(other.stateJsonString, stateJsonString)) &&
             (identical(other.savedDate, savedDate) ||
                 const DeepCollectionEquality()
                     .equals(other.savedDate, savedDate)));
@@ -180,7 +170,7 @@ class _$_PomodoroTimerStateForPrefs
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(state) ^
+      const DeepCollectionEquality().hash(stateJsonString) ^
       const DeepCollectionEquality().hash(savedDate);
 
   @JsonKey(ignore: true)
@@ -198,14 +188,14 @@ class _$_PomodoroTimerStateForPrefs
 abstract class _PomodoroTimerStateForPrefs
     implements PomodoroTimerStateForPrefs {
   factory _PomodoroTimerStateForPrefs(
-      {required PomodoroTimerState state,
+      {required String stateJsonString,
       required DateTime savedDate}) = _$_PomodoroTimerStateForPrefs;
 
   factory _PomodoroTimerStateForPrefs.fromJson(Map<String, dynamic> json) =
       _$_PomodoroTimerStateForPrefs.fromJson;
 
   @override
-  PomodoroTimerState get state => throw _privateConstructorUsedError;
+  String get stateJsonString => throw _privateConstructorUsedError;
   @override
   DateTime get savedDate => throw _privateConstructorUsedError;
   @override

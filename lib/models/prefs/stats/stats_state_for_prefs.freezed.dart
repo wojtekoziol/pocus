@@ -12,115 +12,107 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-StatsState _$StatsStateFromJson(Map<String, dynamic> json) {
-  return _StatsState.fromJson(json);
+StatsStateForPrefs _$StatsStateForPrefsFromJson(Map<String, dynamic> json) {
+  return _StatsStateForPrefs.fromJson(json);
 }
 
 /// @nodoc
-class _$StatsStateTearOff {
-  const _$StatsStateTearOff();
+class _$StatsStateForPrefsTearOff {
+  const _$StatsStateForPrefsTearOff();
 
-  _StatsState call({required StatsState state, required DateTime savedDate}) {
-    return _StatsState(
-      state: state,
+  _StatsStateForPrefs call(
+      {required String stateJsonString, required DateTime savedDate}) {
+    return _StatsStateForPrefs(
+      stateJsonString: stateJsonString,
       savedDate: savedDate,
     );
   }
 
-  StatsState fromJson(Map<String, Object> json) {
-    return StatsState.fromJson(json);
+  StatsStateForPrefs fromJson(Map<String, Object> json) {
+    return StatsStateForPrefs.fromJson(json);
   }
 }
 
 /// @nodoc
-const $StatsState = _$StatsStateTearOff();
+const $StatsStateForPrefs = _$StatsStateForPrefsTearOff();
 
 /// @nodoc
-mixin _$StatsState {
-  StatsState get state => throw _privateConstructorUsedError;
+mixin _$StatsStateForPrefs {
+  String get stateJsonString => throw _privateConstructorUsedError;
   DateTime get savedDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StatsStateCopyWith<StatsState> get copyWith =>
+  $StatsStateForPrefsCopyWith<StatsStateForPrefs> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StatsStateCopyWith<$Res> {
-  factory $StatsStateCopyWith(
-          StatsState value, $Res Function(StatsState) then) =
-      _$StatsStateCopyWithImpl<$Res>;
-  $Res call({StatsState state, DateTime savedDate});
-
-  $StatsStateCopyWith<$Res> get state;
+abstract class $StatsStateForPrefsCopyWith<$Res> {
+  factory $StatsStateForPrefsCopyWith(
+          StatsStateForPrefs value, $Res Function(StatsStateForPrefs) then) =
+      _$StatsStateForPrefsCopyWithImpl<$Res>;
+  $Res call({String stateJsonString, DateTime savedDate});
 }
 
 /// @nodoc
-class _$StatsStateCopyWithImpl<$Res> implements $StatsStateCopyWith<$Res> {
-  _$StatsStateCopyWithImpl(this._value, this._then);
+class _$StatsStateForPrefsCopyWithImpl<$Res>
+    implements $StatsStateForPrefsCopyWith<$Res> {
+  _$StatsStateForPrefsCopyWithImpl(this._value, this._then);
 
-  final StatsState _value;
+  final StatsStateForPrefs _value;
   // ignore: unused_field
-  final $Res Function(StatsState) _then;
+  final $Res Function(StatsStateForPrefs) _then;
 
   @override
   $Res call({
-    Object? state = freezed,
+    Object? stateJsonString = freezed,
     Object? savedDate = freezed,
   }) {
     return _then(_value.copyWith(
-      state: state == freezed
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as StatsState,
+      stateJsonString: stateJsonString == freezed
+          ? _value.stateJsonString
+          : stateJsonString // ignore: cast_nullable_to_non_nullable
+              as String,
       savedDate: savedDate == freezed
           ? _value.savedDate
           : savedDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
-
-  @override
-  $StatsStateCopyWith<$Res> get state {
-    return $StatsStateCopyWith<$Res>(_value.state, (value) {
-      return _then(_value.copyWith(state: value));
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$StatsStateCopyWith<$Res> implements $StatsStateCopyWith<$Res> {
-  factory _$StatsStateCopyWith(
-          _StatsState value, $Res Function(_StatsState) then) =
-      __$StatsStateCopyWithImpl<$Res>;
+abstract class _$StatsStateForPrefsCopyWith<$Res>
+    implements $StatsStateForPrefsCopyWith<$Res> {
+  factory _$StatsStateForPrefsCopyWith(
+          _StatsStateForPrefs value, $Res Function(_StatsStateForPrefs) then) =
+      __$StatsStateForPrefsCopyWithImpl<$Res>;
   @override
-  $Res call({StatsState state, DateTime savedDate});
-
-  @override
-  $StatsStateCopyWith<$Res> get state;
+  $Res call({String stateJsonString, DateTime savedDate});
 }
 
 /// @nodoc
-class __$StatsStateCopyWithImpl<$Res> extends _$StatsStateCopyWithImpl<$Res>
-    implements _$StatsStateCopyWith<$Res> {
-  __$StatsStateCopyWithImpl(
-      _StatsState _value, $Res Function(_StatsState) _then)
-      : super(_value, (v) => _then(v as _StatsState));
+class __$StatsStateForPrefsCopyWithImpl<$Res>
+    extends _$StatsStateForPrefsCopyWithImpl<$Res>
+    implements _$StatsStateForPrefsCopyWith<$Res> {
+  __$StatsStateForPrefsCopyWithImpl(
+      _StatsStateForPrefs _value, $Res Function(_StatsStateForPrefs) _then)
+      : super(_value, (v) => _then(v as _StatsStateForPrefs));
 
   @override
-  _StatsState get _value => super._value as _StatsState;
+  _StatsStateForPrefs get _value => super._value as _StatsStateForPrefs;
 
   @override
   $Res call({
-    Object? state = freezed,
+    Object? stateJsonString = freezed,
     Object? savedDate = freezed,
   }) {
-    return _then(_StatsState(
-      state: state == freezed
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as StatsState,
+    return _then(_StatsStateForPrefs(
+      stateJsonString: stateJsonString == freezed
+          ? _value.stateJsonString
+          : stateJsonString // ignore: cast_nullable_to_non_nullable
+              as String,
       savedDate: savedDate == freezed
           ? _value.savedDate
           : savedDate // ignore: cast_nullable_to_non_nullable
@@ -132,37 +124,41 @@ class __$StatsStateCopyWithImpl<$Res> extends _$StatsStateCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_StatsState with DiagnosticableTreeMixin implements _StatsState {
-  _$_StatsState({required this.state, required this.savedDate});
+class _$_StatsStateForPrefs
+    with DiagnosticableTreeMixin
+    implements _StatsStateForPrefs {
+  _$_StatsStateForPrefs(
+      {required this.stateJsonString, required this.savedDate});
 
-  factory _$_StatsState.fromJson(Map<String, dynamic> json) =>
-      _$_$_StatsStateFromJson(json);
+  factory _$_StatsStateForPrefs.fromJson(Map<String, dynamic> json) =>
+      _$_$_StatsStateForPrefsFromJson(json);
 
   @override
-  final StatsState state;
+  final String stateJsonString;
   @override
   final DateTime savedDate;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'StatsState(state: $state, savedDate: $savedDate)';
+    return 'StatsStateForPrefs(stateJsonString: $stateJsonString, savedDate: $savedDate)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'StatsState'))
-      ..add(DiagnosticsProperty('state', state))
+      ..add(DiagnosticsProperty('type', 'StatsStateForPrefs'))
+      ..add(DiagnosticsProperty('stateJsonString', stateJsonString))
       ..add(DiagnosticsProperty('savedDate', savedDate));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _StatsState &&
-            (identical(other.state, state) ||
-                const DeepCollectionEquality().equals(other.state, state)) &&
+        (other is _StatsStateForPrefs &&
+            (identical(other.stateJsonString, stateJsonString) ||
+                const DeepCollectionEquality()
+                    .equals(other.stateJsonString, stateJsonString)) &&
             (identical(other.savedDate, savedDate) ||
                 const DeepCollectionEquality()
                     .equals(other.savedDate, savedDate)));
@@ -171,33 +167,34 @@ class _$_StatsState with DiagnosticableTreeMixin implements _StatsState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(state) ^
+      const DeepCollectionEquality().hash(stateJsonString) ^
       const DeepCollectionEquality().hash(savedDate);
 
   @JsonKey(ignore: true)
   @override
-  _$StatsStateCopyWith<_StatsState> get copyWith =>
-      __$StatsStateCopyWithImpl<_StatsState>(this, _$identity);
+  _$StatsStateForPrefsCopyWith<_StatsStateForPrefs> get copyWith =>
+      __$StatsStateForPrefsCopyWithImpl<_StatsStateForPrefs>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_StatsStateToJson(this);
+    return _$_$_StatsStateForPrefsToJson(this);
   }
 }
 
-abstract class _StatsState implements StatsState {
-  factory _StatsState(
-      {required StatsState state, required DateTime savedDate}) = _$_StatsState;
+abstract class _StatsStateForPrefs implements StatsStateForPrefs {
+  factory _StatsStateForPrefs(
+      {required String stateJsonString,
+      required DateTime savedDate}) = _$_StatsStateForPrefs;
 
-  factory _StatsState.fromJson(Map<String, dynamic> json) =
-      _$_StatsState.fromJson;
+  factory _StatsStateForPrefs.fromJson(Map<String, dynamic> json) =
+      _$_StatsStateForPrefs.fromJson;
 
   @override
-  StatsState get state => throw _privateConstructorUsedError;
+  String get stateJsonString => throw _privateConstructorUsedError;
   @override
   DateTime get savedDate => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$StatsStateCopyWith<_StatsState> get copyWith =>
+  _$StatsStateForPrefsCopyWith<_StatsStateForPrefs> get copyWith =>
       throw _privateConstructorUsedError;
 }

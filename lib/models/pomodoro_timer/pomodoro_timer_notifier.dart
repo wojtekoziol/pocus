@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/models/pomodoro_timer/state/pomodoro_timer_state.dart';
+import 'package:pocus/models/prefs/pomodoro_timer/pomodoro_timer_state_for_prefs.dart';
 import 'package:pocus/models/settings/state/settings_state.dart';
 import 'package:pocus/utils/prefs_keys/prefs_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -126,31 +127,35 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
 
   Future<void> saveState() async {
     await SharedPreferences.getInstance().then((prefs) {
-      prefs.setString(PrefsKeys.pomodoroTimerState, jsonEncode(state.toJson()));
       prefs.setString(
-          PrefsKeys.lastSavedPomodoroTimeState, DateTime.now().toString());
+        PrefsKeys.pomodoroTimerState,
+        jsonEncode(PomodoroTimerStateForPrefs(
+                stateJsonString: jsonEncode(state.toJson()),
+                savedDate: DateTime.now())
+            .toJson()),
+      );
     });
   }
 
   Future<void> getState() async {
     await SharedPreferences.getInstance().then((prefs) {
-      final jsonString = prefs.getString(PrefsKeys.pomodoroTimerState);
-      final dateTimeString =
-          prefs.getString(PrefsKeys.lastSavedPomodoroTimeState);
+      final pomodoroTimeStateForPrefsString =
+          prefs.getString(PrefsKeys.pomodoroTimerState);
 
-      if (jsonString == null || dateTimeString == null) return;
+      if (pomodoroTimeStateForPrefsString == null) return;
 
-      final pomodoroTimeState =
-          PomodoroTimerState.fromJson(jsonDecode(jsonString));
-      final lastSaved = DateTime.parse(dateTimeString);
+      final pomodoroTimerStateForPrefs = PomodoroTimerStateForPrefs.fromJson(
+          jsonDecode(pomodoroTimeStateForPrefsString));
 
-      state = pomodoroTimeState.copyWith(
-        secondsLeft: pomodoroTimeState.secondsLeft -
-            DateTime.now().difference(lastSaved).inSeconds,
+      final pomodoroTimerState = PomodoroTimerState.fromJson(
+          jsonDecode(pomodoroTimerStateForPrefs.stateJsonString));
+
+      state = pomodoroTimerState.copyWith(
+        secondsLeft: pomodoroTimerState.secondsLeft -
+            DateTime.now()
+                .difference(pomodoroTimerStateForPrefs.savedDate)
+                .inSeconds,
       );
-
-      prefs.remove(PrefsKeys.pomodoroTimerState);
-      prefs.remove(PrefsKeys.lastSavedPomodoroTimeState);
     });
   }
 }
