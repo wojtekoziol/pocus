@@ -9,7 +9,7 @@ class StatsNumberIndicator extends StatelessWidget {
   });
 
   final String title;
-  final String value;
+  final int value;
   final Color backgroundColor;
   final Color textColor;
 
@@ -32,7 +32,7 @@ class StatsNumberIndicator extends StatelessWidget {
             ),
           ),
           Text(
-            value,
+            '$value',
             style: theme.textTheme.headline3!.copyWith(
               color: textColor,
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
 import 'package:pocus/src/pages/stats/widgets/stats_bar_chart.dart';
+import 'package:pocus/src/pages/stats/widgets/stats_number_indicator.dart';
 
 class StatsPage extends StatelessWidget {
   @override
@@ -54,11 +55,36 @@ class StatsPage extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child: Container(),
+                  child: Consumer(
+                    builder: (context, watch, child) {
+                      final minutesFocused =
+                          watch(statsMinutesNotifierProvider.state)
+                              .stats[DateTime.now().weekday - 1];
+
+                      return StatsNumberIndicator(
+                        title: 'Minutes focusesd',
+                        value: minutesFocused,
+                        backgroundColor: theme.primaryColor,
+                        textColor: Colors.white,
+                      );
+                    },
+                  ),
                 ),
                 SizedBox(width: 16),
                 Expanded(
-                  child: Container(),
+                  child: Consumer(
+                    builder: (context, watch, child) {
+                      final appOpens = watch(statsOpensNotifierProvider.state)
+                          .stats[DateTime.now().weekday - 1];
+
+                      return StatsNumberIndicator(
+                        title: 'App opens',
+                        value: appOpens,
+                        backgroundColor: theme.dividerColor,
+                        textColor: theme.primaryColor,
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
