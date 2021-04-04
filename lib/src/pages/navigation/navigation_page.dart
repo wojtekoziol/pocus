@@ -26,20 +26,23 @@ class NavigationPage extends HookWidget {
           OpenContainer(
             closedColor: Colors.transparent,
             closedElevation: 0,
-            closedBuilder: (context, action) {
-              return Container(
-                color: Colors.transparent,
-                child: Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Icon(UniconsLine.setting),
+            closedBuilder: (context, openContainer) {
+              return GestureDetector(
+                onTap: () {
+                  HapticFeedback.mediumImpact();
+                  openContainer();
+                },
+                child: Container(
+                  color: Colors.transparent,
+                  child: Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Icon(UniconsLine.setting),
+                  ),
                 ),
               );
             },
             openElevation: 0,
-            openBuilder: (context, action) {
-              HapticFeedback.mediumImpact();
-              return SettingsPage();
-            },
+            openBuilder: (context, action) => SettingsPage(),
           ),
         ],
       ),

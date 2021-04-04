@@ -73,6 +73,9 @@ class AppTheme with _$AppTheme {
       bodyText1: TextStyle(
         color: Colors.grey[300],
       ),
+      subtitle1: TextStyle(
+        color: Colors.grey[300],
+      ),
     ),
     scaffoldBackgroundColor: Colors.black,
     primaryColor: Color(0xFFbf3434),
