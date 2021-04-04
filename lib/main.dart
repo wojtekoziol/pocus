@@ -35,11 +35,16 @@ class MyApp extends HookWidget {
     useEffect(() {
       final pomodoroTimerState =
           context.read(pomodoroTimerNotifierProvider.state);
-      if (pomodoroTimerState.secondsLeft % 60 == 0 &&
-          pomodoroTimerState.isRunning &&
-          pomodoroTimerState.secondsLeft != pomodoroTimerState.secondsInitial) {
-        context.read(statsMinutesNotifierProvider).insert();
-      }
+      pomodoroTimerState.maybeWhen(
+        pomodoro: (secondsLeft, secondsInitial, currentInterval, isRunning) {
+          if (secondsLeft % 60 == 0 &&
+              isRunning &&
+              secondsLeft != secondsInitial) {
+            context.read(statsMinutesNotifierProvider).insert();
+          }
+        },
+        orElse: () {},
+      );
     }, [useProvider(pomodoroTimerNotifierProvider.state)]);
 
     return MaterialApp(
