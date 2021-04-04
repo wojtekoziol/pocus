@@ -27,7 +27,8 @@ class SettingsNotifier extends StateNotifier<SettingsState> {
 
   Future<void> saveSettings(SettingsState settingsState) async {
     await SharedPreferences.getInstance().then((prefs) {
-      prefs.setString(PrefsKeys.settingsState, jsonEncode(state.toJson()));
+      prefs.setString(
+          PrefsKeys.settingsState, jsonEncode(settingsState.toJson()));
     });
     state = settingsState;
   }
