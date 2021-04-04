@@ -21,18 +21,18 @@ class PlayPauseButton extends HookWidget {
             : animationController.reverse();
 
         return GestureDetector(
-          onTap: () {
+          onTapDown: (details) {
             HapticFeedback.mediumImpact();
+          },
+          onTap: () {
             pomodoroTimerState.isRunning
                 ? pomodoroTimerNotifier.pause()
                 : pomodoroTimerNotifier.start();
           },
           onLongPress: () {
-            HapticFeedback.mediumImpact();
             pomodoroTimerNotifier.reset();
           },
           onDoubleTap: () {
-            HapticFeedback.mediumImpact();
             pomodoroTimerNotifier.skip();
           },
           child: AnimatedIcon(
