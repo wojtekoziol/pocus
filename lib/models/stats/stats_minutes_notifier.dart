@@ -7,25 +7,23 @@ import 'package:pocus/utils/prefs_keys/prefs_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StatsMinutesNotifier extends StateNotifier<StatsState> {
-  StatsMinutesNotifier()
-      : super(StatsState(
-          stats: [0, 0, 0, 0, 0, 0, 0],
-          lastUpdated: DateTime.now(),
-        ));
+  StatsMinutesNotifier() : super(StatsState(stats: [0, 0, 0, 0, 0, 0, 0]));
 
   Future<void> getStats() async {
     await SharedPreferences.getInstance().then((prefs) {
       final jsonString = prefs.getString(PrefsKeys.statsMinutesState);
-      if (jsonString != null) {
-        final stats = StatsState.fromJson(jsonDecode(jsonString));
-        if (stats.lastUpdated.weekday > DateTime.now().weekday ||
-            DateTime.now().difference(stats.lastUpdated) > Duration(days: 7)) {
-          prefs.setString(
-              PrefsKeys.statsMinutesState, jsonEncode(state.toJson()));
-          return;
-        }
-        state = stats;
+      final dateTimeString =
+          prefs.getString(PrefsKeys.lastSavedStatsMinutesState);
+      if (jsonString == null || dateTimeString == null) return;
+      final stats = StatsState.fromJson(jsonDecode(jsonString));
+      final lastSaved = DateTime.parse(dateTimeString);
+      if (lastSaved.weekday > DateTime.now().weekday ||
+          DateTime.now().difference(lastSaved) > Duration(days: 7)) {
+        prefs.setString(
+            PrefsKeys.statsMinutesState, jsonEncode(state.toJson()));
+        return;
       }
+      state = stats;
     });
   }
 
@@ -39,6 +37,8 @@ class StatsMinutesNotifier extends StateNotifier<StatsState> {
 
     await SharedPreferences.getInstance().then((prefs) {
       prefs.setString(PrefsKeys.statsMinutesState, jsonEncode(state.toJson()));
+      prefs.setString(
+          PrefsKeys.lastSavedStatsMinutesState, DateTime.now().toString());
     });
   }
 }

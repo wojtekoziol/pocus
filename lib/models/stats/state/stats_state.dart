@@ -9,7 +9,6 @@ part 'stats_state.g.dart';
 class StatsState with _$StatsState {
   factory StatsState({
     required List<int> stats,
-    required DateTime lastUpdated,
   }) = _StatsState;
 
   factory StatsState.fromJson(Map<String, dynamic> json) =>

@@ -20,10 +20,9 @@ StatsState _$StatsStateFromJson(Map<String, dynamic> json) {
 class _$StatsStateTearOff {
   const _$StatsStateTearOff();
 
-  _StatsState call({required List<int> stats, required DateTime lastUpdated}) {
+  _StatsState call({required List<int> stats}) {
     return _StatsState(
       stats: stats,
-      lastUpdated: lastUpdated,
     );
   }
 
@@ -38,7 +37,6 @@ const $StatsState = _$StatsStateTearOff();
 /// @nodoc
 mixin _$StatsState {
   List<int> get stats => throw _privateConstructorUsedError;
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +49,7 @@ abstract class $StatsStateCopyWith<$Res> {
   factory $StatsStateCopyWith(
           StatsState value, $Res Function(StatsState) then) =
       _$StatsStateCopyWithImpl<$Res>;
-  $Res call({List<int> stats, DateTime lastUpdated});
+  $Res call({List<int> stats});
 }
 
 /// @nodoc
@@ -65,17 +63,12 @@ class _$StatsStateCopyWithImpl<$Res> implements $StatsStateCopyWith<$Res> {
   @override
   $Res call({
     Object? stats = freezed,
-    Object? lastUpdated = freezed,
   }) {
     return _then(_value.copyWith(
       stats: stats == freezed
           ? _value.stats
           : stats // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      lastUpdated: lastUpdated == freezed
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ));
   }
 }
@@ -86,7 +79,7 @@ abstract class _$StatsStateCopyWith<$Res> implements $StatsStateCopyWith<$Res> {
           _StatsState value, $Res Function(_StatsState) then) =
       __$StatsStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<int> stats, DateTime lastUpdated});
+  $Res call({List<int> stats});
 }
 
 /// @nodoc
@@ -102,17 +95,12 @@ class __$StatsStateCopyWithImpl<$Res> extends _$StatsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? stats = freezed,
-    Object? lastUpdated = freezed,
   }) {
     return _then(_StatsState(
       stats: stats == freezed
           ? _value.stats
           : stats // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      lastUpdated: lastUpdated == freezed
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ));
   }
 }
@@ -121,19 +109,17 @@ class __$StatsStateCopyWithImpl<$Res> extends _$StatsStateCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_StatsState with DiagnosticableTreeMixin implements _StatsState {
-  _$_StatsState({required this.stats, required this.lastUpdated});
+  _$_StatsState({required this.stats});
 
   factory _$_StatsState.fromJson(Map<String, dynamic> json) =>
       _$_$_StatsStateFromJson(json);
 
   @override
   final List<int> stats;
-  @override
-  final DateTime lastUpdated;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'StatsState(stats: $stats, lastUpdated: $lastUpdated)';
+    return 'StatsState(stats: $stats)';
   }
 
   @override
@@ -141,8 +127,7 @@ class _$_StatsState with DiagnosticableTreeMixin implements _StatsState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'StatsState'))
-      ..add(DiagnosticsProperty('stats', stats))
-      ..add(DiagnosticsProperty('lastUpdated', lastUpdated));
+      ..add(DiagnosticsProperty('stats', stats));
   }
 
   @override
@@ -150,17 +135,12 @@ class _$_StatsState with DiagnosticableTreeMixin implements _StatsState {
     return identical(this, other) ||
         (other is _StatsState &&
             (identical(other.stats, stats) ||
-                const DeepCollectionEquality().equals(other.stats, stats)) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastUpdated, lastUpdated)));
+                const DeepCollectionEquality().equals(other.stats, stats)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(stats) ^
-      const DeepCollectionEquality().hash(lastUpdated);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(stats);
 
   @JsonKey(ignore: true)
   @override
@@ -174,17 +154,13 @@ class _$_StatsState with DiagnosticableTreeMixin implements _StatsState {
 }
 
 abstract class _StatsState implements StatsState {
-  factory _StatsState(
-      {required List<int> stats,
-      required DateTime lastUpdated}) = _$_StatsState;
+  factory _StatsState({required List<int> stats}) = _$_StatsState;
 
   factory _StatsState.fromJson(Map<String, dynamic> json) =
       _$_StatsState.fromJson;
 
   @override
   List<int> get stats => throw _privateConstructorUsedError;
-  @override
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$StatsStateCopyWith<_StatsState> get copyWith =>
