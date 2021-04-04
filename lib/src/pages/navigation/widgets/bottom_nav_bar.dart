@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
@@ -41,6 +42,7 @@ class BottomNavBar extends HookWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
+                          HapticFeedback.mediumImpact();
                           pageController.animateToPage(
                             0,
                             duration: Duration(milliseconds: 200),
@@ -61,6 +63,7 @@ class BottomNavBar extends HookWidget {
                       ),
                       GestureDetector(
                         onTap: () {
+                          HapticFeedback.mediumImpact();
                           pageController.animateToPage(
                             1,
                             duration: Duration(milliseconds: 200),

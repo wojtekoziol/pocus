@@ -100,28 +100,25 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
     _intervalsNumber = settings.intervalsNumber;
 
     if (!state.isRunning && state.secondsLeft == state.secondsInitial) {
-      WidgetsBinding.instance!.addPostFrameCallback(
-        (timeStamp) {
-          state.when(pomodoro:
-              (secondsLeft, secondsInitial, currentInterval, isRunning) {
-            state = state.copyWith(
-              secondsLeft: _pomodoroDuration * 60,
-              secondsInitial: _pomodoroDuration * 60,
-            );
-          }, shortBreak:
-              (secondsLeft, secondsInitial, isRunning, nextInterval) {
-            state = state.copyWith(
-              secondsLeft: _shortBreakDuration * 60,
-              secondsInitial: _shortBreakDuration * 60,
-            );
-          }, longBreak: (secondsLeft, secondsInitial, isRunning) {
-            state = state.copyWith(
-              secondsLeft: _longBreakDuration * 60,
-              secondsInitial: _longBreakDuration * 60,
-            );
-          });
-        },
-      );
+      WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+        state.when(pomodoro:
+            (secondsLeft, secondsInitial, currentInterval, isRunning) {
+          state = state.copyWith(
+            secondsLeft: _pomodoroDuration * 60,
+            secondsInitial: _pomodoroDuration * 60,
+          );
+        }, shortBreak: (secondsLeft, secondsInitial, isRunning, nextInterval) {
+          state = state.copyWith(
+            secondsLeft: _shortBreakDuration * 60,
+            secondsInitial: _shortBreakDuration * 60,
+          );
+        }, longBreak: (secondsLeft, secondsInitial, isRunning) {
+          state = state.copyWith(
+            secondsLeft: _longBreakDuration * 60,
+            secondsInitial: _longBreakDuration * 60,
+          );
+        });
+      });
     }
   }
 
@@ -141,6 +138,7 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
     await SharedPreferences.getInstance().then((prefs) {
       final pomodoroTimeStateForPrefsString =
           prefs.getString(PrefsKeys.pomodoroTimerState);
+      prefs.remove(PrefsKeys.pomodoroTimerState);
 
       if (pomodoroTimeStateForPrefsString == null) return;
 

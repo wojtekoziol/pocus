@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
@@ -30,6 +31,16 @@ class SettingsPage extends HookWidget {
         brightness: Brightness.dark,
         iconTheme: IconThemeData(
           color: Colors.white,
+        ),
+        leading: GestureDetector(
+          onTap: () {
+            HapticFeedback.mediumImpact();
+            Navigator.of(context).pop();
+          },
+          child: Container(
+            color: Colors.transparent,
+            child: Icon(Icons.arrow_back_ios),
+          ),
         ),
       ),
       body: Padding(

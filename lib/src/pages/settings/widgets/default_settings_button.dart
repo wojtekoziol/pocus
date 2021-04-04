@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/models/settings/state/settings_state.dart';
@@ -19,6 +20,7 @@ class DefaultSettingsButton extends HookWidget {
       ).animate(scaleAnimationController),
       child: GestureDetector(
         onTapDown: (details) {
+          HapticFeedback.mediumImpact();
           scaleAnimationController.forward();
         },
         onTapUp: (details) {

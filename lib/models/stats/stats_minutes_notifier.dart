@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/models/prefs/stats/stats_state_for_prefs.dart';
 import 'package:pocus/models/stats/state/stats_state.dart';
@@ -42,9 +41,8 @@ class StatsMinutesNotifier extends StateNotifier<StatsState> {
     final weekday = DateTime.now().weekday;
     var stats = state.stats
       ..replaceRange(weekday - 1, weekday, [state.stats[weekday - 1] + 1]);
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      state = state.copyWith(stats: stats);
-    });
+
+    state = state.copyWith(stats: stats);
 
     await SharedPreferences.getInstance().then((prefs) {
       prefs.setString(

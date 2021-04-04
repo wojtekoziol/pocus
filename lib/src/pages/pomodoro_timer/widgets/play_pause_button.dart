@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
@@ -21,14 +22,17 @@ class PlayPauseButton extends HookWidget {
 
         return GestureDetector(
           onTap: () {
+            HapticFeedback.mediumImpact();
             pomodoroTimerState.isRunning
                 ? pomodoroTimerNotifier.pause()
                 : pomodoroTimerNotifier.start();
           },
           onLongPress: () {
+            HapticFeedback.mediumImpact();
             pomodoroTimerNotifier.reset();
           },
           onDoubleTap: () {
+            HapticFeedback.mediumImpact();
             pomodoroTimerNotifier.skip();
           },
           child: AnimatedIcon(

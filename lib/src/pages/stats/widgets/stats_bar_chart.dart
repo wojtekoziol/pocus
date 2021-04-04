@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class StatsBarChart extends HookWidget {
@@ -71,6 +72,7 @@ class StatsBarChart extends HookWidget {
                           touchedIndexNotifier.value = -1;
                           return;
                         }
+                        HapticFeedback.mediumImpact();
                         touchedIndexNotifier.value =
                             barTouchResponse.spot!.touchedBarGroupIndex;
                       },

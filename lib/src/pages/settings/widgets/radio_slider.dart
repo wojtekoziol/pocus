@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:pocus/src/pages/settings/models/radio_slider_option/radio_slider_option.dart';
 
@@ -81,6 +82,7 @@ class RadioSlider extends HookWidget {
                   for (int i = 0; i < children.length; i++)
                     GestureDetector(
                       onTap: () {
+                        HapticFeedback.mediumImpact();
                         children[i].onPressed();
                         currentIndexNotifier.value = i;
                       },

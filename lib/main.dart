@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
@@ -7,10 +8,13 @@ import 'package:pocus/utils/hooks/lifecycle_observer.dart';
 import 'package:pocus/utils/theme/app_theme.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(ProviderScope(
     child: MyApp(),
   ));
+  ;
 }
 
 class MyApp extends HookWidget {
@@ -18,7 +22,9 @@ class MyApp extends HookWidget {
   Widget build(BuildContext context) {
     useLifecycleObserver(
       onPaused: () {
-        context.read(pomodoroTimerNotifierProvider).saveState();
+        if (context.read(pomodoroTimerNotifierProvider.state).isRunning) {
+          context.read(pomodoroTimerNotifierProvider).saveState();
+        }
       },
       onResumed: () {
         context.read(pomodoroTimerNotifierProvider).getState();
