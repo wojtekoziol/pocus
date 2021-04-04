@@ -10,7 +10,7 @@ class StatsPage extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Padding(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(32),
       child: Column(
         children: [
           Expanded(

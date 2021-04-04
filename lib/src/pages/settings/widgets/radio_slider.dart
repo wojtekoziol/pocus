@@ -99,7 +99,7 @@ class RadioSlider extends HookWidget {
                                 style: TextStyle(
                                   color: index == i
                                       ? Colors.transparent
-                                      : Colors.black,
+                                      : theme.textTheme.bodyText1!.color,
                                 ),
                               );
                             },

@@ -56,7 +56,9 @@ class MyApp extends HookWidget {
     return MaterialApp(
       title: 'Pocus',
       debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.system,
       theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
       home: NavigationPage(),
     );
   }

@@ -27,13 +27,14 @@ class StatsNumberIndicator extends StatelessWidget {
         children: [
           Text(
             title,
-            style: theme.textTheme.subtitle1!.copyWith(
+            style: theme.textTheme.caption!.copyWith(
               color: textColor,
             ),
           ),
+          SizedBox(height: 4),
           Text(
             '$value',
-            style: theme.textTheme.headline3!.copyWith(
+            style: theme.textTheme.headline4!.copyWith(
               color: textColor,
             ),
           ),

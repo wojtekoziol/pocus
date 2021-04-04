@@ -39,11 +39,12 @@ class StatsBarChart extends HookWidget {
         children: [
           Text(
             title,
-            style: theme.textTheme.headline5!.copyWith(color: textColor),
+            style: theme.textTheme.headline6!.copyWith(color: textColor),
           ),
+          SizedBox(height: 2),
           Text(
             'This week',
-            style: theme.textTheme.subtitle1!.copyWith(color: textColor),
+            style: theme.textTheme.subtitle2!.copyWith(color: textColor),
           ),
           SizedBox(height: 16),
           Expanded(
@@ -134,7 +135,7 @@ class StatsBarChart extends HookWidget {
                           if (index == 6) {
                             return 'S';
                           }
-                          return 'hi';
+                          return '';
                         },
                         getTextStyles: (index) {
                           if (index == DateTime.now().weekday - 1) {
