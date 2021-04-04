@@ -7,6 +7,7 @@ part 'prefs_keys.freezed.dart';
 class PrefsKeys with _$PrefsKeys {
   factory PrefsKeys._() = _PrefsKeys;
   static String pomodoroTimerState = 'pomodorotimerstate';
+  static String lastSavedPomodoroTimeState = 'lastsavedpomodorotimerstate';
   static String pomodoroDuration = 'pomodoroduration';
   static String shortBreakDuration = 'shortbreakduration';
   static String longBreakDuration = 'longbreakduration';

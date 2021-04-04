@@ -2,27 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 void useLifecycleObserver({
-  required VoidCallback onInactive,
+  required VoidCallback onPaused,
   required VoidCallback onResumed,
 }) =>
     use(_AppLifecycleObserverHook(
-      onInactive: onInactive,
+      onPaused: onPaused,
       onResumed: onResumed,
     ));
 
 class _AppLifecycleObserverHook extends Hook {
   _AppLifecycleObserverHook({
-    required this.onInactive,
+    required this.onPaused,
     required this.onResumed,
   });
 
-  final VoidCallback onInactive;
+  final VoidCallback onPaused;
   final VoidCallback onResumed;
 
   @override
   _AppLifecycleObserverHookState createState() =>
       _AppLifecycleObserverHookState(
-        onInactive: onInactive,
+        onPaused: onPaused,
         onResumed: onResumed,
       );
 }
@@ -30,11 +30,11 @@ class _AppLifecycleObserverHook extends Hook {
 class _AppLifecycleObserverHookState extends HookState
     with WidgetsBindingObserver {
   _AppLifecycleObserverHookState({
-    required this.onInactive,
+    required this.onPaused,
     required this.onResumed,
   });
 
-  final VoidCallback onInactive;
+  final VoidCallback onPaused;
   final VoidCallback onResumed;
 
   @override
@@ -45,8 +45,8 @@ class _AppLifecycleObserverHookState extends HookState
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.inactive) {
-      onInactive();
+    if (state == AppLifecycleState.paused) {
+      onPaused();
     } else if (state == AppLifecycleState.resumed) {
       onResumed();
     }

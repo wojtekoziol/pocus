@@ -17,8 +17,11 @@ class MyApp extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useLifecycleObserver(
-      onInactive: () {},
+      onPaused: () {
+        context.read(pomodoroTimerNotifierProvider).saveState();
+      },
       onResumed: () {
+        context.read(pomodoroTimerNotifierProvider).getState();
         context.read(statsOpensNotifierProvider).insert();
       },
     );

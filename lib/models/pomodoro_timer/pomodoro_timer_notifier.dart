@@ -1,9 +1,12 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/models/pomodoro_timer/state/pomodoro_timer_state.dart';
 import 'package:pocus/models/settings/state/settings_state.dart';
+import 'package:pocus/utils/prefs_keys/prefs_keys.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
   PomodoroTimerNotifier()
@@ -14,8 +17,6 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
           isRunning: false,
         ));
 
-  Timer? _timer;
-
   int _pomodoroDuration = 25;
   int _shortBreakDuration = 5;
   int _longBreakDuration = 15;
@@ -23,9 +24,13 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
 
   void start() {
     state = state.copyWith(isRunning: true);
-    _timer = Timer.periodic(
+    Timer.periodic(
       Duration(seconds: 1),
       (timer) {
+        if (!state.isRunning) {
+          timer.cancel();
+          return;
+        }
         if (state.secondsLeft - 1 < 0) {
           skip();
           return;
@@ -38,7 +43,6 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
   }
 
   void skip() {
-    _timer?.cancel();
     state.when(
       pomodoro: (secondsLeft, secondsInitial, currentInterval, isRunning) {
         if (currentInterval >= _intervalsNumber) {
@@ -76,12 +80,10 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
   }
 
   void pause() {
-    _timer?.cancel();
     state = state.copyWith(isRunning: false);
   }
 
   void reset() {
-    _timer?.cancel();
     state = PomodoroTimerState.pomodoro(
       secondsLeft: _pomodoroDuration * 60,
       secondsInitial: _pomodoroDuration * 60,
@@ -120,5 +122,35 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
         },
       );
     }
+  }
+
+  Future<void> saveState() async {
+    await SharedPreferences.getInstance().then((prefs) {
+      prefs.setString(PrefsKeys.pomodoroTimerState, jsonEncode(state.toJson()));
+      prefs.setString(
+          PrefsKeys.lastSavedPomodoroTimeState, DateTime.now().toString());
+    });
+  }
+
+  Future<void> getState() async {
+    await SharedPreferences.getInstance().then((prefs) {
+      final jsonString = prefs.getString(PrefsKeys.pomodoroTimerState);
+      final dateTimeString =
+          prefs.getString(PrefsKeys.lastSavedPomodoroTimeState);
+
+      if (jsonString == null || dateTimeString == null) return;
+
+      final pomodoroTimeState =
+          PomodoroTimerState.fromJson(jsonDecode(jsonString));
+      final lastSaved = DateTime.parse(dateTimeString);
+
+      state = pomodoroTimeState.copyWith(
+        secondsLeft: pomodoroTimeState.secondsLeft -
+            DateTime.now().difference(lastSaved).inSeconds,
+      );
+
+      prefs.remove(PrefsKeys.pomodoroTimerState);
+      prefs.remove(PrefsKeys.lastSavedPomodoroTimeState);
+    });
   }
 }
