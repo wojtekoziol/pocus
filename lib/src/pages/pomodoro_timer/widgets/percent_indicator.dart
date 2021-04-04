@@ -26,8 +26,8 @@ class PercentIndicator extends HookWidget {
             curve: Curves.easeInOutQuart,
           ),
           child: CircularPercentIndicator(
-            radius: MediaQuery.of(context).size.width * 0.75,
-            lineWidth: 15,
+            radius: MediaQuery.of(context).size.width * 0.65,
+            lineWidth: 12,
             reverse: true,
             animation: true,
             animateFromLastPercent: true,

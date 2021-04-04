@@ -29,7 +29,7 @@ class AppTheme with _$AppTheme {
     ),
     textTheme: TextTheme(
       headline1: TextStyle(
-        fontSize: 72,
+        fontSize: 64,
         color: Colors.black,
       ),
       headline5: TextStyle(
@@ -64,7 +64,7 @@ class AppTheme with _$AppTheme {
     ),
     textTheme: TextTheme(
       headline1: TextStyle(
-        fontSize: 72,
+        fontSize: 64,
         color: Colors.grey[300],
       ),
       headline5: TextStyle(
