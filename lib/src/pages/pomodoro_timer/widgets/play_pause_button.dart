@@ -30,9 +30,11 @@ class PlayPauseButton extends HookWidget {
                 : pomodoroTimerNotifier.start();
           },
           onLongPress: () {
+            HapticFeedback.mediumImpact();
             pomodoroTimerNotifier.reset();
           },
           onDoubleTap: () {
+            HapticFeedback.mediumImpact();
             pomodoroTimerNotifier.skip();
           },
           child: AnimatedIcon(

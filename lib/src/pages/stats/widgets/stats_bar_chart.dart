@@ -73,6 +73,7 @@ class StatsBarChart extends HookWidget {
                           touchedIndexNotifier.value = -1;
                           return;
                         }
+                        if (touchedIndex != -1) return;
                         HapticFeedback.mediumImpact();
                         touchedIndexNotifier.value =
                             barTouchResponse.spot!.touchedBarGroupIndex;
