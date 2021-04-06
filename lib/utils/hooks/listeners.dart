@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pocus/models/pomodoro_timer/state/pomodoro_timer_state.dart';
 import 'package:pocus/providers.dart';
 import 'package:pocus/utils/hooks/lifecycle_observer.dart';
 
@@ -12,9 +13,11 @@ void useListeners(BuildContext context) {
         context.read(pomodoroTimerNotifierProvider).saveState();
       }
     },
-    onResumed: () {
-      context.read(pomodoroTimerNotifierProvider).getState();
-      context.read(statsOpensNotifierProvider).insert();
+    onResumed: () async {
+      final minutesFocused =
+          await context.read(pomodoroTimerNotifierProvider).getState();
+      await context.read(statsMinutesNotifierProvider).insert(minutesFocused);
+      await context.read(statsOpensNotifierProvider).insert();
     },
   );
 
@@ -27,15 +30,11 @@ void useListeners(BuildContext context) {
   useEffect(() {
     final pomodoroTimerState =
         context.read(pomodoroTimerNotifierProvider.state);
-    pomodoroTimerState.maybeWhen(
-      pomodoro: (secondsLeft, secondsInitial, currentInterval, isRunning) {
-        if (secondsLeft % 60 == 0 &&
-            isRunning &&
-            secondsLeft != secondsInitial) {
-          context.read(statsMinutesNotifierProvider).insert();
-        }
-      },
-      orElse: () {},
-    );
+    if (pomodoroTimerState is Pomodoro &&
+        pomodoroTimerState.secondsLeft % 60 == 0 &&
+        pomodoroTimerState.isRunning &&
+        pomodoroTimerState.secondsLeft != pomodoroTimerState.secondsInitial) {
+      context.read(statsMinutesNotifierProvider).insert(1);
+    }
   }, [useProvider(pomodoroTimerNotifierProvider.state)]);
 }

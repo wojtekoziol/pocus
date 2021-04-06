@@ -134,13 +134,13 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
     });
   }
 
-  Future<void> getState() async {
+  Future<int> getState() async {
     await SharedPreferences.getInstance().then((prefs) {
       final pomodoroTimeStateForPrefsString =
           prefs.getString(PrefsKeys.pomodoroTimerState);
       prefs.remove(PrefsKeys.pomodoroTimerState);
 
-      if (pomodoroTimeStateForPrefsString == null) return;
+      if (pomodoroTimeStateForPrefsString == null) return 0;
 
       final pomodoroTimerStateForPrefs = PomodoroTimerStateForPrefs.fromJson(
           jsonDecode(pomodoroTimeStateForPrefsString));
@@ -154,6 +154,11 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
                 .difference(pomodoroTimerStateForPrefs.savedDate)
                 .inSeconds,
       );
+
+      return DateTime.now()
+          .difference(pomodoroTimerStateForPrefs.savedDate)
+          .inMinutes;
     });
+    return 0;
   }
 }
