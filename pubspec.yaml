@@ -20,6 +20,7 @@ dependencies:
   unicons: ^1.0.2
   percent_indicator: ^3.3.0-nullsafety.1
   fl_chart: ^0.35.0
+  modal_bottom_sheet: ^2.0.0
 
 dev_dependencies:
   flutter_test:

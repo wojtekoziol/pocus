@@ -8,11 +8,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/src/pages/pomodoro_timer/pomodoro_timer_page.dart';
 import 'package:pocus/src/pages/settings/settings_page.dart';
 import 'package:pocus/src/pages/stats/stats_page.dart';
+import 'package:pocus/utils/hooks/boarding.dart';
 import 'package:unicons/unicons.dart';
 
 class NavigationPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    useBoarding(context);
     final pageController = usePageController();
 
     return Scaffold(

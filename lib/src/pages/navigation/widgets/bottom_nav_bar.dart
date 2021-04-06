@@ -46,7 +46,7 @@ class BottomNavBar extends HookWidget {
                           pageController.animateToPage(
                             0,
                             duration: Duration(milliseconds: 200),
-                            curve: Curves.easeIn,
+                            curve: Curves.easeInOut,
                           );
                           indexNotifier.value = 0;
                         },
@@ -67,7 +67,7 @@ class BottomNavBar extends HookWidget {
                           pageController.animateToPage(
                             1,
                             duration: Duration(milliseconds: 200),
-                            curve: Curves.easeIn,
+                            curve: Curves.easeInOut,
                           );
                           indexNotifier.value = 1;
                         },
