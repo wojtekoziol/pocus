@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/models/prefs/stats/stats_state_for_prefs.dart';
 import 'package:pocus/models/stats/state/stats_state.dart';
-import 'package:pocus/utils/prefs_keys/prefs_keys.dart';
+import 'package:pocus/utils/prefs_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StatsMinutesNotifier extends StateNotifier<StatsState> {

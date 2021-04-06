@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/models/pomodoro_timer/state/pomodoro_timer_state.dart';
 import 'package:pocus/models/prefs/pomodoro_timer/pomodoro_timer_state_for_prefs.dart';
 import 'package:pocus/models/settings/state/settings_state.dart';
-import 'package:pocus/utils/prefs_keys/prefs_keys.dart';
+import 'package:pocus/utils/prefs_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {

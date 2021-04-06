@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
 
-part 'app_theme.freezed.dart';
-
-@freezed
-class AppTheme with _$AppTheme {
-  factory AppTheme._() = _AppTheme;
-
+abstract class AppTheme {
   static final light = ThemeData(
     appBarTheme: AppBarTheme(
       brightness: Brightness.light,

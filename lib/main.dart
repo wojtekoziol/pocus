@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/src/pages/navigation/navigation_page.dart';
 import 'package:pocus/utils/hooks/listeners.dart';
-import 'package:pocus/utils/theme/app_theme.dart';
+import 'package:pocus/utils/app_theme.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 Future<void> main() async {
