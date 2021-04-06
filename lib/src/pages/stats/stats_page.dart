@@ -25,7 +25,7 @@ class StatsPage extends StatelessWidget {
                   lineColor: theme.accentColor,
                   backgroundLineColor: theme.scaffoldBackgroundColor,
                   textColor: Colors.white,
-                  tooltipColor: theme.dividerColor,
+                  tooltipColor: theme.accentColor,
                   title: 'Minutes focused',
                 );
               },
