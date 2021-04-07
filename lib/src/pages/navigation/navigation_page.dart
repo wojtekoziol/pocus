@@ -21,7 +21,6 @@ class NavigationPage extends HookWidget {
       SharedPreferences.getInstance().then((prefs) {
         final wasBoardingScreenShown =
             prefs.getBool(PrefsKeys.wasBoardingScreenShown) ?? false;
-        print(wasBoardingScreenShown);
         if (!wasBoardingScreenShown) {
           showCupertinoModalBottomSheet(
             context: context,
@@ -44,6 +43,7 @@ class NavigationPage extends HookWidget {
           OpenContainer(
             closedColor: Colors.transparent,
             closedElevation: 0,
+            transitionDuration: Duration(milliseconds: 400),
             closedBuilder: (context, openContainer) {
               return GestureDetector(
                 onTap: () {
