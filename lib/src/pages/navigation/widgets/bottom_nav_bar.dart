@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pocus/providers.dart';
 
 class BottomNavBar extends HookWidget {
+  BottomNavBar({required this.pageController});
+
+  final PageController pageController;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final widthFactor = MediaQuery.of(context).size.width * 0.6;
-    final pageController = context.read(pageControllerProvider);
     final indexNotifier = useValueNotifier(0);
 
     return Container(
