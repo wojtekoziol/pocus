@@ -7,6 +7,10 @@ class BottomNavBar extends HookWidget {
   BottomNavBar({required this.pageController});
 
   final PageController pageController;
+  final _icons = [
+    Icons.timer,
+    Icons.equalizer_rounded,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -54,48 +58,28 @@ class BottomNavBar extends HookWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          HapticFeedback.mediumImpact();
-                          pageController.animateToPage(
-                            currentIndexNotifier.value = 0,
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.easeInOut,
-                          );
-                          indicatorWidthAnimationController.forward();
-                        },
-                        child: Container(
-                          color: Colors.transparent,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
-                            child: Icon(
-                              Icons.timer,
-                              size: 28,
+                      for (int i = 0; i < _icons.length; i++)
+                        GestureDetector(
+                          onTap: () {
+                            HapticFeedback.mediumImpact();
+                            pageController.animateToPage(
+                              currentIndexNotifier.value = i,
+                              duration: Duration(milliseconds: 300),
+                              curve: Curves.easeInOut,
+                            );
+                            indicatorWidthAnimationController.forward();
+                          },
+                          child: Container(
+                            color: Colors.transparent,
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
+                              child: Icon(
+                                _icons[i],
+                                size: 28,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          HapticFeedback.mediumImpact();
-                          pageController.animateToPage(
-                            currentIndexNotifier.value = 1,
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.easeInOut,
-                          );
-                          indicatorWidthAnimationController.forward();
-                        },
-                        child: Container(
-                          color: Colors.transparent,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
-                            child: Icon(
-                              Icons.equalizer_rounded,
-                              size: 28,
-                            ),
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ),
