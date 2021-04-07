@@ -15,6 +15,8 @@ Future<void> useBoarding(BuildContext context) async {
         expand: true,
         builder: (context) => BoardingNavigationPage(),
       );
+      // TODO:
+      // prefs.setBool(PrefsKeys.wasBoardingScreenShown, true);
     }
   });
 }
