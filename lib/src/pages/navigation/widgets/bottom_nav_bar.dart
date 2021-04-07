@@ -11,8 +11,21 @@ class BottomNavBar extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final widthFactor = MediaQuery.of(context).size.width * 0.6;
-    final indexNotifier = useValueNotifier(0);
+    final navBarWidthFactor = MediaQuery.of(context).size.width * 0.6;
+    final currentIndexNotifier = useValueNotifier(0);
+    final indicatorWidthAnimationController = useAnimationController(
+      duration: Duration(milliseconds: 200),
+    );
+    final indicatorWidth = useAnimation(
+      Tween<double>(begin: 50, end: 75)
+          .animate(indicatorWidthAnimationController),
+    );
+    useEffect(() {
+      if (indicatorWidthAnimationController.status ==
+          AnimationStatus.completed) {
+        indicatorWidthAnimationController.reverse();
+      }
+    }, [indicatorWidthAnimationController.status]);
 
     return Container(
       decoration: BoxDecoration(
@@ -37,7 +50,7 @@ class BottomNavBar extends HookWidget {
             children: [
               SafeArea(
                 child: SizedBox(
-                  width: widthFactor + 32,
+                  width: navBarWidthFactor + 32,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -45,11 +58,11 @@ class BottomNavBar extends HookWidget {
                         onTap: () {
                           HapticFeedback.mediumImpact();
                           pageController.animateToPage(
-                            0,
-                            duration: Duration(milliseconds: 200),
+                            currentIndexNotifier.value = 0,
+                            duration: Duration(milliseconds: 300),
                             curve: Curves.easeInOut,
                           );
-                          indexNotifier.value = 0;
+                          indicatorWidthAnimationController.forward();
                         },
                         child: Container(
                           color: Colors.transparent,
@@ -66,11 +79,11 @@ class BottomNavBar extends HookWidget {
                         onTap: () {
                           HapticFeedback.mediumImpact();
                           pageController.animateToPage(
-                            1,
-                            duration: Duration(milliseconds: 200),
+                            currentIndexNotifier.value = 1,
+                            duration: Duration(milliseconds: 300),
                             curve: Curves.easeInOut,
                           );
-                          indexNotifier.value = 1;
+                          indicatorWidthAnimationController.forward();
                         },
                         child: Container(
                           color: Colors.transparent,
@@ -89,22 +102,16 @@ class BottomNavBar extends HookWidget {
               ),
               Positioned(
                 top: 0,
-                width: widthFactor + 25,
-                child: ValueListenableBuilder(
-                  valueListenable: indexNotifier,
-                  builder: (context, index, child) {
-                    return AnimatedAlign(
-                      duration: Duration(milliseconds: 200),
-                      alignment: Alignment(
-                        index == 0 ? -1 : 1,
-                        0,
-                      ),
-                      child: child,
-                    );
-                  },
+                width: navBarWidthFactor + 25,
+                child: AnimatedAlign(
+                  duration: Duration(milliseconds: 200),
+                  alignment: Alignment(
+                    currentIndexNotifier.value == 0 ? -1 : 1,
+                    0,
+                  ),
                   child: Container(
                     height: 7,
-                    width: 50,
+                    width: indicatorWidth,
                     decoration: BoxDecoration(
                       color: theme.primaryColor,
                       borderRadius: BorderRadius.only(
