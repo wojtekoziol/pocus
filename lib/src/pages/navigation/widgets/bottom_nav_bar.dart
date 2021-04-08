@@ -24,6 +24,7 @@ class BottomNavBar extends HookWidget {
       Tween<double>(begin: 50, end: 75)
           .animate(indicatorWidthAnimationController),
     );
+
     useEffect(() {
       if (indicatorWidthAnimationController.status ==
           AnimationStatus.completed) {

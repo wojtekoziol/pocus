@@ -58,6 +58,7 @@ class StatsBarChart extends HookWidget {
                         tooltipRoundedRadius: 12,
                         tooltipBgColor: tooltipColor.withOpacity(0.9),
                         getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                          if (stats[groupIndex] == 0) return null;
                           return BarTooltipItem(
                             '${stats[groupIndex]}',
                             theme.textTheme.subtitle2!.copyWith(
@@ -74,6 +75,9 @@ class StatsBarChart extends HookWidget {
                           return;
                         }
                         if (touchedIndex != -1) return;
+                        if (stats[
+                                barTouchResponse.spot!.touchedBarGroupIndex] ==
+                            0) return;
                         HapticFeedback.mediumImpact();
                         touchedIndexNotifier.value =
                             barTouchResponse.spot!.touchedBarGroupIndex;
