@@ -22,11 +22,11 @@ class PercentIndicator extends HookWidget {
         return ScaleTransition(
           scale: CurvedAnimation(
             parent:
-                Tween<double>(begin: 1, end: 0.7).animate(animationController),
+                Tween<double>(begin: 1, end: 0.6).animate(animationController),
             curve: Curves.easeInOutQuart,
           ),
           child: CircularPercentIndicator(
-            radius: MediaQuery.of(context).size.width * 0.65,
+            radius: MediaQuery.of(context).size.width * 0.7,
             lineWidth: 12,
             reverse: true,
             animation: true,
