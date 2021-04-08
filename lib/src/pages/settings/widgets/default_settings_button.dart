@@ -31,7 +31,6 @@ class DefaultSettingsButton extends HookWidget {
             intervalsNumber: 4,
           ));
           scaleAnimationController.reverse();
-          Navigator.of(context).pop();
         },
         onTapCancel: () {
           scaleAnimationController.reverse();

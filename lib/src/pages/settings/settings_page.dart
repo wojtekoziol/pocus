@@ -1,23 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
-import 'package:pocus/src/pages/settings/models/radio_slider_option/radio_slider_option.dart';
 import 'package:pocus/src/pages/settings/widgets/default_settings_button.dart';
 import 'package:pocus/src/pages/settings/widgets/radio_slider.dart';
 
-class SettingsPage extends HookWidget {
-  final _pomodoroTimerOptions = [25, 30, 45];
-  final _shortBreakOptions = [2, 5, 10];
-  final _longBreakOptions = [10, 15, 20];
-  final _intervalsNumberOptions = [2, 4, 6];
-
+class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final settingsNotifier = context.read(settingsNotifierProvider);
-    final settingsState = context.read(settingsNotifierProvider.state);
 
     return Scaffold(
       appBar: AppBar(
@@ -47,76 +38,88 @@ class SettingsPage extends HookWidget {
         padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 24),
         child: Column(
           children: [
-            RadioSlider(
-              label: 'Pomodoro timer duration',
-              initialIndex:
-                  _pomodoroTimerOptions.indexOf(settingsState.pomodoroDuration),
-              children: [
-                ..._pomodoroTimerOptions.map((option) {
-                  return RadioSliderOption(
-                    value: '$option min',
-                    onPressed: () {
-                      settingsNotifier.saveSettings(settingsState.copyWith(
-                        pomodoroDuration: option,
-                      ));
-                    },
-                  );
-                }),
-              ],
+            Consumer(
+              builder: (context, watch, child) {
+                final settingsState = watch(settingsNotifierProvider.state);
+                final settings = [25, 30, 45, 60];
+
+                return RadioSlider(
+                  onPressed: (index) {
+                    context
+                        .read(settingsNotifierProvider)
+                        .saveSettings(settingsState.copyWith(
+                          pomodoroDuration: settings[index],
+                        ));
+                  },
+                  title: 'Pomodoro timer duration',
+                  settings: settings,
+                  optionUnit: 'min',
+                  currentSetting: settingsState.pomodoroDuration,
+                );
+              },
             ),
             SizedBox(height: 50),
-            RadioSlider(
-              label: 'Short break duration',
-              initialIndex:
-                  _shortBreakOptions.indexOf(settingsState.shortBreakDuration),
-              children: [
-                ..._shortBreakOptions.map((option) {
-                  return RadioSliderOption(
-                    value: '$option min',
-                    onPressed: () {
-                      settingsNotifier.saveSettings(settingsState.copyWith(
-                        shortBreakDuration: option,
-                      ));
-                    },
-                  );
-                }),
-              ],
+            Consumer(
+              builder: (context, watch, child) {
+                final settingsState = watch(settingsNotifierProvider.state);
+                final settings = [2, 3, 5, 10];
+
+                return RadioSlider(
+                  onPressed: (index) {
+                    context
+                        .read(settingsNotifierProvider)
+                        .saveSettings(settingsState.copyWith(
+                          shortBreakDuration: settings[index],
+                        ));
+                  },
+                  title: 'Short break duration',
+                  settings: settings,
+                  optionUnit: 'min',
+                  currentSetting: settingsState.shortBreakDuration,
+                );
+              },
             ),
             SizedBox(height: 50),
-            RadioSlider(
-              label: 'Long break duration',
-              initialIndex:
-                  _longBreakOptions.indexOf(settingsState.longBreakDuration),
-              children: [
-                ..._longBreakOptions.map((option) {
-                  return RadioSliderOption(
-                    value: '$option min',
-                    onPressed: () {
-                      settingsNotifier.saveSettings(settingsState.copyWith(
-                        longBreakDuration: option,
-                      ));
-                    },
-                  );
-                }),
-              ],
+            Consumer(
+              builder: (context, watch, child) {
+                final settingsState = watch(settingsNotifierProvider.state);
+                final settings = [10, 15, 20, 30];
+
+                return RadioSlider(
+                  onPressed: (index) {
+                    context
+                        .read(settingsNotifierProvider)
+                        .saveSettings(settingsState.copyWith(
+                          longBreakDuration: settings[index],
+                        ));
+                  },
+                  title: 'Long break duration',
+                  settings: settings,
+                  optionUnit: 'min',
+                  currentSetting: settingsState.longBreakDuration,
+                );
+              },
             ),
             SizedBox(height: 50),
-            RadioSlider(
-              label: 'Pomodoro intervals number',
-              initialIndex: _intervalsNumberOptions
-                  .indexOf(settingsState.intervalsNumber),
-              children: [
-                ..._intervalsNumberOptions.map((option) {
-                  return RadioSliderOption(
-                    value: '$option',
-                    onPressed: () {
-                      settingsNotifier.saveSettings(settingsState.copyWith(
-                        intervalsNumber: option,
-                      ));
-                    },
-                  );
-                }),
-              ],
+            Consumer(
+              builder: (context, watch, child) {
+                final settingsState = watch(settingsNotifierProvider.state);
+                final settings = [2, 3, 4, 5];
+
+                return RadioSlider(
+                  onPressed: (index) {
+                    context
+                        .read(settingsNotifierProvider)
+                        .saveSettings(settingsState.copyWith(
+                          intervalsNumber: settings[index],
+                        ));
+                  },
+                  title: 'Number of pomodoro intervals',
+                  settings: settings,
+                  optionUnit: '',
+                  currentSetting: settingsState.intervalsNumber,
+                );
+              },
             ),
             SizedBox(height: 50),
             DefaultSettingsButton(),
