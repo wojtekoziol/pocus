@@ -89,14 +89,21 @@ class StatsBarChart extends HookWidget {
                           x: i,
                           barRods: [
                             BarChartRodData(
-                              y: touchedIndex == -1
-                                  ? stats[i].toDouble()
-                                  : touchedIndex == i
-                                      ? max(stats.reduce(max) * 0.75,
-                                          stats[i] * 1.2)
-                                      : 0,
+                              y: touchedIndex == i
+                                  ? max(
+                                      stats.reduce(max) * 0.75, stats[i] * 1.2)
+                                  : touchedIndex != -1
+                                      ? min(1, stats[i]).toDouble()
+                                      : stats[i].toDouble(),
                               width: 20,
-                              colors: [lineColor],
+                              colors: [
+                                // touchedIndex == -1
+                                //     ? lineColor
+                                //     : touchedIndex == i
+                                //         ? lineColor
+                                //         : backgroundLineColor,
+                                lineColor
+                              ],
                               backDrawRodData: BackgroundBarChartRodData(
                                 colors: [backgroundLineColor],
                                 show: true,
@@ -143,7 +150,6 @@ class StatsBarChart extends HookWidget {
                               fontWeight: FontWeight.bold,
                             );
                           }
-
                           return theme.textTheme.caption!.copyWith(
                             color: textColor,
                           );
