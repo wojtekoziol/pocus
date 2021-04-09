@@ -34,6 +34,10 @@ class StatsOpensNotifier extends StateNotifier<StatsState> {
 
       state =
           StatsState.fromJson(jsonDecode(statsOpensForPrefs.stateJsonString));
+
+      if (state.stats[now.weekday - 1] == 0) {
+        insert();
+      }
     });
   }
 
