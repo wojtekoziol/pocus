@@ -23,7 +23,7 @@ class PercentIndicator extends HookWidget {
           scale: CurvedAnimation(
             parent:
                 Tween<double>(begin: 1, end: 0.6).animate(animationController),
-            curve: Curves.easeInOutQuart,
+            curve: Curves.fastOutSlowIn,
           ),
           child: CircularPercentIndicator(
             radius: MediaQuery.of(context).size.width * 0.7,
