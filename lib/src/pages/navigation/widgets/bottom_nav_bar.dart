@@ -59,28 +59,36 @@ class BottomNavBar extends HookWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      for (int i = 0; i < _icons.length; i++)
-                        GestureDetector(
-                          onTap: () {
-                            HapticFeedback.mediumImpact();
-                            pageController.animateToPage(
-                              currentIndexNotifier.value = i,
-                              duration: Duration(milliseconds: 300),
-                              curve: Curves.easeInOut,
-                            );
-                            indicatorWidthAnimationController.forward();
-                          },
-                          child: Container(
-                            color: Colors.transparent,
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
-                              child: Icon(
-                                _icons[i],
-                                size: 28,
+                      ..._icons.asMap().map(
+                        (index, icon) {
+                          return MapEntry(
+                            index,
+                            GestureDetector(
+                              onTap: () {
+                                HapticFeedback.mediumImpact();
+                                pageController.animateToPage(
+                                  currentIndexNotifier.value = index,
+                                  duration: Duration(milliseconds: 300),
+                                  curve: Curves.fastOutSlowIn,
+                                );
+                                if (pageController.page != index) {
+                                  indicatorWidthAnimationController.forward();
+                                }
+                              },
+                              child: Container(
+                                color: Colors.transparent,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(16, 24, 16, 16),
+                                  child: Icon(
+                                    icon,
+                                    size: 28,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
+                          );
+                        },
+                      ).values,
                     ],
                   ),
                 ),
@@ -89,7 +97,8 @@ class BottomNavBar extends HookWidget {
                 top: 0,
                 width: navBarWidthFactor + 25,
                 child: AnimatedAlign(
-                  duration: Duration(milliseconds: 200),
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.fastOutSlowIn,
                   alignment: Alignment(
                     currentIndexNotifier.value == 0 ? -1 : 1,
                     0,

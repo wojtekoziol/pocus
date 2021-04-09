@@ -40,48 +40,58 @@ class RadioSlider extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              for (int i = 0; i < settings.length; i++)
-                GestureDetector(
-                  onTap: () {
-                    onPressed(i);
-                  },
-                  child: Container(
-                    color: Colors.transparent,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        AnimatedContainer(
-                          duration: Duration(milliseconds: 200),
-                          curve: Curves.fastOutSlowIn,
-                          height:
-                              settings.indexOf(currentSetting) == i ? 40 : 0,
-                          width: settings.indexOf(currentSetting) == i ? 80 : 0,
-                          decoration: BoxDecoration(
-                            color: theme.primaryColor,
-                            borderRadius: BorderRadius.circular(32),
-                          ),
-                        ),
-                        Container(
-                          height: 40,
-                          width: 80,
-                          child: Center(
-                            child: Text(
-                              '${settings[i]} $optionUnit',
-                              style: settings.indexOf(currentSetting) == i
-                                  ? TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    )
-                                  : TextStyle(
-                                      color: Colors.black,
-                                    ),
+              ...settings.asMap().map(
+                (index, setting) {
+                  return MapEntry(
+                    index,
+                    GestureDetector(
+                      onTap: () {
+                        onPressed(index);
+                      },
+                      child: Container(
+                        color: Colors.transparent,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            AnimatedContainer(
+                              duration: Duration(milliseconds: 200),
+                              curve: Curves.fastOutSlowIn,
+                              height: settings.indexOf(currentSetting) == index
+                                  ? 40
+                                  : 0,
+                              width: settings.indexOf(currentSetting) == index
+                                  ? 80
+                                  : 0,
+                              decoration: BoxDecoration(
+                                color: theme.primaryColor,
+                                borderRadius: BorderRadius.circular(32),
+                              ),
                             ),
-                          ),
+                            Container(
+                              height: 40,
+                              width: 80,
+                              child: Center(
+                                child: Text(
+                                  '$setting $optionUnit',
+                                  style:
+                                      settings.indexOf(currentSetting) == index
+                                          ? TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            )
+                                          : TextStyle(
+                                              color: Colors.black,
+                                            ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                },
+              ).values
             ],
           ),
         ),

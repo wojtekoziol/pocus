@@ -84,34 +84,35 @@ class StatsBarChart extends HookWidget {
                       },
                     ),
                     barGroups: [
-                      for (int i = 0; i < stats.length; i++)
-                        BarChartGroupData(
-                          x: i,
-                          barRods: [
-                            BarChartRodData(
-                              y: touchedIndex == i
-                                  ? max(
-                                      stats.reduce(max) * 0.75, stats[i] * 1.2)
-                                  : touchedIndex != -1
-                                      ? min(1, stats[i]).toDouble()
-                                      : stats[i].toDouble(),
-                              width: 20,
-                              colors: [
-                                // touchedIndex == -1
-                                //     ? lineColor
-                                //     : touchedIndex == i
-                                //         ? lineColor
-                                //         : backgroundLineColor,
-                                lineColor
+                      ...stats.asMap().map(
+                        (index, y) {
+                          var adaptiveY = y.toDouble();
+                          if (touchedIndex == index) {
+                            adaptiveY = max(stats.reduce(max) * 0.75, y * 1.2);
+                          } else if (touchedIndex != -1) {
+                            adaptiveY = min(1, y).toDouble();
+                          }
+
+                          return MapEntry(
+                            index,
+                            BarChartGroupData(
+                              x: index,
+                              barRods: [
+                                BarChartRodData(
+                                  y: adaptiveY,
+                                  width: 20,
+                                  colors: [lineColor],
+                                  backDrawRodData: BackgroundBarChartRodData(
+                                    colors: [backgroundLineColor],
+                                    show: true,
+                                    y: max(stats.reduce(max) * 1.2, 1),
+                                  ),
+                                ),
                               ],
-                              backDrawRodData: BackgroundBarChartRodData(
-                                colors: [backgroundLineColor],
-                                show: true,
-                                y: max(stats.reduce(max) * 1.2, 1),
-                              ),
                             ),
-                          ],
-                        )
+                          );
+                        },
+                      ).values
                     ],
                     alignment: BarChartAlignment.center,
                     borderData: FlBorderData(show: false),
