@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:pocus/src/pages/boarding/welcome/boarding_welcome_page.dart';
 
 class BoardingNavigationPage extends HookWidget {
   @override
@@ -13,7 +14,10 @@ class BoardingNavigationPage extends HookWidget {
     return Scaffold(
       body: PageView(
         controller: pageController,
-        children: [],
+        physics: NeverScrollableScrollPhysics(),
+        children: [
+          BoardingWelcomePage(),
+        ],
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(

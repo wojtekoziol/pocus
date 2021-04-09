@@ -17,21 +17,20 @@ class NavigationPage extends HookWidget {
   Widget build(BuildContext context) {
     final pageController = usePageController();
 
-    // TODO:
-    // useEffect(() {
-    //   SharedPreferences.getInstance().then((prefs) {
-    //     final wasBoardingScreenShown =
-    //         prefs.getBool(PrefsKeys.wasBoardingScreenShown) ?? false;
-    //     if (!wasBoardingScreenShown) {
-    //       showCupertinoModalBottomSheet(
-    //         context: context,
-    //         builder: (context) => BoardingNavigationPage(),
-    //       );
-    //     }
-    //     // TODO:
-    //     // prefs.setBool(PrefsKeys.wasBoardingScreenShown, true);
-    //   });
-    // });
+    useEffect(() {
+      SharedPreferences.getInstance().then((prefs) {
+        final wasBoardingScreenShown =
+            prefs.getBool(PrefsKeys.wasBoardingScreenShown) ?? false;
+        if (!wasBoardingScreenShown) {
+          showCupertinoModalBottomSheet(
+            context: context,
+            builder: (context) => BoardingNavigationPage(),
+          );
+        }
+        // TODO: Uncomment
+        // prefs.setBool(PrefsKeys.wasBoardingScreenShown, true);
+      });
+    }, []);
 
     return Scaffold(
       appBar: AppBar(
