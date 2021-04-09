@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:pocus/src/pages/boarding/pomodoro/boarding_pomodoro_page.dart';
 import 'package:pocus/src/pages/boarding/welcome/boarding_welcome_page.dart';
 
 class BoardingNavigationPage extends HookWidget {
@@ -17,6 +18,7 @@ class BoardingNavigationPage extends HookWidget {
         physics: NeverScrollableScrollPhysics(),
         children: [
           BoardingWelcomePage(),
+          BoardingPomodoroPage(),
         ],
       ),
       bottomNavigationBar: SafeArea(
