@@ -13,7 +13,6 @@ Future<void> main() async {
   runApp(ProviderScope(
     child: MyApp(),
   ));
-  ;
 }
 
 class MyApp extends HookWidget {
