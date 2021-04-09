@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:pocus/src/pages/boarding/instructions/boarding_instructions_page.dart';
 import 'package:pocus/src/pages/boarding/pomodoro/boarding_pomodoro_page.dart';
 import 'package:pocus/src/pages/boarding/welcome/boarding_welcome_page.dart';
 
@@ -19,6 +20,7 @@ class BoardingNavigationPage extends HookWidget {
         children: [
           BoardingWelcomePage(),
           BoardingPomodoroPage(),
+          BoardingInstructionsPage(),
         ],
       ),
       bottomNavigationBar: SafeArea(
@@ -37,6 +39,10 @@ class BoardingNavigationPage extends HookWidget {
                   },
                   onTapUp: (details) {
                     scaleAnimationController.reverse();
+                    if (pageController.page == 2) {
+                      Navigator.of(context).pop();
+                      return;
+                    }
                     pageController.nextPage(
                       duration: Duration(milliseconds: 200),
                       curve: Curves.easeInOut,
