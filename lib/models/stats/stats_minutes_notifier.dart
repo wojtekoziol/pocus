@@ -39,9 +39,8 @@ class StatsMinutesNotifier extends StateNotifier<StatsState> {
   }
 
   Future<void> insert(int n) async {
-    final weekday = DateTime.now().weekday;
-    var stats = state.stats
-      ..replaceRange(weekday - 1, weekday, [state.stats[weekday - 1] + n]);
+    final stats = List<int>.from(state.stats);
+    stats[DateTime.now().weekday - 1] += n;
 
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       state = state.copyWith(stats: stats);

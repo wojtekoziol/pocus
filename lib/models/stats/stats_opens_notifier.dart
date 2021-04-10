@@ -42,9 +42,8 @@ class StatsOpensNotifier extends StateNotifier<StatsState> {
   }
 
   Future<void> insert() async {
-    final weekday = DateTime.now().weekday;
-    var stats = state.stats
-      ..replaceRange(weekday - 1, weekday, [state.stats[weekday - 1] + 1]);
+    final stats = List<int>.from(state.stats);
+    stats[DateTime.now().weekday - 1]++;
 
     state = state.copyWith(stats: stats);
 
