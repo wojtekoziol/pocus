@@ -14,14 +14,16 @@ class BoardingNavigationPage extends HookWidget {
         useAnimationController(duration: Duration(milliseconds: 50));
 
     return Scaffold(
-      body: PageView(
-        controller: pageController,
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          BoardingWelcomePage(),
-          BoardingPomodoroPage(),
-          BoardingInstructionsPage(),
-        ],
+      body: SafeArea(
+        child: PageView(
+          controller: pageController,
+          physics: NeverScrollableScrollPhysics(),
+          children: [
+            BoardingWelcomePage(),
+            BoardingPomodoroPage(),
+            BoardingInstructionsPage(),
+          ],
+        ),
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(

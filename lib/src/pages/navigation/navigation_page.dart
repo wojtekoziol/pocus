@@ -1,8 +1,8 @@
 import 'package:animations/animations.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:pocus/src/pages/boarding/boarding_navigation_page.dart';
 import 'package:pocus/src/pages/navigation/widgets/bottom_nav_bar.dart';
 import 'package:pocus/src/pages/pomodoro_timer/pomodoro_timer_page.dart';
@@ -23,7 +23,7 @@ class NavigationPage extends HookWidget {
         final wasBoardingScreenShown =
             prefs.getBool(PrefsKeys.wasBoardingScreenShown) ?? false;
         if (!wasBoardingScreenShown) {
-          showCupertinoModalBottomSheet(
+          showCupertinoModalPopup(
             context: context,
             builder: (context) => BoardingNavigationPage(),
           );
