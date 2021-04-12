@@ -19,6 +19,7 @@ class NavigationPage extends HookWidget {
     final pageController = usePageController();
 
     useEffect(() {
+      Notifications.init();
       SharedPreferences.getInstance().then((prefs) {
         final wasBoardingScreenShown =
             prefs.getBool(PrefsKeys.wasBoardingScreenShown) ?? false;
@@ -28,10 +29,8 @@ class NavigationPage extends HookWidget {
             builder: (context) => BoardingNavigationPage(),
           );
         }
-        // TODO: Uncomment
-        // prefs.setBool(PrefsKeys.wasBoardingScreenShown, true);
+        prefs.setBool(PrefsKeys.wasBoardingScreenShown, true);
       });
-      Notifications.init();
     }, []);
 
     return Scaffold(
