@@ -1,8 +1,10 @@
+import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
+import 'package:pocus/src/pages/pomodoro_timer/widgets/play_pause_button/custom_snackbar.dart';
 
 class PlayPauseButton extends HookWidget {
   @override
@@ -31,11 +33,31 @@ class PlayPauseButton extends HookWidget {
           },
           onLongPress: () {
             HapticFeedback.mediumImpact();
+            showFlash(
+              context: context,
+              duration: Duration(seconds: 3),
+              builder: (context, controller) {
+                return CustomSnackBar(
+                  controller: controller,
+                  message: 'Timer reset!',
+                );
+              },
+            );
             pomodoroTimerNotifier.reset();
           },
           onDoubleTap: () {
             HapticFeedback.mediumImpact();
             pomodoroTimerNotifier.skip();
+            showFlash(
+              context: context,
+              duration: Duration(seconds: 3),
+              builder: (context, controller) {
+                return CustomSnackBar(
+                  controller: controller,
+                  message: 'Timer skipped!',
+                );
+              },
+            );
           },
           child: AnimatedIcon(
             icon: AnimatedIcons.play_pause,
