@@ -7,9 +7,10 @@ import 'package:pocus/providers.dart';
 class PercentIndicator extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final screenSize = MediaQuery.of(context).size;
     final animationController =
         useAnimationController(duration: Duration(milliseconds: 300));
-    final theme = Theme.of(context);
 
     return Consumer(
       builder: (context, watch, child) {
@@ -26,7 +27,7 @@ class PercentIndicator extends HookWidget {
             curve: Curves.fastOutSlowIn,
           ),
           child: CircularPercentIndicator(
-            radius: MediaQuery.of(context).size.width * 0.7,
+            radius: screenSize.width * 0.7,
             lineWidth: 12,
             reverse: true,
             animation: true,

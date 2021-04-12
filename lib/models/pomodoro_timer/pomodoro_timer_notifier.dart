@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/models/pomodoro_timer/state/pomodoro_timer_state.dart';
 import 'package:pocus/models/prefs/pomodoro_timer/pomodoro_timer_state_for_prefs.dart';
 import 'package:pocus/models/settings/state/settings_state.dart';
+import 'package:pocus/utils/notifications.dart';
 import 'package:pocus/utils/prefs_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -24,6 +25,11 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
   int _intervalsNumber = 4;
 
   void start() {
+    Notifications.schedule(
+      duration: Duration(seconds: state.secondsLeft),
+      title: 'Title',
+      body: 'Body',
+    );
     state = state.copyWith(isRunning: true);
     Timer.periodic(
       Duration(seconds: 1),
@@ -44,6 +50,7 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
   }
 
   void skip() {
+    Notifications.cancelAll();
     state.when(
       pomodoro: (secondsLeft, secondsInitial, currentInterval, isRunning) {
         if (currentInterval >= _intervalsNumber) {
@@ -81,10 +88,12 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
   }
 
   void pause() {
+    Notifications.cancelAll();
     state = state.copyWith(isRunning: false);
   }
 
   void reset() {
+    Notifications.cancelAll();
     state = PomodoroTimerState.pomodoro(
       secondsLeft: _pomodoroDuration * 60,
       secondsInitial: _pomodoroDuration * 60,

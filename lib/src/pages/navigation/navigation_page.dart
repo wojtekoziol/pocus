@@ -8,6 +8,7 @@ import 'package:pocus/src/pages/navigation/widgets/bottom_nav_bar.dart';
 import 'package:pocus/src/pages/pomodoro_timer/pomodoro_timer_page.dart';
 import 'package:pocus/src/pages/settings/settings_page.dart';
 import 'package:pocus/src/pages/stats/stats_page.dart';
+import 'package:pocus/utils/notifications.dart';
 import 'package:pocus/utils/prefs_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unicons/unicons.dart';
@@ -30,6 +31,7 @@ class NavigationPage extends HookWidget {
         // TODO: Uncomment
         // prefs.setBool(PrefsKeys.wasBoardingScreenShown, true);
       });
+      Notifications.init();
     }, []);
 
     return Scaffold(
