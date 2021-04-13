@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class RadioSlider extends StatelessWidget {
   const RadioSlider({
@@ -46,6 +47,7 @@ class RadioSlider extends StatelessWidget {
                     index,
                     GestureDetector(
                       onTap: () {
+                        HapticFeedback.mediumImpact();
                         onPressed(index);
                       },
                       child: Container(
