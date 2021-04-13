@@ -1,4 +1,4 @@
-package com.example.pocus
+package com.wojtekoziol.pocus
 
 import io.flutter.embedding.android.FlutterActivity
 
