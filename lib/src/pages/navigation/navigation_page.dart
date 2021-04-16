@@ -44,7 +44,6 @@ class NavigationPage extends HookWidget {
           OpenContainer(
             closedColor: Colors.transparent,
             closedElevation: 0,
-            transitionDuration: Duration(milliseconds: 400),
             closedBuilder: (context, openContainer) {
               return GestureDetector(
                 onTap: () {
