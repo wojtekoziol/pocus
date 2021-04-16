@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class RadioSlider extends StatelessWidget {
-  const RadioSlider({
+class RadioSettings extends StatelessWidget {
+  const RadioSettings({
     required this.onPressed,
     required this.title,
     required this.settings,

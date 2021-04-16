@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
 import 'package:pocus/src/pages/settings/widgets/default_settings_button.dart';
-import 'package:pocus/src/pages/settings/widgets/radio_slider.dart';
+import 'package:pocus/src/pages/settings/widgets/radio_settings.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -43,7 +43,7 @@ class SettingsPage extends StatelessWidget {
                 final settingsState = watch(settingsNotifierProvider.state);
                 final settings = [25, 30, 45, 60];
 
-                return RadioSlider(
+                return RadioSettings(
                   onPressed: (index) {
                     context
                         .read(settingsNotifierProvider)
@@ -64,7 +64,7 @@ class SettingsPage extends StatelessWidget {
                 final settingsState = watch(settingsNotifierProvider.state);
                 final settings = [2, 3, 5, 10];
 
-                return RadioSlider(
+                return RadioSettings(
                   onPressed: (index) {
                     context
                         .read(settingsNotifierProvider)
@@ -85,7 +85,7 @@ class SettingsPage extends StatelessWidget {
                 final settingsState = watch(settingsNotifierProvider.state);
                 final settings = [10, 15, 20, 30];
 
-                return RadioSlider(
+                return RadioSettings(
                   onPressed: (index) {
                     context
                         .read(settingsNotifierProvider)
@@ -106,7 +106,7 @@ class SettingsPage extends StatelessWidget {
                 final settingsState = watch(settingsNotifierProvider.state);
                 final settings = [2, 3, 4, 5];
 
-                return RadioSlider(
+                return RadioSettings(
                   onPressed: (index) {
                     context
                         .read(settingsNotifierProvider)
