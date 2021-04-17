@@ -81,9 +81,7 @@ class RadioSettings extends StatelessWidget {
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold,
                                             )
-                                          : TextStyle(
-                                              color: Colors.black,
-                                            ),
+                                          : theme.textTheme.bodyText1,
                                 ),
                               ),
                             ),
