@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pocus/src/pages/boarding/boarding_navigation_page.dart';
 import 'package:pocus/src/pages/navigation/widgets/bottom_nav_bar.dart';
 import 'package:pocus/src/pages/pomodoro_timer/pomodoro_timer_page.dart';
@@ -45,8 +46,10 @@ class NavigationPage extends HookWidget {
           appBar: AppBar(
             title: Text('Pocus'),
             leading: Padding(
-              padding: EdgeInsets.all(16),
-              child: Placeholder(),
+              padding: EdgeInsets.only(left: 16, right: 8),
+              child: SvgPicture.asset(
+                'assets/images/tomato.svg',
+              ),
             ),
             actions: [
               OpenContainer(

@@ -30,8 +30,8 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
     if (notification) {
       Notifications.schedule(
         duration: Duration(seconds: state.secondsLeft),
-        title: 'Title',
-        body: 'Body',
+        title: state is Pomodoro ? 'Get back to work! 📝' : 'Time to rest! 🤩',
+        body: 'Don\'t forget to start the timer',
       );
     }
     state = state.copyWith(isRunning: true);
