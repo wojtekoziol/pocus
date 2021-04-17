@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,7 +29,7 @@ class PercentIndicator extends HookWidget {
             curve: Curves.fastOutSlowIn,
           ),
           child: CircularPercentIndicator(
-            radius: screenSize.width * 0.7,
+            radius: min(screenSize.width * 0.7, screenSize.height * 0.5),
             lineWidth: 12,
             reverse: true,
             animation: true,

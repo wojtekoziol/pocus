@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
-import 'package:pocus/src/pages/pomodoro_timer/widgets/play_pause_button/custom_snackbar.dart';
+import 'package:pocus/src/pages/pomodoro_timer/widgets/custom_snackbar.dart';
 
 class PlayPauseButton extends HookWidget {
   @override

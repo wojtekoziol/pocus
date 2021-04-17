@@ -33,48 +33,58 @@ class NavigationPage extends HookWidget {
       });
     }, []);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Pocus'),
-        leading: Padding(
-          padding: EdgeInsets.all(16),
-          child: Placeholder(),
-        ),
-        actions: [
-          OpenContainer(
-            closedColor: Colors.transparent,
-            closedElevation: 0,
-            closedBuilder: (context, openContainer) {
-              return GestureDetector(
-                onTap: () {
-                  HapticFeedback.mediumImpact();
-                  openContainer();
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth > 600) {
+          return Scaffold(
+            body: PomodoroTimerPage(),
+          );
+        }
+
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Pocus'),
+            leading: Padding(
+              padding: EdgeInsets.all(16),
+              child: Placeholder(),
+            ),
+            actions: [
+              OpenContainer(
+                closedColor: Colors.transparent,
+                closedElevation: 0,
+                closedBuilder: (context, openContainer) {
+                  return GestureDetector(
+                    onTap: () {
+                      HapticFeedback.mediumImpact();
+                      openContainer();
+                    },
+                    child: Container(
+                      color: Colors.transparent,
+                      child: Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Icon(UniconsLine.setting),
+                      ),
+                    ),
+                  );
                 },
-                child: Container(
-                  color: Colors.transparent,
-                  child: Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Icon(UniconsLine.setting),
-                  ),
-                ),
-              );
-            },
-            openElevation: 0,
-            openBuilder: (context, action) => SettingsPage(),
+                openElevation: 0,
+                openBuilder: (context, action) => SettingsPage(),
+              ),
+            ],
           ),
-        ],
-      ),
-      body: PageView(
-        controller: pageController,
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          PomodoroTimerPage(),
-          StatsPage(),
-        ],
-      ),
-      bottomNavigationBar: BottomNavBar(
-        pageController: pageController,
-      ),
+          body: PageView(
+            controller: pageController,
+            physics: NeverScrollableScrollPhysics(),
+            children: [
+              PomodoroTimerPage(),
+              StatsPage(),
+            ],
+          ),
+          bottomNavigationBar: BottomNavBar(
+            pageController: pageController,
+          ),
+        );
+      },
     );
   }
 }

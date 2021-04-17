@@ -18,7 +18,7 @@ class CustomSnackBar extends StatelessWidget {
       controller: controller,
       backgroundColor: theme.primaryColor,
       position: FlashPosition.top,
-      margin: EdgeInsets.symmetric(horizontal: 8),
+      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       borderRadius: BorderRadius.circular(32),
       forwardAnimationCurve: Curves.fastOutSlowIn,
       reverseAnimationCurve: Curves.fastOutSlowIn,
