@@ -24,12 +24,14 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
   int _longBreakDuration = 15;
   int _intervalsNumber = 4;
 
-  void start() {
-    Notifications.schedule(
-      duration: Duration(seconds: state.secondsLeft),
-      title: 'Title',
-      body: 'Body',
-    );
+  void start({bool notification = true}) {
+    if (notification) {
+      Notifications.schedule(
+        duration: Duration(seconds: state.secondsLeft),
+        title: 'Title',
+        body: 'Body',
+      );
+    }
     state = state.copyWith(isRunning: true);
     Timer.periodic(
       Duration(seconds: 1),
@@ -157,16 +159,18 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
       final pomodoroTimerState = PomodoroTimerState.fromJson(
           jsonDecode(pomodoroTimerStateForPrefs.stateJsonString));
 
-      state = pomodoroTimerState.copyWith(
-        secondsLeft: pomodoroTimerState.secondsLeft -
-            DateTime.now()
-                .difference(pomodoroTimerStateForPrefs.savedDate)
-                .inSeconds,
-      );
+      final difference =
+          DateTime.now().difference(pomodoroTimerStateForPrefs.savedDate);
+      final secondsLeft = difference.inSeconds > pomodoroTimerState.secondsLeft
+          ? 0
+          : pomodoroTimerState.secondsLeft - difference.inSeconds;
 
-      return DateTime.now()
-          .difference(pomodoroTimerStateForPrefs.savedDate)
-          .inMinutes;
+      state = pomodoroTimerState.copyWith(
+        secondsLeft: secondsLeft,
+      );
+      start(notification: false);
+
+      return difference.inMinutes;
     });
     return 0;
   }

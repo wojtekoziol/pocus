@@ -22,6 +22,7 @@ class Notifications {
     required String title,
     required String body,
   }) async {
+    if (duration.inSeconds <= 0) return;
     tz.initializeTimeZones();
     await _flutterLocalNotificationsPlugin.zonedSchedule(
       0,
