@@ -19,6 +19,7 @@ class SettingsPage extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        centerTitle: true,
         brightness: Brightness.dark,
         iconTheme: IconThemeData(
           color: Colors.white,
@@ -34,96 +35,98 @@ class SettingsPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 24),
-        child: Column(
-          children: [
-            Consumer(
-              builder: (context, watch, child) {
-                final settingsState = watch(settingsNotifierProvider.state);
-                final settings = [25, 30, 45, 60];
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 48, horizontal: 24),
+          child: Column(
+            children: [
+              Consumer(
+                builder: (context, watch, child) {
+                  final settingsState = watch(settingsNotifierProvider.state);
+                  final settings = [25, 30, 45, 60];
 
-                return RadioSettings(
-                  onPressed: (index) {
-                    context
-                        .read(settingsNotifierProvider)
-                        .saveSettings(settingsState.copyWith(
-                          pomodoroDuration: settings[index],
-                        ));
-                  },
-                  title: 'Pomodoro timer duration',
-                  settings: settings,
-                  optionUnit: 'min',
-                  currentSetting: settingsState.pomodoroDuration,
-                );
-              },
-            ),
-            SizedBox(height: 50),
-            Consumer(
-              builder: (context, watch, child) {
-                final settingsState = watch(settingsNotifierProvider.state);
-                final settings = [2, 3, 5, 10];
+                  return RadioSettings(
+                    onPressed: (index) {
+                      context
+                          .read(settingsNotifierProvider)
+                          .saveSettings(settingsState.copyWith(
+                            pomodoroDuration: settings[index],
+                          ));
+                    },
+                    title: 'Pomodoro timer duration',
+                    settings: settings,
+                    optionUnit: 'min',
+                    currentSetting: settingsState.pomodoroDuration,
+                  );
+                },
+              ),
+              SizedBox(height: 50),
+              Consumer(
+                builder: (context, watch, child) {
+                  final settingsState = watch(settingsNotifierProvider.state);
+                  final settings = [2, 3, 5, 10];
 
-                return RadioSettings(
-                  onPressed: (index) {
-                    context
-                        .read(settingsNotifierProvider)
-                        .saveSettings(settingsState.copyWith(
-                          shortBreakDuration: settings[index],
-                        ));
-                  },
-                  title: 'Short break duration',
-                  settings: settings,
-                  optionUnit: 'min',
-                  currentSetting: settingsState.shortBreakDuration,
-                );
-              },
-            ),
-            SizedBox(height: 50),
-            Consumer(
-              builder: (context, watch, child) {
-                final settingsState = watch(settingsNotifierProvider.state);
-                final settings = [10, 15, 20, 30];
+                  return RadioSettings(
+                    onPressed: (index) {
+                      context
+                          .read(settingsNotifierProvider)
+                          .saveSettings(settingsState.copyWith(
+                            shortBreakDuration: settings[index],
+                          ));
+                    },
+                    title: 'Short break duration',
+                    settings: settings,
+                    optionUnit: 'min',
+                    currentSetting: settingsState.shortBreakDuration,
+                  );
+                },
+              ),
+              SizedBox(height: 50),
+              Consumer(
+                builder: (context, watch, child) {
+                  final settingsState = watch(settingsNotifierProvider.state);
+                  final settings = [10, 15, 20, 30];
 
-                return RadioSettings(
-                  onPressed: (index) {
-                    context
-                        .read(settingsNotifierProvider)
-                        .saveSettings(settingsState.copyWith(
-                          longBreakDuration: settings[index],
-                        ));
-                  },
-                  title: 'Long break duration',
-                  settings: settings,
-                  optionUnit: 'min',
-                  currentSetting: settingsState.longBreakDuration,
-                );
-              },
-            ),
-            SizedBox(height: 50),
-            Consumer(
-              builder: (context, watch, child) {
-                final settingsState = watch(settingsNotifierProvider.state);
-                final settings = [2, 3, 4, 5];
+                  return RadioSettings(
+                    onPressed: (index) {
+                      context
+                          .read(settingsNotifierProvider)
+                          .saveSettings(settingsState.copyWith(
+                            longBreakDuration: settings[index],
+                          ));
+                    },
+                    title: 'Long break duration',
+                    settings: settings,
+                    optionUnit: 'min',
+                    currentSetting: settingsState.longBreakDuration,
+                  );
+                },
+              ),
+              SizedBox(height: 50),
+              Consumer(
+                builder: (context, watch, child) {
+                  final settingsState = watch(settingsNotifierProvider.state);
+                  final settings = [2, 3, 4, 5];
 
-                return RadioSettings(
-                  onPressed: (index) {
-                    context
-                        .read(settingsNotifierProvider)
-                        .saveSettings(settingsState.copyWith(
-                          intervalsNumber: settings[index],
-                        ));
-                  },
-                  title: 'Number of pomodoro intervals',
-                  settings: settings,
-                  optionUnit: '',
-                  currentSetting: settingsState.intervalsNumber,
-                );
-              },
-            ),
-            SizedBox(height: 50),
-            DefaultSettingsButton(),
-          ],
+                  return RadioSettings(
+                    onPressed: (index) {
+                      context
+                          .read(settingsNotifierProvider)
+                          .saveSettings(settingsState.copyWith(
+                            intervalsNumber: settings[index],
+                          ));
+                    },
+                    title: 'Number of pomodoro intervals',
+                    settings: settings,
+                    optionUnit: '',
+                    currentSetting: settingsState.intervalsNumber,
+                  );
+                },
+              ),
+              SizedBox(height: 50),
+              DefaultSettingsButton(),
+            ],
+          ),
         ),
       ),
     );

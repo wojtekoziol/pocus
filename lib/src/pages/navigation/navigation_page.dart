@@ -45,6 +45,7 @@ class NavigationPage extends HookWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text('Pocus'),
+            centerTitle: true,
             leading: Padding(
               padding: EdgeInsets.only(left: 16, right: 8),
               child: SvgPicture.asset(
