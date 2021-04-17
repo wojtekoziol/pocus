@@ -7,6 +7,8 @@ import 'package:pocus/models/pomodoro_timer/state/pomodoro_timer_state.dart';
 import 'package:pocus/models/prefs/pomodoro_timer/pomodoro_timer_state_for_prefs.dart';
 import 'package:pocus/models/settings/state/settings_state.dart';
 import 'package:pocus/utils/notifications.dart';
+import 'package:pocus/utils/player/player.dart';
+import 'package:pocus/utils/player/track_type.dart';
 import 'package:pocus/utils/prefs_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -41,6 +43,9 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
           return;
         }
         if (state.secondsLeft - 1 < 0) {
+          Player.play(state is Pomodoro
+              ? TrackType.breakTrack
+              : TrackType.pomodoroTrack);
           skip();
           return;
         }
