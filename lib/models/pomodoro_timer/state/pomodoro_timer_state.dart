@@ -12,17 +12,20 @@ class PomodoroTimerState with _$PomodoroTimerState {
     required int secondsInitial,
     required int currentInterval,
     required bool isRunning,
+    required String quote,
   }) = Pomodoro;
   factory PomodoroTimerState.shortBreak({
     required int secondsLeft,
     required int secondsInitial,
     required bool isRunning,
     required int nextInterval,
+    required String quote,
   }) = ShortBreak;
   factory PomodoroTimerState.longBreak({
     required int secondsLeft,
     required int secondsInitial,
     required bool isRunning,
+    required String quote,
   }) = LongBreak;
 
   factory PomodoroTimerState.fromJson(Map<String, dynamic> json) =>

@@ -12,6 +12,7 @@ _$Pomodoro _$_$PomodoroFromJson(Map<String, dynamic> json) {
     secondsInitial: json['secondsInitial'] as int,
     currentInterval: json['currentInterval'] as int,
     isRunning: json['isRunning'] as bool,
+    quote: json['quote'] as String,
   );
 }
 
@@ -21,6 +22,7 @@ Map<String, dynamic> _$_$PomodoroToJson(_$Pomodoro instance) =>
       'secondsInitial': instance.secondsInitial,
       'currentInterval': instance.currentInterval,
       'isRunning': instance.isRunning,
+      'quote': instance.quote,
     };
 
 _$ShortBreak _$_$ShortBreakFromJson(Map<String, dynamic> json) {
@@ -29,6 +31,7 @@ _$ShortBreak _$_$ShortBreakFromJson(Map<String, dynamic> json) {
     secondsInitial: json['secondsInitial'] as int,
     isRunning: json['isRunning'] as bool,
     nextInterval: json['nextInterval'] as int,
+    quote: json['quote'] as String,
   );
 }
 
@@ -38,6 +41,7 @@ Map<String, dynamic> _$_$ShortBreakToJson(_$ShortBreak instance) =>
       'secondsInitial': instance.secondsInitial,
       'isRunning': instance.isRunning,
       'nextInterval': instance.nextInterval,
+      'quote': instance.quote,
     };
 
 _$LongBreak _$_$LongBreakFromJson(Map<String, dynamic> json) {
@@ -45,6 +49,7 @@ _$LongBreak _$_$LongBreakFromJson(Map<String, dynamic> json) {
     secondsLeft: json['secondsLeft'] as int,
     secondsInitial: json['secondsInitial'] as int,
     isRunning: json['isRunning'] as bool,
+    quote: json['quote'] as String,
   );
 }
 
@@ -53,4 +58,5 @@ Map<String, dynamic> _$_$LongBreakToJson(_$LongBreak instance) =>
       'secondsLeft': instance.secondsLeft,
       'secondsInitial': instance.secondsInitial,
       'isRunning': instance.isRunning,
+      'quote': instance.quote,
     };
