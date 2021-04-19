@@ -4,6 +4,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:pocus/src/pages/boarding/instructions/boarding_instructions_page.dart';
 import 'package:pocus/src/pages/boarding/pomodoro/boarding_pomodoro_page.dart';
 import 'package:pocus/src/pages/boarding/welcome/boarding_welcome_page.dart';
+import 'package:pocus/utils/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class BoardingNavigationPage extends HookWidget {
   @override
@@ -60,7 +62,7 @@ class BoardingNavigationPage extends HookWidget {
                     ),
                     padding: EdgeInsets.symmetric(vertical: 12, horizontal: 28),
                     child: Text(
-                      'Next',
+                      LocaleKeys.boarding_button.tr(),
                       style: TextStyle(color: Colors.white),
                     ),
                   ),

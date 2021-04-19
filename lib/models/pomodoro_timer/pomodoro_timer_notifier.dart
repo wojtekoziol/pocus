@@ -12,6 +12,8 @@ import 'package:pocus/utils/player/player.dart';
 import 'package:pocus/utils/player/track_type.dart';
 import 'package:pocus/utils/prefs_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:pocus/utils/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
   PomodoroTimerNotifier()
@@ -20,7 +22,7 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
           secondsInitial: 25 * 60,
           currentInterval: 1,
           isRunning: false,
-          quote: 'Get back to work!',
+          quoteId: 1,
         ));
 
   int _pomodoroDuration = 25;
@@ -28,23 +30,14 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
   int _longBreakDuration = 15;
   int _intervalsNumber = 4;
 
-  final _pomodoroQuotes = [
-    'Get back to work!',
-    'Get it done!',
-    'Focus on a single task!',
-  ];
-  final _breakQuotes = [
-    'Take a quick break!',
-    'Get some rest!',
-    'Stretch your body!',
-  ];
-
   void start({bool notification = true}) {
     if (notification) {
       Notifications.schedule(
         duration: Duration(seconds: state.secondsLeft),
-        title: state is Pomodoro ? 'Get back to work! 📝' : 'Time to rest! 🤩',
-        body: 'Don\'t forget to start the timer',
+        title: state is Pomodoro
+            ? tr(LocaleKeys.notification_title_pomodoro)
+            : tr(LocaleKeys.notification_title_break),
+        body: tr(LocaleKeys.notification_body),
       );
     }
     state = state.copyWith(isRunning: true);
@@ -79,7 +72,7 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
             secondsLeft: _longBreakDuration * 60,
             secondsInitial: _longBreakDuration * 60,
             isRunning: false,
-            quote: _breakQuotes[Random().nextInt(_breakQuotes.length)],
+            quoteId: Random().nextInt(3) + 1,
           );
           return;
         }
@@ -88,7 +81,7 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
           secondsInitial: _shortBreakDuration * 60,
           isRunning: false,
           nextInterval: currentInterval + 1,
-          quote: _breakQuotes[Random().nextInt(_breakQuotes.length)],
+          quoteId: Random().nextInt(3) + 1,
         );
       },
       shortBreak:
@@ -98,7 +91,7 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
           secondsInitial: _pomodoroDuration * 60,
           currentInterval: nextInterval,
           isRunning: false,
-          quote: _pomodoroQuotes[Random().nextInt(_pomodoroQuotes.length)],
+          quoteId: Random().nextInt(3) + 1,
         );
       },
       longBreak: (secondsLeft, secondsInitial, isRunning, quote) {
@@ -107,7 +100,7 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
           secondsInitial: _pomodoroDuration * 60,
           currentInterval: 1,
           isRunning: false,
-          quote: _pomodoroQuotes[Random().nextInt(_pomodoroQuotes.length)],
+          quoteId: Random().nextInt(3) + 1,
         );
       },
     );
@@ -125,7 +118,7 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
       secondsInitial: _pomodoroDuration * 60,
       currentInterval: 1,
       isRunning: false,
-      quote: _pomodoroQuotes[Random().nextInt(_pomodoroQuotes.length)],
+      quoteId: Random().nextInt(3) + 1,
     );
   }
 
@@ -138,18 +131,18 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
     if (!state.isRunning && state.secondsLeft == state.secondsInitial) {
       WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
         state.when(pomodoro:
-            (secondsLeft, secondsInitial, currentInterval, isRunning, quote) {
+            (secondsLeft, secondsInitial, currentInterval, isRunning, quoteId) {
           state = state.copyWith(
             secondsLeft: _pomodoroDuration * 60,
             secondsInitial: _pomodoroDuration * 60,
           );
         }, shortBreak:
-            (secondsLeft, secondsInitial, isRunning, nextInterval, quote) {
+            (secondsLeft, secondsInitial, isRunning, nextInterval, quoteId) {
           state = state.copyWith(
             secondsLeft: _shortBreakDuration * 60,
             secondsInitial: _shortBreakDuration * 60,
           );
-        }, longBreak: (secondsLeft, secondsInitial, isRunning, quote) {
+        }, longBreak: (secondsLeft, secondsInitial, isRunning, quoteId) {
           state = state.copyWith(
             secondsLeft: _longBreakDuration * 60,
             secondsInitial: _longBreakDuration * 60,

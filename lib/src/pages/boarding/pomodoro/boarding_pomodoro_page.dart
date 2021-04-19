@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pocus/src/pages/boarding/pomodoro/widgets/tile.dart';
+import 'package:pocus/utils/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class BoardingPomodoroPage extends StatelessWidget {
   @override
@@ -11,7 +13,7 @@ class BoardingPomodoroPage extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'Full pomodoro session looks somewhat like this:',
+            LocaleKeys.boarding_title_2.tr(),
             textAlign: TextAlign.center,
             style: theme.textTheme.headline5!.copyWith(fontSize: 21),
           ),
@@ -19,7 +21,7 @@ class BoardingPomodoroPage extends StatelessWidget {
           Expanded(
             flex: 5,
             child: Tile(
-              value: 'Focus',
+              value: LocaleKeys.boarding_tile_focus.tr(),
               backgroundColor: theme.primaryColor,
             ),
           ),
@@ -27,7 +29,7 @@ class BoardingPomodoroPage extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Tile(
-              value: 'Short break',
+              value: LocaleKeys.boarding_tile_short_break.tr(),
               backgroundColor: theme.accentColor,
             ),
           ),
@@ -35,7 +37,7 @@ class BoardingPomodoroPage extends StatelessWidget {
           Expanded(
             flex: 5,
             child: Tile(
-              value: 'Focus',
+              value: LocaleKeys.boarding_tile_focus.tr(),
               backgroundColor: theme.primaryColor,
             ),
           ),
@@ -43,7 +45,7 @@ class BoardingPomodoroPage extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Tile(
-              value: 'Short break',
+              value: LocaleKeys.boarding_tile_short_break.tr(),
               backgroundColor: theme.accentColor,
             ),
           ),
@@ -51,7 +53,7 @@ class BoardingPomodoroPage extends StatelessWidget {
           Expanded(
             flex: 5,
             child: Tile(
-              value: 'Focus',
+              value: LocaleKeys.boarding_tile_focus.tr(),
               backgroundColor: theme.primaryColor,
             ),
           ),
@@ -59,7 +61,7 @@ class BoardingPomodoroPage extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Tile(
-              value: 'Short break',
+              value: LocaleKeys.boarding_tile_short_break.tr(),
               backgroundColor: theme.accentColor,
             ),
           ),
@@ -67,7 +69,7 @@ class BoardingPomodoroPage extends StatelessWidget {
           Expanded(
             flex: 5,
             child: Tile(
-              value: 'Focus',
+              value: LocaleKeys.boarding_tile_focus.tr(),
               backgroundColor: theme.primaryColor,
             ),
           ),
@@ -75,7 +77,7 @@ class BoardingPomodoroPage extends StatelessWidget {
           Expanded(
             flex: 4,
             child: Tile(
-              value: 'Long break',
+              value: LocaleKeys.boarding_tile_long_break.tr(),
               backgroundColor: theme.accentColor,
             ),
           ),

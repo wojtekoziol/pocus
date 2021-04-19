@@ -1,0 +1,60 @@
+// DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
+
+abstract class  LocaleKeys {
+  static const time_tag = 'time_tag';
+  static const quote_pomodoro_1 = 'quote.pomodoro.1';
+  static const quote_pomodoro_2 = 'quote.pomodoro.2';
+  static const quote_pomodoro_3 = 'quote.pomodoro.3';
+  static const quote_pomodoro_4 = 'quote.pomodoro.4';
+  static const quote_pomodoro = 'quote.pomodoro';
+  static const quote_break_1 = 'quote.break.1';
+  static const quote_break_2 = 'quote.break.2';
+  static const quote_break_3 = 'quote.break.3';
+  static const quote_break_4 = 'quote.break.4';
+  static const quote_break = 'quote.break';
+  static const quote = 'quote';
+  static const stats_title_1 = 'stats.title.1';
+  static const stats_title_2 = 'stats.title.2';
+  static const stats_title = 'stats.title';
+  static const stats_subtitle = 'stats.subtitle';
+  static const stats = 'stats';
+  static const settings_title = 'settings.title';
+  static const settings_category_pomodoro_duration = 'settings.category.pomodoro_duration';
+  static const settings_category_short_break_duration = 'settings.category.short_break_duration';
+  static const settings_category_long_break_duration = 'settings.category.long_break_duration';
+  static const settings_category_pomodoro_intervals = 'settings.category.pomodoro_intervals';
+  static const settings_category = 'settings.category';
+  static const settings_restore_default = 'settings.restore_default';
+  static const settings = 'settings';
+  static const notification_title_pomodoro = 'notification.title.pomodoro';
+  static const notification_title_break = 'notification.title.break';
+  static const notification_title = 'notification.title';
+  static const notification_body = 'notification.body';
+  static const notification = 'notification';
+  static const snackbar_skip = 'snackbar.skip';
+  static const snackbar_reset = 'snackbar.reset';
+  static const snackbar = 'snackbar';
+  static const boarding_title_1 = 'boarding.title.1';
+  static const boarding_title_2 = 'boarding.title.2';
+  static const boarding_title_3 = 'boarding.title.3';
+  static const boarding_title = 'boarding.title';
+  static const boarding_button = 'boarding.button';
+  static const boarding_tile_focus = 'boarding.tile.focus';
+  static const boarding_tile_short_break = 'boarding.tile.short_break';
+  static const boarding_tile_long_break = 'boarding.tile.long_break';
+  static const boarding_tile = 'boarding.tile';
+  static const boarding_function_1 = 'boarding.function.1';
+  static const boarding_function_2 = 'boarding.function.2';
+  static const boarding_function_3 = 'boarding.function.3';
+  static const boarding_function = 'boarding.function';
+  static const boarding = 'boarding';
+  static const days_monday = 'days.monday';
+  static const days_tuesday = 'days.tuesday';
+  static const days_wednesday = 'days.wednesday';
+  static const days_thursday = 'days.thursday';
+  static const days_friday = 'days.friday';
+  static const days_saturday = 'days.saturday';
+  static const days_sunday = 'days.sunday';
+  static const days = 'days';
+
+}

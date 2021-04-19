@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
 import 'package:pocus/src/pages/stats/widgets/stats_bar_chart.dart';
 import 'package:pocus/src/pages/stats/widgets/stats_number_indicator.dart';
+import 'package:pocus/utils/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class StatsPage extends StatelessWidget {
   @override
@@ -26,7 +28,7 @@ class StatsPage extends StatelessWidget {
                   backgroundLineColor: theme.scaffoldBackgroundColor,
                   textColor: Colors.white,
                   tooltipColor: theme.accentColor,
-                  title: 'Minutes focused',
+                  title: LocaleKeys.stats_title_1.tr(),
                 );
               },
             ),
@@ -45,7 +47,7 @@ class StatsPage extends StatelessWidget {
                   backgroundLineColor: theme.scaffoldBackgroundColor,
                   textColor: theme.primaryColor,
                   tooltipColor: theme.primaryColor,
-                  title: 'App opens',
+                  title: LocaleKeys.stats_title_2.tr(),
                 );
               },
             ),
@@ -62,7 +64,7 @@ class StatsPage extends StatelessWidget {
                               .stats[DateTime.now().weekday - 1];
 
                       return StatsNumberIndicator(
-                        title: 'Minutes focusesd',
+                        title: LocaleKeys.stats_title_1.tr(),
                         value: minutesFocused,
                         backgroundColor: theme.primaryColor,
                         textColor: Colors.white,
@@ -78,7 +80,7 @@ class StatsPage extends StatelessWidget {
                           .stats[DateTime.now().weekday - 1];
 
                       return StatsNumberIndicator(
-                        title: 'App opens',
+                        title: LocaleKeys.stats_title_2.tr(),
                         value: appOpens,
                         backgroundColor: theme.dividerColor,
                         textColor: theme.primaryColor,

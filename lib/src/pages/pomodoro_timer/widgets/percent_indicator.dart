@@ -5,6 +5,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pocus/providers.dart';
+import 'package:pocus/utils/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class PercentIndicator extends HookWidget {
   @override
@@ -49,7 +51,7 @@ class PercentIndicator extends HookWidget {
                   style: theme.textTheme.headline1,
                 ),
                 Text(
-                  'minutes',
+                  LocaleKeys.time_tag.tr(),
                   style: theme.textTheme.bodyText1,
                 ),
               ],

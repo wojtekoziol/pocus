@@ -1,0 +1,72 @@
+{
+  "time_tag": "minut",
+  "quote": {
+    "pomodoro": {
+      "1": "Pora się skupić!",
+      "2": "Wracaj do pracy!",
+      "3": "Czas na pomodoro!",
+      "4": "Dokończ to!"
+    },
+    "break": {
+      "1": "Weź chwilę przerwy!",
+      "2": "Zabaw się!",
+      "3": "Zaparz sobie herbaty!",
+      "4": "Rozciągnij się!"
+    }
+  },
+  "stats": {
+    "title": {
+      "1": "Minuty w skupieniu",
+      "2": "Otwarcia aplikacji"
+    },
+    "subtitle": "W tym tygodniu"
+  },
+  "settings": {
+    "title": "Ustawienia",
+    "category": {
+      "pomodoro_duration": "Czas trwania pomodoro",
+      "short_break_duration": "Czas trwania krótkiej przerwy",
+      "long_break_duration": "Czas trwania długiej przerwy",
+      "pomodoro_intervals": "Ilość interwałów pomodoro"
+    },
+    "restore_default": "Przywróć domyślne"
+  },
+  "notification": {
+    "title": {
+      "pomodoro": "Wracaj do pracy! 📝",
+      "break": "Pora na przerwę! 🤩"
+    },
+    "body": "Nie zapomnij rozpocząć minutnika"
+  },
+  "snackbar": {
+    "skip": "Minutnik pominięty!",
+    "reset": "Minutnik zresetowany!"
+  },
+  "boarding": {
+    "title": {
+      "1": "Technika pomodoro pomaga Ci skupić się na długich zadaniach.",
+      "2": "Pełna sesja pomodoro wygląda mniej więcej tak:",
+      "3": "Podstawowe funkcje"
+    },
+    "button": "Następny",
+    "tile": {
+      "focus": "Skupienie",
+      "short_break": "Krótka przerwa",
+      "long_break": "Długa przerwa"
+    },
+    "function": {
+      "1": "Używaj tego przecisku do rozpoczynania i zatrzymywania minutnika",
+      "2": "Naciśnij i przytrzymaj aby zresetować minutnik",
+      "3": "Nacićnij dwa razy, aby przejść do następnego przedziału czasowego"
+    }
+  },
+  "days": {
+    "monday": "P",
+    "tuesday": "W",
+    "wednesday": "Ś",
+    "thursday": "C",
+    "friday": "P",
+    "saturday": "S",
+    "sunday": "N"
+  }
+}

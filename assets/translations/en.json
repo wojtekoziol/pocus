@@ -1,0 +1,72 @@
+{
+  "time_tag": "minutes",
+  "quote": {
+    "pomodoro": {
+      "1": "Time to focus!",
+      "2": "Get back to work!",
+      "3": "Pomodoro time!",
+      "4": "Get it done"
+    },
+    "break": {
+      "1": "Take a break!",
+      "2": "Have some fun!",
+      "3": "Go get some tea!",
+      "4": "Stretch your body!"
+    }
+  },
+  "stats": {
+    "title": {
+      "1": "Minutes focused",
+      "2": "App opens"
+    },
+    "subtitle": "This week"
+  },
+  "settings": {
+    "title": "Settings",
+    "category": {
+      "pomodoro_duration": "Pomodoro duration",
+      "short_break_duration": "Short break duration",
+      "long_break_duration": "Long break duration",
+      "pomodoro_intervals": "Pomodoro intervals"
+    },
+    "restore_default": "Restore to default"
+  },
+  "notification": {
+    "title": {
+      "pomodoro": "Get back to work! 📝",
+      "break": "Time to rest! 🤩"
+    },
+    "body": "Don't forget to start the timer"
+  },
+  "snackbar": {
+    "skip": "Timer skipped!",
+    "reset": "Timer reset!"
+  },
+  "boarding": {
+    "title": {
+      "1": "Pomodoro technique is focused on boosting your productivity on long tasks.",
+      "2": "Full pomodoro session looks somewhat like this:",
+      "3": "Basic functions"
+    },
+    "button": "Next",
+    "tile": {
+      "focus": "Focus",
+      "short_break": "Short break",
+      "long_break": "Long break"
+    },
+    "function": {
+      "1": "Use this button to start and pause the timer",
+      "2": "Tap and hold to reset the session",
+      "3": "Double tap to skip to next time slot"
+    }
+  },
+  "days": {
+    "monday": "M",
+    "tuesday": "T",
+    "wednesday": "W",
+    "thursday": "T",
+    "friday": "F",
+    "saturday": "S",
+    "sunday": "S"
+  }
+}

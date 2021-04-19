@@ -35,13 +35,13 @@ class _$PomodoroTimerStateTearOff {
       required int secondsInitial,
       required int currentInterval,
       required bool isRunning,
-      required String quote}) {
+      required int quoteId}) {
     return Pomodoro(
       secondsLeft: secondsLeft,
       secondsInitial: secondsInitial,
       currentInterval: currentInterval,
       isRunning: isRunning,
-      quote: quote,
+      quoteId: quoteId,
     );
   }
 
@@ -50,13 +50,13 @@ class _$PomodoroTimerStateTearOff {
       required int secondsInitial,
       required bool isRunning,
       required int nextInterval,
-      required String quote}) {
+      required int quoteId}) {
     return ShortBreak(
       secondsLeft: secondsLeft,
       secondsInitial: secondsInitial,
       isRunning: isRunning,
       nextInterval: nextInterval,
-      quote: quote,
+      quoteId: quoteId,
     );
   }
 
@@ -64,12 +64,12 @@ class _$PomodoroTimerStateTearOff {
       {required int secondsLeft,
       required int secondsInitial,
       required bool isRunning,
-      required String quote}) {
+      required int quoteId}) {
     return LongBreak(
       secondsLeft: secondsLeft,
       secondsInitial: secondsInitial,
       isRunning: isRunning,
-      quote: quote,
+      quoteId: quoteId,
     );
   }
 
@@ -86,31 +86,31 @@ mixin _$PomodoroTimerState {
   int get secondsLeft => throw _privateConstructorUsedError;
   int get secondsInitial => throw _privateConstructorUsedError;
   bool get isRunning => throw _privateConstructorUsedError;
-  String get quote => throw _privateConstructorUsedError;
+  int get quoteId => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int secondsLeft, int secondsInitial,
-            int currentInterval, bool isRunning, String quote)
+            int currentInterval, bool isRunning, int quoteId)
         pomodoro,
     required TResult Function(int secondsLeft, int secondsInitial,
-            bool isRunning, int nextInterval, String quote)
+            bool isRunning, int nextInterval, int quoteId)
         shortBreak,
     required TResult Function(
-            int secondsLeft, int secondsInitial, bool isRunning, String quote)
+            int secondsLeft, int secondsInitial, bool isRunning, int quoteId)
         longBreak,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int secondsLeft, int secondsInitial, int currentInterval,
-            bool isRunning, String quote)?
+            bool isRunning, int quoteId)?
         pomodoro,
     TResult Function(int secondsLeft, int secondsInitial, bool isRunning,
-            int nextInterval, String quote)?
+            int nextInterval, int quoteId)?
         shortBreak,
     TResult Function(
-            int secondsLeft, int secondsInitial, bool isRunning, String quote)?
+            int secondsLeft, int secondsInitial, bool isRunning, int quoteId)?
         longBreak,
     required TResult orElse(),
   }) =>
@@ -141,8 +141,7 @@ abstract class $PomodoroTimerStateCopyWith<$Res> {
   factory $PomodoroTimerStateCopyWith(
           PomodoroTimerState value, $Res Function(PomodoroTimerState) then) =
       _$PomodoroTimerStateCopyWithImpl<$Res>;
-  $Res call(
-      {int secondsLeft, int secondsInitial, bool isRunning, String quote});
+  $Res call({int secondsLeft, int secondsInitial, bool isRunning, int quoteId});
 }
 
 /// @nodoc
@@ -159,7 +158,7 @@ class _$PomodoroTimerStateCopyWithImpl<$Res>
     Object? secondsLeft = freezed,
     Object? secondsInitial = freezed,
     Object? isRunning = freezed,
-    Object? quote = freezed,
+    Object? quoteId = freezed,
   }) {
     return _then(_value.copyWith(
       secondsLeft: secondsLeft == freezed
@@ -174,10 +173,10 @@ class _$PomodoroTimerStateCopyWithImpl<$Res>
           ? _value.isRunning
           : isRunning // ignore: cast_nullable_to_non_nullable
               as bool,
-      quote: quote == freezed
-          ? _value.quote
-          : quote // ignore: cast_nullable_to_non_nullable
-              as String,
+      quoteId: quoteId == freezed
+          ? _value.quoteId
+          : quoteId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -193,7 +192,7 @@ abstract class $PomodoroCopyWith<$Res>
       int secondsInitial,
       int currentInterval,
       bool isRunning,
-      String quote});
+      int quoteId});
 }
 
 /// @nodoc
@@ -212,7 +211,7 @@ class _$PomodoroCopyWithImpl<$Res>
     Object? secondsInitial = freezed,
     Object? currentInterval = freezed,
     Object? isRunning = freezed,
-    Object? quote = freezed,
+    Object? quoteId = freezed,
   }) {
     return _then(Pomodoro(
       secondsLeft: secondsLeft == freezed
@@ -231,10 +230,10 @@ class _$PomodoroCopyWithImpl<$Res>
           ? _value.isRunning
           : isRunning // ignore: cast_nullable_to_non_nullable
               as bool,
-      quote: quote == freezed
-          ? _value.quote
-          : quote // ignore: cast_nullable_to_non_nullable
-              as String,
+      quoteId: quoteId == freezed
+          ? _value.quoteId
+          : quoteId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -248,7 +247,7 @@ class _$Pomodoro with DiagnosticableTreeMixin implements Pomodoro {
       required this.secondsInitial,
       required this.currentInterval,
       required this.isRunning,
-      required this.quote});
+      required this.quoteId});
 
   factory _$Pomodoro.fromJson(Map<String, dynamic> json) =>
       _$_$PomodoroFromJson(json);
@@ -262,11 +261,11 @@ class _$Pomodoro with DiagnosticableTreeMixin implements Pomodoro {
   @override
   final bool isRunning;
   @override
-  final String quote;
+  final int quoteId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PomodoroTimerState.pomodoro(secondsLeft: $secondsLeft, secondsInitial: $secondsInitial, currentInterval: $currentInterval, isRunning: $isRunning, quote: $quote)';
+    return 'PomodoroTimerState.pomodoro(secondsLeft: $secondsLeft, secondsInitial: $secondsInitial, currentInterval: $currentInterval, isRunning: $isRunning, quoteId: $quoteId)';
   }
 
   @override
@@ -278,7 +277,7 @@ class _$Pomodoro with DiagnosticableTreeMixin implements Pomodoro {
       ..add(DiagnosticsProperty('secondsInitial', secondsInitial))
       ..add(DiagnosticsProperty('currentInterval', currentInterval))
       ..add(DiagnosticsProperty('isRunning', isRunning))
-      ..add(DiagnosticsProperty('quote', quote));
+      ..add(DiagnosticsProperty('quoteId', quoteId));
   }
 
   @override
@@ -297,8 +296,8 @@ class _$Pomodoro with DiagnosticableTreeMixin implements Pomodoro {
             (identical(other.isRunning, isRunning) ||
                 const DeepCollectionEquality()
                     .equals(other.isRunning, isRunning)) &&
-            (identical(other.quote, quote) ||
-                const DeepCollectionEquality().equals(other.quote, quote)));
+            (identical(other.quoteId, quoteId) ||
+                const DeepCollectionEquality().equals(other.quoteId, quoteId)));
   }
 
   @override
@@ -308,7 +307,7 @@ class _$Pomodoro with DiagnosticableTreeMixin implements Pomodoro {
       const DeepCollectionEquality().hash(secondsInitial) ^
       const DeepCollectionEquality().hash(currentInterval) ^
       const DeepCollectionEquality().hash(isRunning) ^
-      const DeepCollectionEquality().hash(quote);
+      const DeepCollectionEquality().hash(quoteId);
 
   @JsonKey(ignore: true)
   @override
@@ -319,36 +318,36 @@ class _$Pomodoro with DiagnosticableTreeMixin implements Pomodoro {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int secondsLeft, int secondsInitial,
-            int currentInterval, bool isRunning, String quote)
+            int currentInterval, bool isRunning, int quoteId)
         pomodoro,
     required TResult Function(int secondsLeft, int secondsInitial,
-            bool isRunning, int nextInterval, String quote)
+            bool isRunning, int nextInterval, int quoteId)
         shortBreak,
     required TResult Function(
-            int secondsLeft, int secondsInitial, bool isRunning, String quote)
+            int secondsLeft, int secondsInitial, bool isRunning, int quoteId)
         longBreak,
   }) {
     return pomodoro(
-        secondsLeft, secondsInitial, currentInterval, isRunning, quote);
+        secondsLeft, secondsInitial, currentInterval, isRunning, quoteId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int secondsLeft, int secondsInitial, int currentInterval,
-            bool isRunning, String quote)?
+            bool isRunning, int quoteId)?
         pomodoro,
     TResult Function(int secondsLeft, int secondsInitial, bool isRunning,
-            int nextInterval, String quote)?
+            int nextInterval, int quoteId)?
         shortBreak,
     TResult Function(
-            int secondsLeft, int secondsInitial, bool isRunning, String quote)?
+            int secondsLeft, int secondsInitial, bool isRunning, int quoteId)?
         longBreak,
     required TResult orElse(),
   }) {
     if (pomodoro != null) {
       return pomodoro(
-          secondsLeft, secondsInitial, currentInterval, isRunning, quote);
+          secondsLeft, secondsInitial, currentInterval, isRunning, quoteId);
     }
     return orElse();
   }
@@ -389,7 +388,7 @@ abstract class Pomodoro implements PomodoroTimerState {
       required int secondsInitial,
       required int currentInterval,
       required bool isRunning,
-      required String quote}) = _$Pomodoro;
+      required int quoteId}) = _$Pomodoro;
 
   factory Pomodoro.fromJson(Map<String, dynamic> json) = _$Pomodoro.fromJson;
 
@@ -401,7 +400,7 @@ abstract class Pomodoro implements PomodoroTimerState {
   @override
   bool get isRunning => throw _privateConstructorUsedError;
   @override
-  String get quote => throw _privateConstructorUsedError;
+  int get quoteId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $PomodoroCopyWith<Pomodoro> get copyWith =>
@@ -420,7 +419,7 @@ abstract class $ShortBreakCopyWith<$Res>
       int secondsInitial,
       bool isRunning,
       int nextInterval,
-      String quote});
+      int quoteId});
 }
 
 /// @nodoc
@@ -439,7 +438,7 @@ class _$ShortBreakCopyWithImpl<$Res>
     Object? secondsInitial = freezed,
     Object? isRunning = freezed,
     Object? nextInterval = freezed,
-    Object? quote = freezed,
+    Object? quoteId = freezed,
   }) {
     return _then(ShortBreak(
       secondsLeft: secondsLeft == freezed
@@ -458,10 +457,10 @@ class _$ShortBreakCopyWithImpl<$Res>
           ? _value.nextInterval
           : nextInterval // ignore: cast_nullable_to_non_nullable
               as int,
-      quote: quote == freezed
-          ? _value.quote
-          : quote // ignore: cast_nullable_to_non_nullable
-              as String,
+      quoteId: quoteId == freezed
+          ? _value.quoteId
+          : quoteId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -475,7 +474,7 @@ class _$ShortBreak with DiagnosticableTreeMixin implements ShortBreak {
       required this.secondsInitial,
       required this.isRunning,
       required this.nextInterval,
-      required this.quote});
+      required this.quoteId});
 
   factory _$ShortBreak.fromJson(Map<String, dynamic> json) =>
       _$_$ShortBreakFromJson(json);
@@ -489,11 +488,11 @@ class _$ShortBreak with DiagnosticableTreeMixin implements ShortBreak {
   @override
   final int nextInterval;
   @override
-  final String quote;
+  final int quoteId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PomodoroTimerState.shortBreak(secondsLeft: $secondsLeft, secondsInitial: $secondsInitial, isRunning: $isRunning, nextInterval: $nextInterval, quote: $quote)';
+    return 'PomodoroTimerState.shortBreak(secondsLeft: $secondsLeft, secondsInitial: $secondsInitial, isRunning: $isRunning, nextInterval: $nextInterval, quoteId: $quoteId)';
   }
 
   @override
@@ -505,7 +504,7 @@ class _$ShortBreak with DiagnosticableTreeMixin implements ShortBreak {
       ..add(DiagnosticsProperty('secondsInitial', secondsInitial))
       ..add(DiagnosticsProperty('isRunning', isRunning))
       ..add(DiagnosticsProperty('nextInterval', nextInterval))
-      ..add(DiagnosticsProperty('quote', quote));
+      ..add(DiagnosticsProperty('quoteId', quoteId));
   }
 
   @override
@@ -524,8 +523,8 @@ class _$ShortBreak with DiagnosticableTreeMixin implements ShortBreak {
             (identical(other.nextInterval, nextInterval) ||
                 const DeepCollectionEquality()
                     .equals(other.nextInterval, nextInterval)) &&
-            (identical(other.quote, quote) ||
-                const DeepCollectionEquality().equals(other.quote, quote)));
+            (identical(other.quoteId, quoteId) ||
+                const DeepCollectionEquality().equals(other.quoteId, quoteId)));
   }
 
   @override
@@ -535,7 +534,7 @@ class _$ShortBreak with DiagnosticableTreeMixin implements ShortBreak {
       const DeepCollectionEquality().hash(secondsInitial) ^
       const DeepCollectionEquality().hash(isRunning) ^
       const DeepCollectionEquality().hash(nextInterval) ^
-      const DeepCollectionEquality().hash(quote);
+      const DeepCollectionEquality().hash(quoteId);
 
   @JsonKey(ignore: true)
   @override
@@ -546,36 +545,36 @@ class _$ShortBreak with DiagnosticableTreeMixin implements ShortBreak {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int secondsLeft, int secondsInitial,
-            int currentInterval, bool isRunning, String quote)
+            int currentInterval, bool isRunning, int quoteId)
         pomodoro,
     required TResult Function(int secondsLeft, int secondsInitial,
-            bool isRunning, int nextInterval, String quote)
+            bool isRunning, int nextInterval, int quoteId)
         shortBreak,
     required TResult Function(
-            int secondsLeft, int secondsInitial, bool isRunning, String quote)
+            int secondsLeft, int secondsInitial, bool isRunning, int quoteId)
         longBreak,
   }) {
     return shortBreak(
-        secondsLeft, secondsInitial, isRunning, nextInterval, quote);
+        secondsLeft, secondsInitial, isRunning, nextInterval, quoteId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int secondsLeft, int secondsInitial, int currentInterval,
-            bool isRunning, String quote)?
+            bool isRunning, int quoteId)?
         pomodoro,
     TResult Function(int secondsLeft, int secondsInitial, bool isRunning,
-            int nextInterval, String quote)?
+            int nextInterval, int quoteId)?
         shortBreak,
     TResult Function(
-            int secondsLeft, int secondsInitial, bool isRunning, String quote)?
+            int secondsLeft, int secondsInitial, bool isRunning, int quoteId)?
         longBreak,
     required TResult orElse(),
   }) {
     if (shortBreak != null) {
       return shortBreak(
-          secondsLeft, secondsInitial, isRunning, nextInterval, quote);
+          secondsLeft, secondsInitial, isRunning, nextInterval, quoteId);
     }
     return orElse();
   }
@@ -616,7 +615,7 @@ abstract class ShortBreak implements PomodoroTimerState {
       required int secondsInitial,
       required bool isRunning,
       required int nextInterval,
-      required String quote}) = _$ShortBreak;
+      required int quoteId}) = _$ShortBreak;
 
   factory ShortBreak.fromJson(Map<String, dynamic> json) =
       _$ShortBreak.fromJson;
@@ -629,7 +628,7 @@ abstract class ShortBreak implements PomodoroTimerState {
   bool get isRunning => throw _privateConstructorUsedError;
   int get nextInterval => throw _privateConstructorUsedError;
   @override
-  String get quote => throw _privateConstructorUsedError;
+  int get quoteId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $ShortBreakCopyWith<ShortBreak> get copyWith =>
@@ -642,8 +641,7 @@ abstract class $LongBreakCopyWith<$Res>
   factory $LongBreakCopyWith(LongBreak value, $Res Function(LongBreak) then) =
       _$LongBreakCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {int secondsLeft, int secondsInitial, bool isRunning, String quote});
+  $Res call({int secondsLeft, int secondsInitial, bool isRunning, int quoteId});
 }
 
 /// @nodoc
@@ -661,7 +659,7 @@ class _$LongBreakCopyWithImpl<$Res>
     Object? secondsLeft = freezed,
     Object? secondsInitial = freezed,
     Object? isRunning = freezed,
-    Object? quote = freezed,
+    Object? quoteId = freezed,
   }) {
     return _then(LongBreak(
       secondsLeft: secondsLeft == freezed
@@ -676,10 +674,10 @@ class _$LongBreakCopyWithImpl<$Res>
           ? _value.isRunning
           : isRunning // ignore: cast_nullable_to_non_nullable
               as bool,
-      quote: quote == freezed
-          ? _value.quote
-          : quote // ignore: cast_nullable_to_non_nullable
-              as String,
+      quoteId: quoteId == freezed
+          ? _value.quoteId
+          : quoteId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -692,7 +690,7 @@ class _$LongBreak with DiagnosticableTreeMixin implements LongBreak {
       {required this.secondsLeft,
       required this.secondsInitial,
       required this.isRunning,
-      required this.quote});
+      required this.quoteId});
 
   factory _$LongBreak.fromJson(Map<String, dynamic> json) =>
       _$_$LongBreakFromJson(json);
@@ -704,11 +702,11 @@ class _$LongBreak with DiagnosticableTreeMixin implements LongBreak {
   @override
   final bool isRunning;
   @override
-  final String quote;
+  final int quoteId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PomodoroTimerState.longBreak(secondsLeft: $secondsLeft, secondsInitial: $secondsInitial, isRunning: $isRunning, quote: $quote)';
+    return 'PomodoroTimerState.longBreak(secondsLeft: $secondsLeft, secondsInitial: $secondsInitial, isRunning: $isRunning, quoteId: $quoteId)';
   }
 
   @override
@@ -719,7 +717,7 @@ class _$LongBreak with DiagnosticableTreeMixin implements LongBreak {
       ..add(DiagnosticsProperty('secondsLeft', secondsLeft))
       ..add(DiagnosticsProperty('secondsInitial', secondsInitial))
       ..add(DiagnosticsProperty('isRunning', isRunning))
-      ..add(DiagnosticsProperty('quote', quote));
+      ..add(DiagnosticsProperty('quoteId', quoteId));
   }
 
   @override
@@ -735,8 +733,8 @@ class _$LongBreak with DiagnosticableTreeMixin implements LongBreak {
             (identical(other.isRunning, isRunning) ||
                 const DeepCollectionEquality()
                     .equals(other.isRunning, isRunning)) &&
-            (identical(other.quote, quote) ||
-                const DeepCollectionEquality().equals(other.quote, quote)));
+            (identical(other.quoteId, quoteId) ||
+                const DeepCollectionEquality().equals(other.quoteId, quoteId)));
   }
 
   @override
@@ -745,7 +743,7 @@ class _$LongBreak with DiagnosticableTreeMixin implements LongBreak {
       const DeepCollectionEquality().hash(secondsLeft) ^
       const DeepCollectionEquality().hash(secondsInitial) ^
       const DeepCollectionEquality().hash(isRunning) ^
-      const DeepCollectionEquality().hash(quote);
+      const DeepCollectionEquality().hash(quoteId);
 
   @JsonKey(ignore: true)
   @override
@@ -756,34 +754,34 @@ class _$LongBreak with DiagnosticableTreeMixin implements LongBreak {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int secondsLeft, int secondsInitial,
-            int currentInterval, bool isRunning, String quote)
+            int currentInterval, bool isRunning, int quoteId)
         pomodoro,
     required TResult Function(int secondsLeft, int secondsInitial,
-            bool isRunning, int nextInterval, String quote)
+            bool isRunning, int nextInterval, int quoteId)
         shortBreak,
     required TResult Function(
-            int secondsLeft, int secondsInitial, bool isRunning, String quote)
+            int secondsLeft, int secondsInitial, bool isRunning, int quoteId)
         longBreak,
   }) {
-    return longBreak(secondsLeft, secondsInitial, isRunning, quote);
+    return longBreak(secondsLeft, secondsInitial, isRunning, quoteId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int secondsLeft, int secondsInitial, int currentInterval,
-            bool isRunning, String quote)?
+            bool isRunning, int quoteId)?
         pomodoro,
     TResult Function(int secondsLeft, int secondsInitial, bool isRunning,
-            int nextInterval, String quote)?
+            int nextInterval, int quoteId)?
         shortBreak,
     TResult Function(
-            int secondsLeft, int secondsInitial, bool isRunning, String quote)?
+            int secondsLeft, int secondsInitial, bool isRunning, int quoteId)?
         longBreak,
     required TResult orElse(),
   }) {
     if (longBreak != null) {
-      return longBreak(secondsLeft, secondsInitial, isRunning, quote);
+      return longBreak(secondsLeft, secondsInitial, isRunning, quoteId);
     }
     return orElse();
   }
@@ -823,7 +821,7 @@ abstract class LongBreak implements PomodoroTimerState {
       {required int secondsLeft,
       required int secondsInitial,
       required bool isRunning,
-      required String quote}) = _$LongBreak;
+      required int quoteId}) = _$LongBreak;
 
   factory LongBreak.fromJson(Map<String, dynamic> json) = _$LongBreak.fromJson;
 
@@ -834,7 +832,7 @@ abstract class LongBreak implements PomodoroTimerState {
   @override
   bool get isRunning => throw _privateConstructorUsedError;
   @override
-  String get quote => throw _privateConstructorUsedError;
+  int get quoteId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $LongBreakCopyWith<LongBreak> get copyWith =>

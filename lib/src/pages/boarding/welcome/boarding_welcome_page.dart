@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pocus/utils/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class BoardingWelcomePage extends StatelessWidget {
   @override
@@ -12,7 +14,7 @@ class BoardingWelcomePage extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              'Pomodoro technique is focused on boosting your productivity on long tasks.',
+              LocaleKeys.boarding_title_1.tr(),
               textAlign: TextAlign.center,
               style: theme.textTheme.headline5!.copyWith(fontSize: 21),
             ),

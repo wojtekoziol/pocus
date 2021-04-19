@@ -4,6 +4,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/models/settings/state/settings_state.dart';
 import 'package:pocus/providers.dart';
+import 'package:pocus/utils/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class DefaultSettingsButton extends HookWidget {
   @override
@@ -45,7 +47,7 @@ class DefaultSettingsButton extends HookWidget {
             ),
             child: Center(
               child: Text(
-                'Restore to default',
+                LocaleKeys.settings_restore_default.tr(),
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

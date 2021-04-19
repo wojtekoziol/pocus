@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pocus/utils/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class BoardingInstructionsPage extends StatelessWidget {
   @override
@@ -16,8 +18,9 @@ class BoardingInstructionsPage extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text(
-            'Use this button to start and pause the timer',
+            LocaleKeys.boarding_function_1.tr(),
             style: TextStyle(color: theme.primaryColor),
+            textAlign: TextAlign.center,
           ),
           SizedBox(height: 30),
           Expanded(
@@ -26,8 +29,9 @@ class BoardingInstructionsPage extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text(
-            'Tap and hold to reset the session',
+            LocaleKeys.boarding_function_2.tr(),
             style: TextStyle(color: theme.primaryColor),
+            textAlign: TextAlign.center,
           ),
           SizedBox(height: 30),
           Expanded(
@@ -36,8 +40,9 @@ class BoardingInstructionsPage extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text(
-            'Double tap to skip to the next time slot',
+            LocaleKeys.boarding_function_3.tr(),
             style: TextStyle(color: theme.primaryColor),
+            textAlign: TextAlign.center,
           ),
         ],
       ),

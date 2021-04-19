@@ -5,6 +5,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
 import 'package:pocus/src/pages/pomodoro_timer/widgets/custom_snackbar.dart';
+import 'package:pocus/utils/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class PlayPauseButton extends HookWidget {
   @override
@@ -39,7 +41,7 @@ class PlayPauseButton extends HookWidget {
               builder: (context, controller) {
                 return CustomSnackBar(
                   controller: controller,
-                  message: 'Timer reset!',
+                  message: LocaleKeys.snackbar_reset.tr(),
                 );
               },
             );
@@ -54,7 +56,7 @@ class PlayPauseButton extends HookWidget {
               builder: (context, controller) {
                 return CustomSnackBar(
                   controller: controller,
-                  message: 'Timer skipped!',
+                  message: LocaleKeys.snackbar_skip.tr(),
                 );
               },
             );

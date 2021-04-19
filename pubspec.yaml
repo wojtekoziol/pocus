@@ -24,6 +24,7 @@ dependencies:
   flash: ^1.5.1
   audioplayers: ^0.18.3
   flutter_svg: ^0.21.0+1
+  easy_localization: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -60,7 +61,8 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/sounds/
     - assets/images/boarding/welcome/
     - assets/images/boarding/pomodoro/
     - assets/images/boarding/instructions/
+    - assets/sounds/
+    - assets/translations/

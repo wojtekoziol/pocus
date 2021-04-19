@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocus/providers.dart';
 import 'package:pocus/src/pages/settings/widgets/default_settings_button.dart';
 import 'package:pocus/src/pages/settings/widgets/radio_settings.dart';
+import 'package:pocus/utils/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -14,7 +16,7 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: theme.primaryColor,
         title: Text(
-          'Settings',
+          LocaleKeys.settings_title.tr(),
           style: TextStyle(
             color: Colors.white,
           ),
@@ -53,7 +55,7 @@ class SettingsPage extends StatelessWidget {
                             pomodoroDuration: settings[index],
                           ));
                     },
-                    title: 'Pomodoro timer duration',
+                    title: LocaleKeys.settings_category_pomodoro_duration.tr(),
                     settings: settings,
                     optionUnit: 'min',
                     currentSetting: settingsState.pomodoroDuration,
@@ -74,7 +76,8 @@ class SettingsPage extends StatelessWidget {
                             shortBreakDuration: settings[index],
                           ));
                     },
-                    title: 'Short break duration',
+                    title:
+                        LocaleKeys.settings_category_short_break_duration.tr(),
                     settings: settings,
                     optionUnit: 'min',
                     currentSetting: settingsState.shortBreakDuration,
@@ -95,7 +98,8 @@ class SettingsPage extends StatelessWidget {
                             longBreakDuration: settings[index],
                           ));
                     },
-                    title: 'Long break duration',
+                    title:
+                        LocaleKeys.settings_category_long_break_duration.tr(),
                     settings: settings,
                     optionUnit: 'min',
                     currentSetting: settingsState.longBreakDuration,
@@ -116,7 +120,7 @@ class SettingsPage extends StatelessWidget {
                             intervalsNumber: settings[index],
                           ));
                     },
-                    title: 'Number of pomodoro intervals',
+                    title: LocaleKeys.settings_category_pomodoro_intervals.tr(),
                     settings: settings,
                     optionUnit: '',
                     currentSetting: settingsState.intervalsNumber,

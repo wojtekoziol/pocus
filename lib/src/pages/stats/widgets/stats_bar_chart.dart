@@ -4,6 +4,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:pocus/utils/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class StatsBarChart extends HookWidget {
   StatsBarChart({
@@ -43,7 +45,7 @@ class StatsBarChart extends HookWidget {
           ),
           SizedBox(height: 2),
           Text(
-            'This week',
+            LocaleKeys.stats_subtitle.tr(),
             style: theme.textTheme.subtitle2!.copyWith(color: textColor),
           ),
           SizedBox(height: 16),
@@ -122,25 +124,25 @@ class StatsBarChart extends HookWidget {
                         showTitles: true,
                         getTitles: (index) {
                           if (index == 0) {
-                            return 'M';
+                            return LocaleKeys.days_monday.tr();
                           }
                           if (index == 1) {
-                            return 'T';
+                            return LocaleKeys.days_tuesday.tr();
                           }
                           if (index == 2) {
-                            return 'W';
+                            return LocaleKeys.days_wednesday.tr();
                           }
                           if (index == 3) {
-                            return 'T';
+                            return LocaleKeys.days_thursday.tr();
                           }
                           if (index == 4) {
-                            return 'F';
+                            return LocaleKeys.days_friday.tr();
                           }
                           if (index == 5) {
-                            return 'S';
+                            return LocaleKeys.days_saturday.tr();
                           }
                           if (index == 6) {
-                            return 'S';
+                            return LocaleKeys.days_sunday.tr();
                           }
                           return '';
                         },
