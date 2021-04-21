@@ -35,8 +35,8 @@ class PomodoroTimerNotifier extends StateNotifier<PomodoroTimerState> {
       Notifications.schedule(
         duration: Duration(seconds: state.secondsLeft),
         title: state is Pomodoro
-            ? tr(LocaleKeys.notification_title_pomodoro)
-            : tr(LocaleKeys.notification_title_break),
+            ? tr(LocaleKeys.notification_title_break)
+            : tr(LocaleKeys.notification_title_pomodoro),
         body: tr(LocaleKeys.notification_body),
       );
     }
