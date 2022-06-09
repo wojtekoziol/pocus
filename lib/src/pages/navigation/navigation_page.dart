@@ -45,6 +45,7 @@ class NavigationPage extends HookWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text('Pocus'),
+            titleTextStyle: Theme.of(context).appBarTheme.textTheme?.headline6,
             centerTitle: true,
             leading: Padding(
               padding: EdgeInsets.only(left: 16, right: 8),
